@@ -29,4 +29,12 @@
         app:layout_constraintStart_toStartOf="@+id/tvHelloText"
         app:layout_constraintTop_toBottomOf="@+id/tvHelloText"
         tools:text="UserName"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="381dp"
+        android:layout_height="240dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
