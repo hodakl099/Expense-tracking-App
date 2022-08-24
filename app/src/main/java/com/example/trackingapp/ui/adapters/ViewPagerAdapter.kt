@@ -1,5 +1,6 @@
 package com.example.trackingapp.ui.adapters
 
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.ItemCardBinding
 
-class ViewPagerAdapter(var listOfCards: MutableList<CardView>) : RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>(){
+class ViewPagerAdapter(var listOfCards: List<CardView>) : RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>(){
 
     inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         var cardView : CardView = itemView.findViewById(R.id.cardViewItem)
@@ -25,6 +26,7 @@ class ViewPagerAdapter(var listOfCards: MutableList<CardView>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: Pager2ViewHolder, position: Int) {
-        holder.cardView = listOfCards[position]
+        val card = listOfCards[position]
+
     }
 }
