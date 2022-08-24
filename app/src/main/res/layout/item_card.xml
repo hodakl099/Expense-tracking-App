@@ -57,5 +57,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/hy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="24sp"
+        android:text="WHAT IS GOING ON"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

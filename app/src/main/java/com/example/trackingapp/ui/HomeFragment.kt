@@ -18,9 +18,7 @@ class HomeFragment : Fragment() {
 
     private val bindig get() = _binding!!
 
-    private var _bindingCard : ItemCardBinding? = null
-
-    private val bindingCard get() = _bindingCard!!
+    private val card : ItemCardBinding? = null
 
     private var cardsList = mutableListOf<CardView>()
 
@@ -32,6 +30,8 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater,container,false)
         val root = bindig.root
+
+
 
         return root
     }
@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
 
     private fun postToList(){
         for (i in 1..5) {
-            addCardView(bindingCard.cardViewItem)
+            card?.cardViewItem?.let { addCardView(it) }
         }
     }
 }
