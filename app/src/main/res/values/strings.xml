@@ -2,4 +2,5 @@
     <string name="hello">Hello</string>
     <string name="goals">Goals</string>
     <string name="income">Income</string>
+    <string name="_00_0">$00.0</string>
 </resources>
