@@ -96,6 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardViewIncome" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGoals"
         android:layout_width="408dp"
         android:layout_height="255dp"
         android:padding="16dp"
