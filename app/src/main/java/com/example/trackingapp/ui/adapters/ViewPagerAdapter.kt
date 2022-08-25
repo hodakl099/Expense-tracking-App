@@ -1,32 +1,23 @@
 package com.example.trackingapp.ui.adapters
 
-import android.opengl.Visibility
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.cardview.widget.CardView
-import androidx.core.view.get
-import androidx.recyclerview.widget.RecyclerView
-import com.example.trackingapp.R
-import com.example.trackingapp.databinding.ItemCardBinding
 
-class ViewPagerAdapter(var listOfCards: List<CardView>) : RecyclerView.Adapter<ViewPagerAdapter.Pager2ViewHolder>(){
+import android.content.res.Resources
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.trackingapp.ui.ExpenseFragment
+import com.example.trackingapp.ui.IncomeFragment
 
-    inner class Pager2ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        var cardView : CardView = itemView.findViewById(R.id.cardViewItem)
-    }
+class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity){
 
-    override fun getItemCount(): Int {
-        return listOfCards.size
-    }
+    override fun getItemCount() = 2
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Pager2ViewHolder {
-
-        return Pager2ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_card,parent,false))
-    }
-
-    override fun onBindViewHolder(holder: Pager2ViewHolder, position: Int) {
-        val card = listOfCards[position]
+    override fun createFragment(position: Int): Fragment {
+         return  when(position) {
+              0 -> IncomeFragment()
+              1 -> ExpenseFragment()
+              else -> throw Resources.NotFoundException("position Not Found!")
+          }
 
     }
 }
