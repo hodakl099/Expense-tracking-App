@@ -10,9 +10,6 @@ import com.example.trackingapp.R
 
 class ExpenseFragment : Fragment() {
 
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
