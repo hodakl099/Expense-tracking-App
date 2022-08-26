@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentExpenseBinding
 import com.example.trackingapp.databinding.GoalItemBinding
 import com.example.trackingapp.ui.adapters.GoalsAdapter
@@ -15,11 +14,11 @@ import com.example.trackingapp.ui.data.GoalItem
 
 class ExpenseFragment : Fragment() {
 
-   private lateinit var binding: FragmentExpenseBinding
+//   private lateinit var binding: FragmentExpenseBinding
+//
+//   private lateinit var goalAdapter: GoalsAdapter
 
-   private lateinit var goalAdapter: GoalsAdapter
-
-   private var listOfGoals : MutableList<GoalItem>? = null
+   lateinit var listOfGoals : MutableList<GoalItem>
 
 
     override fun onCreateView(
@@ -27,10 +26,21 @@ class ExpenseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = GoalItemBinding.inflate(layoutInflater,container,false)
-        listOfGoals?.add(GoalItem("Home","100%"))
-        goalAdapter = GoalsAdapter(listOfGoals)
+        val binding = FragmentExpenseBinding.inflate(layoutInflater,container,false)
 
+        val listItem = mutableListOf(
+            GoalItem("Home","100%"),
+            GoalItem("Home","100%"),
+            GoalItem("Home","100%"),
+            GoalItem("Home","100%"),
+            GoalItem("Home","100%"),
+        )
+
+
+        listOfGoals = listItem
+
+        binding.rvGoals.layoutManager = LinearLayoutManager(activity)
+        binding.rvGoals.adapter = GoalsAdapter(listOfGoals)
 
         return binding.root
     }
