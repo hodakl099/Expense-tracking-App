@@ -14,12 +14,6 @@ import com.example.trackingapp.ui.data.GoalItem
 
 class ExpenseFragment : Fragment() {
 
-//   private lateinit var binding: FragmentExpenseBinding
-//
-//   private lateinit var goalAdapter: GoalsAdapter
-
-   lateinit var listOfGoals : MutableList<GoalItem>
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,19 +22,8 @@ class ExpenseFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentExpenseBinding.inflate(layoutInflater,container,false)
 
-        val listItem = mutableListOf(
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-        )
-
-
-        listOfGoals = listItem
-
         binding.rvGoals.layoutManager = LinearLayoutManager(activity)
-        binding.rvGoals.adapter = GoalsAdapter(listOfGoals)
+        binding.rvGoals.adapter = GoalsAdapter(IncomeFragment.listItems)
 
         return binding.root
     }
