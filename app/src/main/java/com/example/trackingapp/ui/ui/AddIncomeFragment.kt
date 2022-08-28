@@ -22,12 +22,16 @@ class AddIncomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentAddIncomeBinding.inflate(layoutInflater,container,false)
+
+        val categories = resources.getStringArray(R.array.categories_array)
+        val arrayAdapter = ArrayAdapter(
+            requireContext(),
+            R.layout.dropdown_item,
+            categories
+        )
+        binding.tvAutoCompleteText.setAdapter(arrayAdapter)
+
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
 

@@ -54,6 +54,7 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:text="@string/amount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +73,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dropDropdownHint"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -87,7 +88,7 @@
            android:id="@+id/tvAutoCompleteText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/entertainment" />
+            android:text="@string/entertainment" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
