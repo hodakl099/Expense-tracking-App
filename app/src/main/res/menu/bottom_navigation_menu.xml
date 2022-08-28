@@ -12,6 +12,11 @@
         android:title="transactions" />
 
     <item
+        android:id="@+id/add_page"
+        android:icon="@drawable/ic_add"
+        android:title="" />
+
+    <item
         android:id="@+id/statistics_page"
         android:icon="@drawable/ic_statistics"
         android:title="statistics" />

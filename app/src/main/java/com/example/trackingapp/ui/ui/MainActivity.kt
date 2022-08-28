@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        binding.bottomNavigationView.background = null
+
         tabLayout = binding.tabLayout
         viewPager2 = binding.pager
 

@@ -11,7 +11,7 @@
         <entry key="..\:/Users/pc/Desktop/Develpment/flutter/TrackingApp/app/src/main/res/layout/goal_item.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/Develpment/flutter/TrackingApp/app/src/main/res/layout/item_card.xml" value="0.38697916666666665" />
         <entry key="app/src/main/res/drawable/ic_transaction.xml" value="0.1555" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/menu_i.xml" value="0.19270833333333334" />
@@ -24,5 +24,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
   </component>
 </project>
