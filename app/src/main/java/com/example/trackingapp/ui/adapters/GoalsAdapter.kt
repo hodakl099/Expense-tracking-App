@@ -1,5 +1,6 @@
 package com.example.trackingapp.ui.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,8 @@ class GoalsAdapter(private val dataSet: MutableList<GoalItem>) : RecyclerView.Ad
         holder.binding.apply {
             tvGoalName.text = currentGoalItem.GoalCategory
             tvGoalPercentage.text = currentGoalItem.GoalPercentage
+            tvGoalName.setTextColor(Color.parseColor("#000000"))
+            tvGoalPercentage.setTextColor(Color.parseColor("#000000"))
         }
     }
 

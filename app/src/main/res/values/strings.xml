@@ -4,4 +4,10 @@
     <string name="goals">Goals</string>
     <string name="_00_0">$00.0</string>
     <string name="income">Income</string>
+    <string name="home">Home</string>
+    <string name="transactions">transactions</string>
+    <string name="statistics">statistics</string>
+    <string name="profile">profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
