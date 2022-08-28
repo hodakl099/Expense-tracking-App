@@ -1,4 +1,4 @@
-package com.example.trackingapp.ui
+package com.example.trackingapp.ui.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

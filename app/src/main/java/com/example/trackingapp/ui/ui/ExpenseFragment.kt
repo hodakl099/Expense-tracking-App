@@ -1,4 +1,4 @@
-package com.example.trackingapp.ui
+package com.example.trackingapp.ui.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.trackingapp.databinding.FragmentExpenseBinding
-import com.example.trackingapp.databinding.GoalItemBinding
 import com.example.trackingapp.ui.adapters.GoalsAdapter
-import com.example.trackingapp.ui.data.GoalItem
 
 
 class ExpenseFragment : Fragment() {
