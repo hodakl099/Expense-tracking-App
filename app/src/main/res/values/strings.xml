@@ -14,4 +14,5 @@
     <string name="type">Type</string>
     <string name="amount">Amount</string>
     <string name="category">Category</string>
+    <string name="entertainment">Entertainment</string>
 </resources>
