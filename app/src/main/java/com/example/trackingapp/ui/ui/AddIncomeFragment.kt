@@ -16,6 +16,7 @@ class AddIncomeFragment : Fragment() {
 
     private lateinit var binding : FragmentAddIncomeBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
