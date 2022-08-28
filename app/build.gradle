@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
-
+    implementation 'com.google.android.material:material:1.7.0-beta01'
     //Circle indicator
     implementation 'me.relex:circleindicator:2.1.6'
 
