@@ -22,5 +22,7 @@ class AddIncomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_add_income, container, false)
     }
 
+    fun onRadioButtonClicked(view: View) {}
+
 
 }
