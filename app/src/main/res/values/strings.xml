@@ -18,4 +18,6 @@
     <string name="date">Date</string>
     <string name="payment_method">Payment Method</string>
     <string name="cash">Cash</string>
+    <string name="_2022_8_30">2022-8-30</string>
+    <string name="note">Note</string>
 </resources>
