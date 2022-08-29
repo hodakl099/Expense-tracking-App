@@ -41,7 +41,7 @@ class IncomeFragment : Fragment() {
         val binding = FragmentIncomeBinding.inflate(layoutInflater, container, false)
 
 
-        binding.rvGoals.layoutManager = LinearLayoutManager(activity)
+        binding.rvGoals.layoutManager = LinearLayoutManager(requireContext())
         binding.rvGoals.adapter = GoalsAdapter(listItems)
 
 
