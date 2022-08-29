@@ -26,18 +26,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.background = null
 
-        tabLayout = binding.tabLayout
-        viewPager2 = binding.pager
+//        tabLayout = binding.tabLayout
+//        viewPager2 = binding.pager
 
-        binding.pager.adapter = ViewPagerAdapter(this)
+//        binding.pager.adapter = ViewPagerAdapter(this)
 
-        TabLayoutMediator(tabLayout,viewPager2){tab,index ->
-            tab.text = when(index) {
-                0 -> {"Income"}
-                1 -> {"Expense"}
-                else -> throw Resources.NotFoundException("Not found")
-            }
-        }.attach()
+//        TabLayoutMediator(tabLayout,viewPager2){tab,index ->
+//            tab.text = when(index) {
+//                0 -> {"Income"}
+//                1 -> {"Expense"}
+//                else -> throw Resources.NotFoundException("Not found")
+//            }
+//        }.attach()
 
     }
 }

@@ -3,12 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
-
-
+    app:startDestination="@id/incomeFragment">
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.trackingapp.ui.ui.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/incomeFragment"
+        android:name="com.example.trackingapp.ui.ui.IncomeFragment"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income" />
 </navigation>
