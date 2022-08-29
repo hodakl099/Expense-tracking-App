@@ -12,7 +12,7 @@ import com.example.trackingapp.ui.adapters.GoalsAdapter
 import com.example.trackingapp.ui.data.GoalItem
 
 
-class IncomeFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     companion object {
         val listItems = mutableListOf(
