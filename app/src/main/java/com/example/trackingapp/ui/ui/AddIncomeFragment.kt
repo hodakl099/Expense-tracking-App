@@ -1,5 +1,6 @@
 package com.example.trackingapp.ui.ui
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ class AddIncomeFragment : Fragment() {
     private lateinit var binding : FragmentAddIncomeBinding
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
