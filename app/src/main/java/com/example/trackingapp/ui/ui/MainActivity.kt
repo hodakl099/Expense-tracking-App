@@ -3,18 +3,10 @@ package com.example.trackingapp.ui.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.ActivityMainBinding
-import com.google.android.material.navigation.NavigationBarView
-import com.google.android.material.tabs.TabLayout
+
+
 
 class MainActivity : AppCompatActivity() {
 

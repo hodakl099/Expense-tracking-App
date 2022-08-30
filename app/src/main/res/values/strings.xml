@@ -15,4 +15,7 @@
     <string name="amount">Amount</string>
     <string name="category">Category</string>
     <string name="entertainment">Entertainment</string>
+    <string name="date">Date</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="cash">Cash</string>
 </resources>
