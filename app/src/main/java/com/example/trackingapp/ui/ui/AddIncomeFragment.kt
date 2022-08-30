@@ -30,7 +30,16 @@ class AddIncomeFragment : Fragment() {
             R.layout.dropdown_item,
             categories
         )
-        binding.tvAutoCompleteText.setAdapter(arrayAdapter)
+        binding.tvAutoCompleteCategory.setAdapter(arrayAdapter)
+
+        val paymentMethods = resources.getStringArray(R.array.payment_methods)
+        val arrayPaymentAdapter = ArrayAdapter(
+            requireContext(),
+            R.layout.dropdown_item,
+            paymentMethods
+        )
+        binding.tvAutoCompletePaymentText.setAdapter(arrayPaymentAdapter)
+
 
         return binding.root
     }
