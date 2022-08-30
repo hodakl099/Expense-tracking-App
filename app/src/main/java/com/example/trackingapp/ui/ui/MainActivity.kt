@@ -49,8 +49,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 else -> {
-
-
+                    return@setOnItemSelectedListener false
                 }
 
             }
@@ -59,13 +58,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.background = null
 
-
-
-
-
-
     }
-   private fun replaceFragment(fragment: Fragment) {
+
+       private fun replaceFragment(fragment: Fragment) {
 
        val fragmentManager =  supportFragmentManager
        val fragmentTransaction = fragmentManager.beginTransaction()

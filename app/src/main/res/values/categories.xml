@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories_array">
+        <item>Loan</item>
+        <item>Accounting</item>
+        <item>Business</item>
+        <item>Clothing</item>
+        <item>Drinks</item>
+        <item>Education</item>
+        <item>Food</item>
+        <item>Fuel</item>
+        <item>Entertainment</item>
+        <item>Health</item>
+        <item>Hotel</item>
+        <item>Travel</item>
+        <item>Insurance</item>
+        <item>Maintenance</item>
+        <item>Movies</item>
+        <item>Personal</item>
+        <item>Rent</item>
+        <item>Games</item>
+        <item>Salary</item>
+        <item>Shopping</item>
+        <item>Tips</item>
+        <item>Utilities</item>
+
+    </string-array>
+</resources>
