@@ -45,9 +45,8 @@ class HomeFragment : Fragment() {
         binding.rvGoals.adapter = GoalsAdapter(listItems)
 
 
-        val args = this.arguments
 
-        val inputExpenseData = args?.getString("expenseData")
+        val inputExpenseData = arguments?.getString("expenseData")
 
         binding.tvAmountExpense.text = inputExpenseData.toString()
 

@@ -75,9 +75,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:hint="@string/amount"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
-        android:hint="@string/amount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
@@ -86,12 +86,10 @@
         android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:text="@string/category"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/inputTextAmount"
+        tools:layout_editor_absoluteX="28dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dropDropdownCategory"
@@ -117,12 +115,12 @@
         android:id="@+id/tvDateText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="16dp"
-        android:paddingBottom="16dp"
-        android:paddingStart="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:paddingStart="10dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:text="@string/_2022_8_30"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,6 +148,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPaymentMethod">
 
@@ -171,6 +170,7 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNote"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -179,9 +179,9 @@
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/background"
         android:text="@string/add"
         android:textColor="@color/black"
