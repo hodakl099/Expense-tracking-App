@@ -27,7 +27,12 @@
         android:id="@+id/homeFragment"
         android:name="com.example.trackingapp.ui.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <argument
+            android:name="expenseAmount"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.example.trackingapp.ui.ui.StatisticsFragment"

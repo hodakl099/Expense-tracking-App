@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddIncomeBinding
 import java.util.*
@@ -55,6 +56,14 @@ class AddIncomeFragment : Fragment() {
 
             }, year, month, day)
             dpd.show()
+        }
+
+        binding.btnAdd.setOnClickListener {
+
+
+
+
+
         }
 
         return binding.root
