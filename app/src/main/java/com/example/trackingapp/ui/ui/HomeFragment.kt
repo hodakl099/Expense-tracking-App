@@ -44,6 +44,13 @@ class HomeFragment : Fragment() {
         binding.rvGoals.layoutManager = LinearLayoutManager(requireContext())
         binding.rvGoals.adapter = GoalsAdapter(listItems)
 
+
+        val args = this.arguments
+
+        val inputExpenseData = args?.getString("expenseData")
+
+        binding.tvAmountExpense.text = inputExpenseData.toString()
+
         return binding.root
 
 

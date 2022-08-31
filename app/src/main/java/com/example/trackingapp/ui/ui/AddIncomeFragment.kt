@@ -3,9 +3,11 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Layout
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddIncomeBinding
@@ -60,6 +62,14 @@ class AddIncomeFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener {
 
+            val text = binding.inputTextAmount.text.toString()
+            val bundle = Bundle()
+
+            bundle.putString("expenseData", text)
+
+            val fragment = HomeFragment()
+
+            parentFragmentManager.beginTransaction().replace(R.id.nav_host_fragment, fragment).commit()
 
 
 
