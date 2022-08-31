@@ -16,6 +16,7 @@
 <!--            android:name=".HomeActivity"-->
 <!--            android:exported="false" />-->
         <activity
+            android:parentActivityName=".ui.ui.MainActivity"
             android:name=".ui.ui.MainActivity"
             android:exported="true">
             <intent-filter>

@@ -9,7 +9,7 @@
 
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/frame_layout"
+        android:id="@+id/nav_host_fragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"

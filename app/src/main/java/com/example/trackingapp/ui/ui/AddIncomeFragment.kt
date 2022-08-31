@@ -3,11 +3,9 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddIncomeBinding
 import java.util.*
@@ -27,6 +25,7 @@ class AddIncomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentAddIncomeBinding.inflate(layoutInflater,container,false)
+
 
         val categories = resources.getStringArray(R.array.categories_array)
         val arrayAdapter = ArrayAdapter(
@@ -63,3 +62,4 @@ class AddIncomeFragment : Fragment() {
 
 
 }
+
