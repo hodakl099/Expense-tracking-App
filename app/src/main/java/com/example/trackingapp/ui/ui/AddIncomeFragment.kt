@@ -26,6 +26,7 @@ class AddIncomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentAddIncomeBinding.inflate(layoutInflater,container,false)
 
+        setHasOptionsMenu(true)
 
         val categories = resources.getStringArray(R.array.categories_array)
         val arrayAdapter = ArrayAdapter(
@@ -60,6 +61,13 @@ class AddIncomeFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        inflater.inflate(R.menu.add_edit_item, menu)
+
+    }
+
 
 
 }
