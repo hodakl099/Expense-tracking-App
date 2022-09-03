@@ -13,25 +13,7 @@ import com.example.trackingapp.ui.data.GoalItem
 
 class HomeFragment : Fragment() {
 
-    companion object {
-        val listItems = mutableListOf(
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-            GoalItem("Home","100%"),
-        )
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,14 +23,11 @@ class HomeFragment : Fragment() {
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
 
-        binding.rvGoals.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvGoals.adapter = GoalsAdapter(listItems)
 
+            val inputExpenseData = arguments?.getString("expenseData")
 
+            binding.tvAmountExpense.text = inputExpenseData.toString()
 
-        val inputExpenseData = arguments?.getString("expenseData")
-
-        binding.tvAmountExpense.text = inputExpenseData.toString()
 
         return binding.root
 
