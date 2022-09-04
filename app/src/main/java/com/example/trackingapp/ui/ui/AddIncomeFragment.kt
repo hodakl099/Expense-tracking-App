@@ -5,7 +5,10 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.RadioButton
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddIncomeBinding
 import java.util.*
@@ -17,6 +20,8 @@ class AddIncomeFragment : Fragment() {
 
     private lateinit var binding : FragmentAddIncomeBinding
 
+
+    private var isChecked = false
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -56,6 +61,19 @@ class AddIncomeFragment : Fragment() {
             dpd.show()
         }
 
+
+        binding.btnAdd.setOnClickListener {
+
+            val expenseText = binding.inputTextAmount.text.toString()
+
+            val bundle = Bundle()
+
+            bundle.putString("expenseText", expenseText)
+            findNavController().navigate(
+                R.id.action_addIncomeFragment_to_homeFragment,
+                bundle
+            )
+        }
 
         return binding.root
     }
