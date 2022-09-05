@@ -5,8 +5,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
-import android.widget.RadioButton
-import androidx.core.os.bundleOf
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -20,8 +19,9 @@ class AddIncomeFragment : Fragment() {
 
     private lateinit var binding : FragmentAddIncomeBinding
 
+         var isChecked = false
 
-    private var isChecked = false
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -29,6 +29,7 @@ class AddIncomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         val binding = FragmentAddIncomeBinding.inflate(layoutInflater,container,false)
 
         val categories = resources.getStringArray(R.array.categories_array)
@@ -64,22 +65,40 @@ class AddIncomeFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener {
 
-            val expenseText = binding.inputTextAmount.text.toString()
 
-            val bundle = Bundle()
+            if (binding.radioExpense.isChecked) {
+                val expenseText = binding.inputTextAmount.text.toString()
 
-            bundle.putString("expenseText", expenseText)
-            findNavController().navigate(
-                R.id.action_addIncomeFragment_to_homeFragment,
-                bundle
-            )
-        }
+                val bundle = Bundle()
+
+                bundle.putString("expenseText", expenseText)
+                findNavController().navigate(
+                    R.id.action_addIncomeFragment_to_homeFragment,
+                    bundle
+                )
+            }
+            if (binding.radioIncome.isChecked) {
+                val incomeText = binding.inputTextAmount.text.toString()
+
+                val bundle = Bundle()
+
+                bundle.putString("incomeText", incomeText)
+                findNavController().navigate(
+                    R.id.action_addIncomeFragment_to_homeFragment,
+                    bundle
+                )
+            }
+            else {
+                Toast.makeText(requireContext(), "CHECK", Toast.LENGTH_LONG).show()
+            }
+
+
+
+
+            }
+
 
         return binding.root
     }
-
-
-
-
 }
 
