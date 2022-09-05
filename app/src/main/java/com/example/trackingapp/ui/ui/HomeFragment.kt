@@ -38,9 +38,9 @@ class HomeFragment : Fragment() {
         else if (requireArguments().containsKey("incomeText")) {
             binding.tvAmountIncome.text =  "$" + arguments?.getString("incomeText") + ".0"
         }
+
         binding.AddIncomeCard.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addIncomeFragment)
-
         }
 
 

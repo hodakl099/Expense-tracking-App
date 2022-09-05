@@ -40,7 +40,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvType"
-        app:layout_constraintTop_toBottomOf="@+id/tvType">
+        app:layout_constraintTop_toBottomOf="@+id/tvType"
+        android:checkedButton="@id/radio_income">
 
         <RadioButton
             android:id="@+id/radio_expense"
