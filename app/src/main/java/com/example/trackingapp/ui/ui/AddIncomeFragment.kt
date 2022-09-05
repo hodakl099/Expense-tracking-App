@@ -89,7 +89,7 @@ class AddIncomeFragment : Fragment() {
                 )
             }
             else {
-                Toast.makeText(requireContext(), "CHECK", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Choose a type", Toast.LENGTH_LONG).show()
             }
 
 

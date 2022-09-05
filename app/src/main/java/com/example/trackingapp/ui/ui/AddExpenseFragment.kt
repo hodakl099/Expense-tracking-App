@@ -74,7 +74,7 @@ class AddExpenseFragment : Fragment() {
 
                 bundle.putString("expenseText", expenseText)
                 findNavController().navigate(
-                    R.id.action_addIncomeFragment_to_homeFragment,
+                    R.id.action_addExpenseFragment_to_homeFragment,
                     bundle
                 )
             }
