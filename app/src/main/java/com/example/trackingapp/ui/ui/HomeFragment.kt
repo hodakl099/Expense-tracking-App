@@ -43,6 +43,11 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_addIncomeFragment)
         }
 
+        binding.tvAddExpense.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_addExpenseFragment)
+        }
+
+
 
         return binding.root
 

@@ -30,6 +30,9 @@
         <action
             android:id="@+id/action_homeFragment_to_statisticsFragment"
             app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addExpenseFragment"
+            app:destination="@id/addExpenseFragment" />
     </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
@@ -41,4 +44,12 @@
         android:name="com.example.trackingapp.ui.ui.TransactionFragment"
         android:label="fragment_transaction"
         tools:layout="@layout/fragment_transaction" />
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.example.trackingapp.ui.ui.AddExpenseFragment"
+        android:label="AddExpenseFragment" >
+        <action
+            android:id="@+id/action_addExpenseFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
