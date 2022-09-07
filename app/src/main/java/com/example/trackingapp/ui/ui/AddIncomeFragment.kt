@@ -2,11 +2,13 @@ package com.example.trackingapp.ui.ui
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.os.Build.VERSION_CODES.P
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddIncomeBinding
@@ -63,39 +65,45 @@ class AddIncomeFragment : Fragment() {
         }
 
 
-        binding.btnAdd.setOnClickListener {
 
 
-            if (binding.radioExpense.isChecked) {
-                val expenseText = binding.inputTextAmount.text.toString()
 
-                val bundle = Bundle()
+            binding.btnAdd.setOnClickListener {
 
-                bundle.putString("expenseText", expenseText)
-                findNavController().navigate(
-                    R.id.action_addIncomeFragment_to_homeFragment,
-                    bundle
-                )
+
+                if(binding.inputTextAmount.text.isNullOrEmpty()) {
+                    Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
+                } else  {
+                    if (binding.radioExpense.isChecked) {
+                        val expenseText = binding.inputTextAmount.text.toString()
+
+                        val bundle = Bundle()
+
+                        bundle.putString("expenseText", expenseText)
+                        findNavController().navigate(
+                            R.id.action_addIncomeFragment_to_homeFragment,
+                            bundle
+                        )
+                    }
+                    if (binding.radioIncome.isChecked) {
+                        val incomeText = binding.inputTextAmount.text.toString()
+
+                        val bundle = Bundle()
+
+                        bundle.putString("incomeText", incomeText)
+                        findNavController().navigate(
+                            R.id.action_addIncomeFragment_to_homeFragment,
+                            bundle
+                        )
+                    }
+
+                }
+
+
+
             }
-            if (binding.radioIncome.isChecked) {
-                val incomeText = binding.inputTextAmount.text.toString()
-
-                val bundle = Bundle()
-
-                bundle.putString("incomeText", incomeText)
-                findNavController().navigate(
-                    R.id.action_addIncomeFragment_to_homeFragment,
-                    bundle
-                )
-            }
-            else {
-                Toast.makeText(requireContext(), "Choose a type", Toast.LENGTH_LONG).show()
-            }
 
 
-
-
-            }
 
 
         return binding.root

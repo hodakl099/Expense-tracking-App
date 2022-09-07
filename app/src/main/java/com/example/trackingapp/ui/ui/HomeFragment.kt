@@ -1,8 +1,11 @@
 package com.example.trackingapp.ui.ui
 
 import android.annotation.SuppressLint
+import android.icu.text.NumberFormat
+import android.os.Build
 import android.os.Bundle
 import android.view.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -12,6 +15,8 @@ import com.example.trackingapp.databinding.FragmentAddIncomeBinding
 import com.example.trackingapp.databinding.FragmentHomeBinding
 import com.example.trackingapp.ui.adapters.GoalsAdapter
 import com.example.trackingapp.ui.data.GoalItem
+import java.util.*
+import kotlin.math.roundToInt
 
 
 class HomeFragment : Fragment() {
@@ -53,6 +58,8 @@ class HomeFragment : Fragment() {
 
 
     }
+
+
 
 
 

@@ -66,37 +66,37 @@ class AddExpenseFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener {
 
+            if (binding.inputTextAmount.text.isNullOrEmpty()) {
+                Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
+            } else {
+                if (binding.radioExpense.isChecked) {
+                    val expenseText = binding.inputTextAmount.text.toString()
 
-            if (binding.radioExpense.isChecked) {
-                val expenseText = binding.inputTextAmount.text.toString()
+                    val bundle = Bundle()
 
-                val bundle = Bundle()
+                    bundle.putString("expenseText", expenseText)
+                    findNavController().navigate(
+                        R.id.action_addExpenseFragment_to_homeFragment,
+                        bundle
+                    )
+                }
+                if (binding.radioIncome.isChecked) {
+                    val incomeText = binding.inputTextAmount.text.toString()
 
-                bundle.putString("expenseText", expenseText)
-                findNavController().navigate(
-                    R.id.action_addExpenseFragment_to_homeFragment,
-                    bundle
-                )
-            }
-            if (binding.radioIncome.isChecked) {
-                val incomeText = binding.inputTextAmount.text.toString()
+                    val bundle = Bundle()
 
-                val bundle = Bundle()
-
-                bundle.putString("incomeText", incomeText)
-                findNavController().navigate(
-                    R.id.action_addExpenseFragment_to_homeFragment,
-                    bundle
-                )
-            }
-            else {
-                Toast.makeText(requireContext(), "CHECK", Toast.LENGTH_LONG).show()
-            }
-
-
+                    bundle.putString("incomeText", incomeText)
+                    findNavController().navigate(
+                        R.id.action_addExpenseFragment_to_homeFragment,
+                        bundle
+                    )
+                }
 
 
             }
+            }
+
+
 
 
         return binding.root
