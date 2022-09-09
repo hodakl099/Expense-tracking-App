@@ -48,7 +48,7 @@ class HomeFragment : Fragment() {
             val symbol = currency.symbol
 
 
-            binding.tvAmountExpense.setText(String.format("$symbol$value" , "%.2f" ))
+            binding.tvAmountExpense.setText(String.format("$symbol$value","%.2f" ))
 
         }
        else if (requireArguments().containsKey("incomeText")) {
