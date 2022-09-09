@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
 import java.text.DecimalFormat
-import java.text.NumberFormat
 import java.util.*
 
 class HomeFragment : Fragment() {
@@ -32,22 +31,27 @@ class HomeFragment : Fragment() {
 
         if (arguments == null) {
            binding.tvAmountExpense.text = "$00.0"
-        } else if(requireArguments().containsKey("expenseText")) {
+           binding.tvAmountIncome.text = "$00.0"
+        }
+       else if(requireArguments().containsKey("expenseText")) {
 
             val valueText = requireArguments().get("expenseText").toString()
+
+            val dec = DecimalFormat("#,###.##")
+
+            val number = java.lang.Double.valueOf(valueText)
+
+            val value = dec.format(number)
 
             val currency = Currency.getInstance("USD")
 
             val symbol = currency.symbol
 
-            val currencyValue = "$${valueText}"
 
-            binding.tvAmountExpense.text = currencyValue
+            binding.tvAmountExpense.setText(String.format("$symbol$value" , "%.2f" ))
 
-
-//            binding.tvAmountExpense.text =    "$" + arguments?.getString("expenseText") + ".0"
         }
-        else if (requireArguments().containsKey("incomeText")) {
+       else if (requireArguments().containsKey("incomeText")) {
             binding.tvAmountIncome.text =  "$" + arguments?.getString("incomeText") + ".0"
         }
 

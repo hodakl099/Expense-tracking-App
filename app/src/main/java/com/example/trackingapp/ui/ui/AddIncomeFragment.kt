@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -63,15 +64,35 @@ class AddIncomeFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener {
 
-            val expenseText = binding.inputTextAmount.text.toString()
+            if (binding.inputTextAmount.text.isNullOrEmpty()) {
+                Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
+            } else {
+                if (binding.radioExpense.isChecked) {
+                    val expenseText = binding.inputTextAmount.text.toString()
 
-            val bundle = Bundle()
+                    val bundle = Bundle()
 
-            bundle.putString("expenseText", expenseText)
-            findNavController().navigate(
-                R.id.action_addIncomeFragment_to_homeFragment,
-                bundle
-            )
+                    bundle.putString("expenseText", expenseText)
+                    findNavController().navigate(
+                        R.id.action_addIncomeFragment_to_homeFragment,
+                        bundle
+                    )
+                }
+                if (binding.radioIncome.isChecked) {
+                    val incomeText = binding.inputTextAmount.text.toString()
+
+                    val bundle = Bundle()
+
+                    bundle.putString("incomeText", incomeText)
+                    findNavController().navigate(
+                        R.id.action_addIncomeFragment_to_homeFragment,
+                        bundle
+                    )
+                }
+
+
+            }
+
         }
 
         return binding.root
