@@ -23,8 +23,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
-
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
@@ -35,24 +33,38 @@ class HomeFragment : Fragment() {
         }
        else if(requireArguments().containsKey("expenseText")) {
 
-            val valueText = requireArguments().get("expenseText").toString()
+            val valueTextExpense = requireArguments().get("expenseText").toString()
 
             val dec = DecimalFormat("#,###.##")
 
-            val number = java.lang.Double.valueOf(valueText)
+            val number = java.lang.Double.valueOf(valueTextExpense)
 
-            val value = dec.format(number)
+            val valueExpense = dec.format(number)
 
             val currency = Currency.getInstance("USD")
 
             val symbol = currency.symbol
 
 
-            binding.tvAmountExpense.setText(String.format("$symbol$value","%.2f" ))
+            binding.tvAmountExpense.text = String.format("$symbol$valueExpense","%.2f" )
 
         }
        else if (requireArguments().containsKey("incomeText")) {
-            binding.tvAmountIncome.text =  "$" + arguments?.getString("incomeText") + ".0"
+
+            val valueTextIncome = requireArguments().get("incomeText").toString()
+
+            val dec = DecimalFormat("#,###.##")
+
+            val number = java.lang.Double.valueOf(valueTextIncome)
+
+            val valueIncome = dec.format(number)
+
+            val currency = Currency.getInstance("USD")
+
+            val symbol = currency.symbol
+
+
+            binding.tvAmountIncome.text = String.format("$symbol$valueIncome","%.2f" )
         }
 
 

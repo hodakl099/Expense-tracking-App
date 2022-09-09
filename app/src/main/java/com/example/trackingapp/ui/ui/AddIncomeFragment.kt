@@ -68,6 +68,7 @@ class AddIncomeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
             } else {
                 if (binding.radioExpense.isChecked) {
+
                     val expenseText = binding.inputTextAmount.text.toString()
 
                     val bundle = Bundle()
