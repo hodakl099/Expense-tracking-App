@@ -39,8 +39,6 @@ class HomeFragment : Fragment() {
             formatArgumentCurrency("incomeText", binding.tvAmountIncome)
         }
 
-
-
         binding.AddIncomeCard.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addIncomeFragment)
         }
@@ -48,9 +46,6 @@ class HomeFragment : Fragment() {
         binding.tvAddExpense.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addExpenseFragment)
         }
-
-
-
         return binding.root
 
     }

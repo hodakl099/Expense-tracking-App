@@ -3,6 +3,8 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.DigitsKeyListener
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -68,7 +70,6 @@ class AddIncomeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
             } else {
                 if (binding.radioExpense.isChecked) {
-
                     val expenseText = binding.inputTextAmount.text.toString()
 
                     val bundle = Bundle()
@@ -98,8 +99,6 @@ class AddIncomeFragment : Fragment() {
 
         return binding.root
     }
-
-
 
 
 }
