@@ -3,6 +3,7 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -32,39 +33,10 @@ class HomeFragment : Fragment() {
            binding.tvAmountIncome.text = "$00.0"
         }
        else if(requireArguments().containsKey("expenseText")) {
-
-            val valueTextExpense = requireArguments().get("expenseText").toString()
-
-            val dec = DecimalFormat("#,###.##")
-
-            val number = java.lang.Double.valueOf(valueTextExpense)
-
-            val valueExpense = dec.format(number)
-
-            val currency = Currency.getInstance("USD")
-
-            val symbol = currency.symbol
-
-
-            binding.tvAmountExpense.text = String.format("$symbol$valueExpense","%.2f" )
-
+            formatArgumentCurrency("expenseText", binding.tvAmountExpense)
         }
        else if (requireArguments().containsKey("incomeText")) {
-
-            val valueTextIncome = requireArguments().get("incomeText").toString()
-
-            val dec = DecimalFormat("#,###.##")
-
-            val number = java.lang.Double.valueOf(valueTextIncome)
-
-            val valueIncome = dec.format(number)
-
-            val currency = Currency.getInstance("USD")
-
-            val symbol = currency.symbol
-
-
-            binding.tvAmountIncome.text = String.format("$symbol$valueIncome","%.2f" )
+            formatArgumentCurrency("incomeText", binding.tvAmountIncome)
         }
 
 
@@ -81,8 +53,18 @@ class HomeFragment : Fragment() {
 
         return binding.root
 
+    }
 
+    //function to format the currency.
+    private fun formatArgumentCurrency(argument : String, textView: TextView) {
 
+        val valueText = requireArguments().get(argument).toString()
+        val dec = DecimalFormat("#,###.##")
+        val number = java.lang.Double.valueOf(valueText)
+        val value = dec.format(number)
+        val currency = Currency.getInstance("USD")
+        val symbol = currency.symbol
+        textView.text = String.format("$symbol$value","%.2f" )
 
     }
 
