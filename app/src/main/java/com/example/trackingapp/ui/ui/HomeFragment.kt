@@ -53,7 +53,6 @@ class HomeFragment : Fragment() {
     //function to format the currency.
     private fun formatArgumentCurrency(argument : String, textView: TextView) {
 
-
         val valueText = requireArguments().get(argument).toString()
         val dec = DecimalFormat("#,###.##")
         val number = java.lang.Double.valueOf(valueText)
