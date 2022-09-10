@@ -11,7 +11,9 @@
         tools:layout="@layout/fragment_add_income" >
         <action
             android:id="@+id/action_addIncomeFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="expense"
             android:defaultValue="00.0$" />
@@ -47,9 +49,11 @@
     <fragment
         android:id="@+id/addExpenseFragment"
         android:name="com.example.trackingapp.ui.ui.AddExpenseFragment"
-        android:label="AddExpenseFragment" >
+        android:label="AddExpenseFragment">
         <action
             android:id="@+id/action_addExpenseFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

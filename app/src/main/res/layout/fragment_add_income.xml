@@ -79,6 +79,7 @@
         android:ems="10"
         android:hint="@string/amount"
         android:inputType="numberDecimal"
+        android:maxLength="14"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
