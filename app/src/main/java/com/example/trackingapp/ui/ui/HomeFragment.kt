@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.utils.ColorTemplate
 import java.text.DecimalFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
@@ -26,6 +29,8 @@ class HomeFragment : Fragment() {
 
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+
+//        binding.homeMainPiechart
 
 
         if (arguments == null) {
@@ -60,6 +65,21 @@ class HomeFragment : Fragment() {
         val currency = Currency.getInstance("USD")
         val symbol = currency.symbol
         textView.text = String.format("$symbol$value","%.2f" )
+
+
+    }
+    private fun loadPieChartData() {
+        val entries = ArrayList<PieEntry>()
+        entries.add(PieEntry(02f, "food and Dining"))
+        entries.add(PieEntry(015f, "family"))
+        entries.add(PieEntry(015f, "family"))
+        entries.add(PieEntry(015f, "family"))
+        entries.add(PieEntry(015f, "family"))
+
+        val colors = ArrayList<Int>()
+        for(color : Int)
+
+
 
     }
 
