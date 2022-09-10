@@ -32,6 +32,8 @@ class AddIncomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentAddIncomeBinding.inflate(layoutInflater,container,false)
 
+
+
         val categories = resources.getStringArray(R.array.categories_array)
         val arrayAdapter = ArrayAdapter(
             requireContext(),

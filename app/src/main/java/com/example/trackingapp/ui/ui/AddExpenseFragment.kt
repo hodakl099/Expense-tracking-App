@@ -3,6 +3,7 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.InputType
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -32,6 +33,7 @@ class AddExpenseFragment : Fragment() {
         // Inflate the layout for this fragment
 
         val binding = FragmentAddExpenseBinding.inflate(layoutInflater,container,false)
+
 
         val categories = resources.getStringArray(R.array.categories_array)
         val arrayAdapter = ArrayAdapter(
