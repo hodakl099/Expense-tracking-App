@@ -1,6 +1,7 @@
 package com.example.trackingapp.ui.ui
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -8,12 +9,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import java.text.DecimalFormat
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class HomeFragment : Fragment() {
 
@@ -32,7 +37,8 @@ class HomeFragment : Fragment() {
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
 //        binding.homeMainPiechart
-
+        setupPieChart()
+        loadPieChartData()
 
         if (arguments == null) {
            binding.tvAmountExpense.text = "$00.0"
@@ -52,6 +58,8 @@ class HomeFragment : Fragment() {
         binding.tvAddExpense.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addExpenseFragment)
         }
+
+
         return binding.root
 
     }
@@ -89,8 +97,34 @@ class HomeFragment : Fragment() {
         val dataSet = PieDataSet(entries,"Expense")
         dataSet.color = colors.size
 
+        val data = PieData(dataSet)
+        data.setDrawValues(true)
+        data.setValueFormatter(PercentFormatter(binding.homeMainPiechart))
 
+        data.setValueTextSize(12f);
+        data.setValueTextColor(Color.BLACK);
+
+        binding.homeMainPiechart.data =  data
+        binding.homeMainPiechart.invalidate();
+
+        binding.homeMainPiechart.animateY(1400, Easing.EaseInOutQuad);
 
     }
+    private fun setupPieChart() {
+        binding.homeMainPiechart.isDrawHoleEnabled = true
+        binding.homeMainPiechart.setUsePercentValues(true)
+        binding.homeMainPiechart.setEntryLabelTextSize(12F)
+        binding.homeMainPiechart.setEntryLabelColor(Color.BLACK)
+        binding.homeMainPiechart.centerText = "Spending by Category"
+        binding.homeMainPiechart.setCenterTextSize(24F)
+        binding.homeMainPiechart.description.isEnabled = false
+        val l=  binding.homeMainPiechart.legend
+        l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+        l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+        l.orientation = Legend.LegendOrientation.VERTICAL
+        l.setDrawInside(false)
+        l.isEnabled = true
+    }
+
 
 }
