@@ -72,22 +72,22 @@ class AddIncomeFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
             } else {
                 if (binding.radioExpense.isChecked) {
-                    val expenseText = binding.inputTextAmount.text.toString()
+                    val expenseText = binding.inputTextAmount.text.toString().toFloat()
 
                     val bundle = Bundle()
 
-                    bundle.putString("expenseText", expenseText)
+                    bundle.putFloat("expenseText", expenseText)
                     findNavController().navigate(
                         R.id.action_addIncomeFragment_to_homeFragment,
                         bundle
                     )
                 }
                 if (binding.radioIncome.isChecked) {
-                    val incomeText = binding.inputTextAmount.text.toString()
+                    val incomeText = binding.inputTextAmount.text.toString().toFloat()
 
                     val bundle = Bundle()
 
-                    bundle.putString("incomeText", incomeText)
+                    bundle.putFloat("incomeText", incomeText)
                     findNavController().navigate(
                         R.id.action_addIncomeFragment_to_homeFragment,
                         bundle

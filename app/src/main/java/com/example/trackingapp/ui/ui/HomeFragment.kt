@@ -1,6 +1,7 @@
 package com.example.trackingapp.ui.ui
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
@@ -19,11 +20,12 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import java.text.DecimalFormat
 import java.util.*
 
-
 class HomeFragment : Fragment() {
 
 
+
     private lateinit var bindingA : FragmentHomeBinding
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -36,14 +38,15 @@ class HomeFragment : Fragment() {
 
         bindingA = binding
 
+
         if (arguments == null) {
-           binding.tvAmountExpense.text = "$00.0"
-           binding.tvAmountIncome.text = "$00.0"
+            binding.tvAmountExpense.text = "$00.0"
+            binding.tvAmountIncome.text = "$00.0"
         }
-       else if(requireArguments().containsKey("expenseText")) {
+        else if(requireArguments().containsKey("expenseText")) {
             formatArgumentCurrency("expenseText", binding.tvAmountExpense)
         }
-       else if (requireArguments().containsKey("incomeText")) {
+        else if (requireArguments().containsKey("incomeText")) {
             formatArgumentCurrency("incomeText", binding.tvAmountIncome)
         }
 
@@ -63,6 +66,8 @@ class HomeFragment : Fragment() {
     }
 
 
+
+
     //function to format the currency.
     private fun formatArgumentCurrency(argument : String, textView: TextView) {
 
@@ -79,8 +84,15 @@ class HomeFragment : Fragment() {
 
     private fun loadPieChartData() {
         val entries: ArrayList<PieEntry> = ArrayList()
-        entries.add(PieEntry(0.02f, "Income"))
-        entries.add(PieEntry(0.02f, "Expense"))
+        if(arguments == null)
+            entries.add(PieEntry(0.00f, "Income"))
+        else
+            entries.add(PieEntry(requireArguments().getFloat("incomeText"),"Income"))
+
+        if (arguments == null)
+            entries.add(PieEntry(0.00f, "Expense"))
+        else
+            entries.add(PieEntry(requireArguments().getFloat("expenseText"),"Expense"))
 
         val colors: ArrayList<Int> = ArrayList()
         for (color in ColorTemplate.MATERIAL_COLORS) {
@@ -91,10 +103,10 @@ class HomeFragment : Fragment() {
         dataSet.colors = colors
         val data = PieData(dataSet)
         data.setDrawValues(true)
-        data.setValueFormatter(PercentFormatter( bindingA.homeMainPiechart))
+        data.setValueFormatter(PercentFormatter(bindingA.homeMainPiechart))
         data.setValueTextSize(12f)
         data.setValueTextColor(Color.BLACK)
-        bindingA.homeMainPiechart.setData(data)
+        bindingA.homeMainPiechart.data = data
         bindingA.homeMainPiechart.invalidate()
         bindingA.homeMainPiechart.animateY(1400, Easing.EaseInOutQuad)
     }
@@ -108,13 +120,11 @@ class HomeFragment : Fragment() {
         bindingA.homeMainPiechart.setEntryLabelColor(Color.BLACK)
         bindingA.homeMainPiechart.setCenterTextSize(24f)
         bindingA.homeMainPiechart.description.isEnabled = false
-        val l: Legend =   bindingA.homeMainPiechart.legend
-        l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-        l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-        l.orientation = Legend.LegendOrientation.VERTICAL
-        l.setDrawInside(false)
-        l.isEnabled = true
+        val legend = bindingA.homeMainPiechart.legend
+        legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+        legend.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+        legend.orientation = Legend.LegendOrientation.VERTICAL
+        legend.setDrawInside(false)
+        legend.isEnabled = true
     }
-
-
 }

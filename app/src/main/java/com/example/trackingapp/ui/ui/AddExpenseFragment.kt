@@ -3,7 +3,6 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.text.InputType
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
-import com.example.trackingapp.databinding.FragmentAddIncomeBinding
 import java.util.*
 
 
@@ -22,6 +20,7 @@ class AddExpenseFragment : Fragment() {
     private lateinit var binding : FragmentAddExpenseBinding
 
          var isChecked = false
+
 
 
 
@@ -72,22 +71,22 @@ class AddExpenseFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
             } else {
                 if (binding.radioExpense.isChecked) {
-                    val expenseText = binding.inputTextAmount.text.toString()
+                    val expenseText = binding.inputTextAmount.text.toString().toFloat()
 
                     val bundle = Bundle()
 
-                    bundle.putString("expenseText", expenseText)
+                    bundle.putFloat("expenseText", expenseText)
                     findNavController().navigate(
                         R.id.action_addExpenseFragment_to_homeFragment,
                         bundle
                     )
                 }
                 if (binding.radioIncome.isChecked) {
-                    val incomeText = binding.inputTextAmount.text.toString()
+                    val incomeText = binding.inputTextAmount.text.toString().toFloat()
 
                     val bundle = Bundle()
 
-                    bundle.putString("incomeText", incomeText)
+                    bundle.putFloat("incomeText", incomeText)
                     findNavController().navigate(
                         R.id.action_addExpenseFragment_to_homeFragment,
                         bundle
