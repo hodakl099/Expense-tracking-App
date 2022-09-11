@@ -79,8 +79,9 @@ class HomeFragment : Fragment() {
 
     private fun loadPieChartData() {
         val entries: ArrayList<PieEntry> = ArrayList()
-        entries.add(PieEntry(0.2f, "Income"))
-        entries.add(PieEntry(0.15f, "Expense"))
+        entries.add(PieEntry(0.02f, "Income"))
+        entries.add(PieEntry(0.02f, "Expense"))
+
         val colors: ArrayList<Int> = ArrayList()
         for (color in ColorTemplate.MATERIAL_COLORS) {
             colors.add(color)
@@ -101,13 +102,13 @@ class HomeFragment : Fragment() {
 
 
     private fun setupPieChart() {
-        bindingA.homeMainPiechart.setDrawHoleEnabled(true)
+        bindingA.homeMainPiechart.isDrawHoleEnabled = true
         bindingA.homeMainPiechart.setUsePercentValues(true)
         bindingA.homeMainPiechart.setEntryLabelTextSize(12f)
         bindingA.homeMainPiechart.setEntryLabelColor(Color.BLACK)
         bindingA.homeMainPiechart.setCenterTextSize(24f)
-        bindingA.homeMainPiechart.getDescription().setEnabled(false)
-        val l: Legend =   bindingA.homeMainPiechart.getLegend()
+        bindingA.homeMainPiechart.description.isEnabled = false
+        val l: Legend =   bindingA.homeMainPiechart.legend
         l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
         l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
         l.orientation = Legend.LegendOrientation.VERTICAL
