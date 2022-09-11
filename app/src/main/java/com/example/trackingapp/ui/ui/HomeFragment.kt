@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
 import java.text.DecimalFormat
@@ -71,13 +72,22 @@ class HomeFragment : Fragment() {
     private fun loadPieChartData() {
         val entries = ArrayList<PieEntry>()
         entries.add(PieEntry(02f, "food and Dining"))
-        entries.add(PieEntry(015f, "family"))
-        entries.add(PieEntry(015f, "family"))
-        entries.add(PieEntry(015f, "family"))
-        entries.add(PieEntry(015f, "family"))
+        entries.add(PieEntry(015f, "Medical"))
+        entries.add(PieEntry(010f, "Entertainment"))
+        entries.add(PieEntry(025f, "Electricity"))
+        entries.add(PieEntry(03f, "Housing"))
 
-        val colors = ArrayList<Int>()
-        for(color : Int)
+        val colors  =  ArrayList<Int>()
+        for(color : Int in ColorTemplate.MATERIAL_COLORS) {
+            colors.add(color)
+        }
+
+        for(color : Int in ColorTemplate.VORDIPLOM_COLORS) {
+            colors.add(color)
+        }
+
+        val dataSet = PieDataSet(entries,"Expense")
+        dataSet.color = colors.size
 
 
 
