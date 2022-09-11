@@ -23,8 +23,7 @@ import java.util.*
 class HomeFragment : Fragment() {
 
 
-    private lateinit var binding: FragmentHomeBinding
-
+    private lateinit var bindingA : FragmentHomeBinding
 
 
     @SuppressLint("SetTextI18n")
@@ -36,9 +35,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-//        binding.homeMainPiechart
-        setupPieChart()
-        loadPieChartData()
+        bindingA = binding
 
         if (arguments == null) {
            binding.tvAmountExpense.text = "$00.0"
@@ -51,18 +48,107 @@ class HomeFragment : Fragment() {
             formatArgumentCurrency("incomeText", binding.tvAmountIncome)
         }
 
-        binding.AddIncomeCard.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_addIncomeFragment)
-        }
-
-        binding.tvAddExpense.setOnClickListener{
-            findNavController().navigate(R.id.action_homeFragment_to_addExpenseFragment)
-        }
-
+//        binding.AddIncomeCard.setOnClickListener{
+//            findNavController().navigate(R.id.action_homeFragment_to_addIncomeFragment)
+//        }
+//
+//        binding.tvAddExpense.setOnClickListener{
+//            findNavController().navigate(R.id.action_homeFragment_to_addExpenseFragment)
+//        }
+//        <androidx.cardview.widget.CardView
+//        android:id="@+id/AddIncomeCard"
+//        android:layout_width="120dp"
+//        android:layout_height="120dp"
+//        android:layout_marginTop="4dp"
+//        android:backgroundTint="@color/background"
+//        app:cardCornerRadius="20dp"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintHorizontal_bias="0.5"
+//        app:layout_constraintStart_toEndOf="@+id/transactionCard"
+//        app:layout_constraintTop_toBottomOf="@+id/cardViewIncome">
+//
+//        <TextView
+//        android:id="@+id/tvAddIncome"
+//        android:layout_width="wrap_content"
+//        android:layout_height="wrap_content"
+//        android:layout_gravity="center"
+//        android:text="@string/add_income"
+//        android:textSize="16sp" />
+//
+//        </androidx.cardview.widget.CardView>
+//
+//        <androidx.cardview.widget.CardView
+//        android:id="@+id/transactionCard"
+//        android:layout_width="120dp"
+//        android:layout_height="120dp"
+//        android:layout_marginTop="4dp"
+//        android:backgroundTint="@color/background"
+//        app:cardCornerRadius="20dp"
+//        app:layout_constraintEnd_toStartOf="@+id/AddIncomeCard"
+//        app:layout_constraintHorizontal_bias="0.5"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/cardViewIncome">
+//
+//        <TextView
+//        android:id="@+id/tvTransaction"
+//        android:layout_width="wrap_content"
+//        android:layout_height="wrap_content"
+//        android:layout_gravity="center"
+//        android:text="@string/transactions"
+//        android:textSize="16sp" />
+//
+//        </androidx.cardview.widget.CardView>
+//
+//        <androidx.cardview.widget.CardView
+//        android:id="@+id/AddExpenseCard"
+//        android:layout_width="120dp"
+//        android:layout_height="120dp"
+//        android:layout_marginTop="40dp"
+//        android:backgroundTint="@color/background"
+//        app:cardCornerRadius="20dp"
+//        app:layout_constraintEnd_toStartOf="@+id/StatisticsCard"
+//        app:layout_constraintHorizontal_bias="0.5"
+//        app:layout_constraintStart_toStartOf="parent"
+//        app:layout_constraintTop_toBottomOf="@+id/transactionCard">
+//
+//        <TextView
+//        android:id="@+id/tvAddExpense"
+//        android:layout_width="wrap_content"
+//        android:layout_height="wrap_content"
+//        android:layout_gravity="center"
+//        android:text="@string/add_expense"
+//        android:textSize="16sp" />
+//
+//        </androidx.cardview.widget.CardView>
+//
+//        <androidx.cardview.widget.CardView
+//        android:id="@+id/StatisticsCard"
+//        android:layout_width="120dp"
+//        android:layout_height="120dp"
+//        android:layout_marginTop="40dp"
+//        android:backgroundTint="@color/background"
+//        app:cardCornerRadius="20dp"
+//        app:layout_constraintEnd_toEndOf="parent"
+//        app:layout_constraintHorizontal_bias="0.5"
+//        app:layout_constraintStart_toEndOf="@+id/AddExpenseCard"
+//        app:layout_constraintTop_toBottomOf="@+id/AddIncomeCard">
+//
+//        <TextView
+//        android:id="@+id/tvStatistics"
+//        android:layout_width="wrap_content"
+//        android:layout_height="wrap_content"
+//        android:layout_gravity="center"
+//        android:text="@string/statistics"
+//        android:textSize="16sp" />
+//
+//        </androidx.cardview.widget.CardView>
+        setupPieChart()
+        loadPieChartData()
 
         return binding.root
 
     }
+
 
     //function to format the currency.
     private fun formatArgumentCurrency(argument : String, textView: TextView) {
@@ -81,9 +167,6 @@ class HomeFragment : Fragment() {
         val entries = ArrayList<PieEntry>()
         entries.add(PieEntry(02f, "food and Dining"))
         entries.add(PieEntry(015f, "Medical"))
-        entries.add(PieEntry(010f, "Entertainment"))
-        entries.add(PieEntry(025f, "Electricity"))
-        entries.add(PieEntry(03f, "Housing"))
 
         val colors  =  ArrayList<Int>()
         for(color : Int in ColorTemplate.MATERIAL_COLORS) {
@@ -99,31 +182,31 @@ class HomeFragment : Fragment() {
 
         val data = PieData(dataSet)
         data.setDrawValues(true)
-        data.setValueFormatter(PercentFormatter(binding.homeMainPiechart))
+        data.setValueFormatter(PercentFormatter(bindingA.homeMainPiechart))
 
         data.setValueTextSize(12f);
         data.setValueTextColor(Color.BLACK);
 
-        binding.homeMainPiechart.data =  data
-        binding.homeMainPiechart.invalidate();
+        bindingA.homeMainPiechart.data =  data
+        bindingA.homeMainPiechart.invalidate();
 
-        binding.homeMainPiechart.animateY(1400, Easing.EaseInOutQuad);
+        bindingA.homeMainPiechart.animateY(1400, Easing.EaseInOutQuad);
 
     }
     private fun setupPieChart() {
-        binding.homeMainPiechart.isDrawHoleEnabled = true
-        binding.homeMainPiechart.setUsePercentValues(true)
-        binding.homeMainPiechart.setEntryLabelTextSize(12F)
-        binding.homeMainPiechart.setEntryLabelColor(Color.BLACK)
-        binding.homeMainPiechart.centerText = "Spending by Category"
-        binding.homeMainPiechart.setCenterTextSize(24F)
-        binding.homeMainPiechart.description.isEnabled = false
-        val l=  binding.homeMainPiechart.legend
-        l.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-        l.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
-        l.orientation = Legend.LegendOrientation.VERTICAL
-        l.setDrawInside(false)
-        l.isEnabled = true
+        bindingA.homeMainPiechart.isDrawHoleEnabled = true
+        bindingA.homeMainPiechart.setUsePercentValues(true)
+        bindingA.homeMainPiechart.setEntryLabelTextSize(12f)
+        bindingA.homeMainPiechart.setEntryLabelColor(Color.BLACK)
+        bindingA.homeMainPiechart.centerText = "Spending by Category"
+        bindingA.homeMainPiechart.setCenterTextSize(24f)
+        bindingA.homeMainPiechart.description.isEnabled = false
+        val legend=  bindingA.homeMainPiechart.legend
+        legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+        legend.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
+        legend.orientation = Legend.LegendOrientation.VERTICAL
+        legend.setDrawInside(false)
+        legend.isEnabled = true
     }
 
 
