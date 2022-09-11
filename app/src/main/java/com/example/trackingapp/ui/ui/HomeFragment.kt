@@ -85,10 +85,8 @@ class HomeFragment : Fragment() {
         for (color in ColorTemplate.MATERIAL_COLORS) {
             colors.add(color)
         }
-//        for (color in ColorTemplate.VORDIPLOM_COLORS) {
-//            colors.add(color)
-//        }
-        val dataSet = PieDataSet(entries, "Expense And Income")
+
+        val dataSet = PieDataSet(entries, "")
         dataSet.colors = colors
         val data = PieData(dataSet)
         data.setDrawValues(true)
