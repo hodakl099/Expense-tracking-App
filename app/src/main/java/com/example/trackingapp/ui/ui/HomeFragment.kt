@@ -6,10 +6,13 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.example.trackingapp.ui.viewmodel.SharedViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
@@ -25,6 +28,9 @@ class HomeFragment : Fragment() {
 
 
     private lateinit var bindingA : FragmentHomeBinding
+
+    private val sharedViewModel: SharedViewModel by activityViewModels()
+
 
 
     @SuppressLint("SetTextI18n")
@@ -44,10 +50,10 @@ class HomeFragment : Fragment() {
             binding.tvAmountIncome.text = "$00.0"
         }
         else if(requireArguments().containsKey("expenseText")) {
-            formatArgumentCurrency("expenseText", binding.tvAmountExpense)
+           sharedViewModel.formatArgumentCurrency("expenseText", binding.tvAmountExpense)
         }
         else if (requireArguments().containsKey("incomeText")) {
-            formatArgumentCurrency("incomeText", binding.tvAmountIncome)
+           sharedViewModel.formatArgumentCurrency("incomeText", binding.tvAmountIncome)
         }
 
         binding.AddIncomeCard.setOnClickListener{
@@ -61,26 +67,25 @@ class HomeFragment : Fragment() {
         setupPieChart()
         loadPieChartData()
 
+
         return binding.root
 
     }
 
 
-
-
-    //function to format the currency.
-    private fun formatArgumentCurrency(argument : String, textView: TextView) {
-
-        val valueText = requireArguments().get(argument).toString()
-        val dec = DecimalFormat("#,###.##")
-        val number = java.lang.Double.valueOf(valueText)
-        val value = dec.format(number)
-        val currency = Currency.getInstance("USD")
-        val symbol = currency.symbol
-        textView.text = String.format("$symbol$value","%.2f" )
-
-
-    }
+//    //function to format the currency.
+//    private fun formatArgumentCurrency(argument : String, textView: TextView) {
+//
+//        val valueText = requireArguments().get(argument).toString()
+//        val dec = DecimalFormat("#,###.##")
+//        val number = java.lang.Double.valueOf(valueText)
+//        val value = dec.format(number)
+//        val currency = Currency.getInstance("USD")
+//        val symbol = currency.symbol
+//        textView.text = String.format("$symbol$value","%.2f" )
+//
+//
+//    }
 
     private fun loadPieChartData() {
         val entries: ArrayList<PieEntry> = ArrayList()

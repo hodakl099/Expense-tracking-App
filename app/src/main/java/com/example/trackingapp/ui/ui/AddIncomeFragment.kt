@@ -77,6 +77,7 @@ class AddIncomeFragment : Fragment() {
                     val bundle = Bundle()
 
                     bundle.putFloat("expenseText", expenseText)
+
                     findNavController().navigate(
                         R.id.action_addIncomeFragment_to_homeFragment,
                         bundle
@@ -86,7 +87,6 @@ class AddIncomeFragment : Fragment() {
                     val incomeText = binding.inputTextAmount.text.toString().toFloat()
 
                     val bundle = Bundle()
-
                     bundle.putFloat("incomeText", incomeText)
                     findNavController().navigate(
                         R.id.action_addIncomeFragment_to_homeFragment,
@@ -101,6 +101,7 @@ class AddIncomeFragment : Fragment() {
 
         return binding.root
     }
+
 
 
 }
