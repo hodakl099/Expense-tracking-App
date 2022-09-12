@@ -1,12 +1,10 @@
 package com.example.trackingapp.ui.ui
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -22,6 +20,7 @@ import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import java.text.DecimalFormat
 import java.util.*
+
 
 class HomeFragment : Fragment() {
 
@@ -117,7 +116,6 @@ class HomeFragment : Fragment() {
     }
 
 
-
     private fun setupPieChart() {
         bindingA.homeMainPiechart.isDrawHoleEnabled = false
         bindingA.homeMainPiechart.setUsePercentValues(true)
@@ -131,5 +129,9 @@ class HomeFragment : Fragment() {
         legend.orientation = Legend.LegendOrientation.VERTICAL
         legend.setDrawInside(false)
         legend.isEnabled = true
+
+
     }
+
+
 }
