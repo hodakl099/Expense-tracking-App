@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
     //function to format the currency.
     private fun formatArgumentCurrency(argument : String, textView: TextView) {
 
-        val valueText = requireArguments().get(argument).toString()
+        val valueText = requireArguments().getString(argument).toString()
         val dec = DecimalFormat("#,###.##")
         val number = java.lang.Double.valueOf(valueText)
         val value = dec.format(number)
@@ -117,6 +117,8 @@ class HomeFragment : Fragment() {
 
 
     private fun setupPieChart() {
+
+
         bindingA.homeMainPiechart.isDrawHoleEnabled = false
         bindingA.homeMainPiechart.setUsePercentValues(true)
         bindingA.homeMainPiechart.setEntryLabelTextSize(12f)
