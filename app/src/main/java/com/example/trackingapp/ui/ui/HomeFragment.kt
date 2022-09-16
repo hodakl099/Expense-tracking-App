@@ -5,8 +5,9 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
+
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
@@ -22,13 +23,13 @@ import java.text.DecimalFormat
 import java.util.*
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : androidx.fragment.app.Fragment() {
 
 
 
     private lateinit var bindingA : FragmentHomeBinding
 
-    private val sharedViewModel: SharedViewModel by activityViewModels()
+    private lateinit var  sharedViewModel: SharedViewModel
 
 
 
@@ -71,18 +72,25 @@ class HomeFragment : Fragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        sharedViewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+        sharedViewModel.bundle.observe(viewLifecycleOwner) {
+            formatArgumentCurrency("IncomeText",bindingA.tvAmountIncome)
+        }
+    }
+
 
     //function to format the currency.
     private fun formatArgumentCurrency(argument : String, textView: TextView) {
 
-        val valueText = requireArguments().getString(argument).toString()
+        val valueText = requireArguments().getFloat(argument).toString()
         val dec = DecimalFormat("#,###.##")
         val number = java.lang.Double.valueOf(valueText)
         val value = dec.format(number)
         val currency = Currency.getInstance("USD")
         val symbol = currency.symbol
         textView.text = String.format("$symbol$value","%.2f" )
-
 
     }
 

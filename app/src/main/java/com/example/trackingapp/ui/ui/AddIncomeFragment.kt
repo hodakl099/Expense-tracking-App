@@ -22,7 +22,7 @@ class AddIncomeFragment : Fragment() {
     private lateinit var binding : FragmentAddIncomeBinding
 
 
-    private var isChecked = false
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
