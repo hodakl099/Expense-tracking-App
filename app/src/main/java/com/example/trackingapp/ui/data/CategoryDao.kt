@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 
 @Dao
+
 interface CategoryDao {
 
     @Query("SELECT * FROM category_table")
