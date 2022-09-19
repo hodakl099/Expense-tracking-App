@@ -23,5 +23,8 @@ interface CategoryDao {
     @Query("DELETE  FROM category_table ")
     suspend fun deleteAll()
 
+    @Query("SELECT Expense FROM category_table")
+     fun getExpense() : LiveData<List<Category>>
+
 
 }
