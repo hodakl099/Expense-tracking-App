@@ -3,15 +3,15 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.text.InputType
-import android.text.method.DigitsKeyListener
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddIncomeBinding
+import com.example.trackingapp.ui.viewmodel.SharedViewModel
 import java.util.*
 
 
@@ -21,6 +21,7 @@ class AddIncomeFragment : Fragment() {
 
     private lateinit var binding : FragmentAddIncomeBinding
 
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
 
 
@@ -31,7 +32,6 @@ class AddIncomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentAddIncomeBinding.inflate(layoutInflater,container,false)
-
 
 
         val categories = resources.getStringArray(R.array.categories_array)
