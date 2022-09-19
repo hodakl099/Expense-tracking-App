@@ -10,6 +10,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.example.trackingapp.ui.data.AppDatabase
+import com.example.trackingapp.ui.data.Category
 import com.example.trackingapp.ui.viewmodel.SharedViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
@@ -18,6 +20,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import kotlinx.coroutines.*
 import java.text.DecimalFormat
 import java.util.*
 
@@ -27,6 +30,10 @@ class HomeFragment : Fragment() {
 
 
     private lateinit var bindingA : FragmentHomeBinding
+
+    private lateinit var appDatabase: AppDatabase
+
+    private  var category: Category? = null
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
@@ -43,16 +50,19 @@ class HomeFragment : Fragment() {
 
         bindingA = binding
 
+        appDatabase = AppDatabase.getDatabase(requireContext())
+
+
 
         if (arguments == null) {
             binding.tvAmountExpense.text = "$00.0"
             binding.tvAmountIncome.text = "$00.0"
         }
         else if(requireArguments().containsKey("expenseText")) {
-           formatArgumentCurrency("expenseText", binding.tvAmountExpense)
+           formatArgumentCurrency("expenseText", binding.tvAmountExpense,null)
         }
         else if (requireArguments().containsKey("incomeText")) {
-           formatArgumentCurrency("incomeText", binding.tvAmountIncome)
+           formatArgumentCurrency("incomeText",null, binding.tvAmountIncome)
         }
 
         binding.AddIncomeCard.setOnClickListener{
@@ -65,6 +75,7 @@ class HomeFragment : Fragment() {
 
         setupPieChart()
         loadPieChartData()
+        displayData()
 
 
         return binding.root
@@ -72,8 +83,21 @@ class HomeFragment : Fragment() {
     }
 
 
+//    override fun onStart() {
+//        GlobalScope.launch {
+//            getData()
+//        }
+//        super.onStart()
+//    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
     //function to format the currency.
-    private fun formatArgumentCurrency(argument : String, textView: TextView) {
+    private fun formatArgumentCurrency(argument : String,
+                                       textViewExpense: TextView?,
+                                       textViewIncome: TextView?){
 
         val valueText = requireArguments().getString(argument).toString()
         val dec = DecimalFormat("#,###.##")
@@ -81,7 +105,16 @@ class HomeFragment : Fragment() {
         val value = dec.format(number)
         val currency = Currency.getInstance("USD")
         val symbol = currency.symbol
-        textView.text = String.format("$symbol$value","%.2f" )
+
+        if (textViewExpense != null) {
+            textViewExpense.text = String.format("$symbol$value","%.2f" )
+            saveData(textViewExpense.text.toString(),null)
+        }
+        if (textViewIncome != null) {
+            textViewIncome.text = String.format("$symbol$value","%.2f" )
+            saveData(null,textViewIncome.text.toString())
+        }
+
 
 
     }
@@ -134,6 +167,51 @@ class HomeFragment : Fragment() {
 
 
     }
+
+    private fun saveData(formatExpenseText: String?,formatIncomeText : String?){
+
+
+
+        if (formatExpenseText!!.isNotEmpty()) {
+            bindingA.tvAmountExpense.text = formatExpenseText
+        }
+        if (formatIncomeText!!.isNotEmpty()) {
+            bindingA.tvAmountIncome.text = formatIncomeText
+        }
+
+
+
+
+          if (formatExpenseText.isNotEmpty() && formatIncomeText.isNotEmpty() ){
+            val categories = Category(
+                null,
+                formatExpenseText,
+                formatIncomeText
+            )
+
+            GlobalScope.launch(Dispatchers.IO){
+                appDatabase.categoryDao().insert(categories)
+            }
+        }
+
+    }
+
+    private suspend fun getData(category: Category) {
+
+        withContext(Dispatchers.Main){
+            bindingA.tvAmountExpense.text = category.Expense
+            bindingA.tvAmountIncome.text = category.Income
+        }
+    }
+    private fun displayData() {
+
+        var category : Category
+        GlobalScope.launch {
+            category = appDatabase.categoryDao().getAll()[id]
+            getData(category)
+        }
+    }
+
 
 
 }
