@@ -1,9 +1,11 @@
 package com.example.trackingapp.ui.data
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+@Database(entities = [Category::class], version = 1)
 abstract class CategoryDatabase : RoomDatabase() {
 
     abstract fun categoryDao() : CategoryDao
@@ -24,7 +26,9 @@ abstract class CategoryDatabase : RoomDatabase() {
                     CategoryDatabase::class.java,
                     "Category_table"
                 ).build()
+
                 INSTANCE = instance
+
                 return instance
             }
         }

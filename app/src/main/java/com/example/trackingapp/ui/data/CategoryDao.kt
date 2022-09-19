@@ -12,7 +12,7 @@ import androidx.room.Query
 interface CategoryDao {
 
     @Query("SELECT * FROM category_table")
-    fun getAll() : LiveData<List<Category>>
+    fun readALlData() : LiveData<List<Category>>
 
     @Insert(onConflict = IGNORE)
     suspend fun insert(category: Category)
