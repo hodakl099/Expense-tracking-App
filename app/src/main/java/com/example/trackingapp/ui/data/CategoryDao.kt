@@ -1,25 +1,34 @@
 package com.example.trackingapp.ui.data
 
-import androidx.room.*
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
 import androidx.room.OnConflictStrategy.IGNORE
-import java.nio.charset.CodingErrorAction.REPLACE
-import androidx.room.OnConflictStrategy.REPLACE as OnConflictStrategyREPLACE
+import androidx.room.OnConflictStrategy.REPLACE
+import androidx.room.Query
+import androidx.room.Update
 
 @Dao
-
 interface CategoryDao {
+//
+//    @Query("SELECT * FROM category_table")
+//    fun readALlData() : LiveData<List<Category>>
 
-    @Query("SELECT * FROM category_table")
-    fun getAll() : List<Category>
+    @Insert(onConflict = IGNORE)
+    suspend fun insert(category: Money)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(category: Category)
+
+
 
     @Delete
-    suspend fun delete(category: Category)
+    suspend fun delete(category: Money)
 
-    @Query("DELETE  FROM category_table ")
+    @Query("DELETE  FROM money_table ")
     suspend fun deleteAll()
+
+    @Query("SELECT Expense FROM money_table ")
+     fun getExpense() : LiveData<Money>
 
 
 }
