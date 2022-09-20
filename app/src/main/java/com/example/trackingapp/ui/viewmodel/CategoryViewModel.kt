@@ -5,25 +5,25 @@ import android.service.autofill.UserData
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.trackingapp.ui.data.Category
-import com.example.trackingapp.ui.data.CategoryDao
+
 import com.example.trackingapp.ui.data.CategoryDatabase
+import com.example.trackingapp.ui.data.Money
 import com.example.trackingapp.ui.repository.CategoryRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CategoryViewModel  constructor(application: Application) : AndroidViewModel(application) {
 
-    private val readAllData : LiveData<List<Category>>
+     val getExpense : LiveData<Money>
     private var repository : CategoryRepository
 
     init {
         val categoryDao = CategoryDatabase.getDatabase(application).categoryDao()
         repository = CategoryRepository(categoryDao)
-        readAllData = repository.readAllData
+        getExpense = repository.getExpense
     }
 
-     fun addUser(category : Category){
+     fun addUser(category : Money){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addCategory(category)
         }

@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.get
 
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.example.trackingapp.ui.viewmodel.CategoryViewModel
 import com.example.trackingapp.ui.viewmodel.SharedViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
@@ -29,7 +31,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var bindingA : FragmentHomeBinding
 
-    private lateinit var  sharedViewModel: SharedViewModel
+    private lateinit var categoryViewModel: CategoryViewModel
 
 
 
@@ -42,18 +44,26 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
+        categoryViewModel = ViewModelProvider(requireActivity())[CategoryViewModel::class.java]
+
+
+
         bindingA = binding
 
 
-        if (arguments == null) {
-            binding.tvAmountExpense.text = "$00.0"
-            binding.tvAmountIncome.text = "$00.0"
-        }
-        else if(requireArguments().containsKey("expenseText")) {
-           formatArgumentCurrency("expenseText", binding.tvAmountExpense)
-        }
-        else if (requireArguments().containsKey("incomeText")) {
-           formatArgumentCurrency("incomeText", binding.tvAmountIncome)
+//        if (arguments == null) {
+//            binding.tvAmountExpense.text = "$00.0"
+//            binding.tvAmountIncome.text = "$00.0"
+//        }
+//        else if(requireArguments().containsKey("expenseText")) {
+//           formatArgumentCurrency("expenseText", binding.tvAmountExpense)
+//        }
+//        else if (requireArguments().containsKey("incomeText")) {
+//           formatArgumentCurrency("incomeText", binding.tvAmountIncome)
+//        }
+        categoryViewModel.getExpense.observe(viewLifecycleOwner) {expense ->
+                bindingA.tvAmountExpense.text = expense.Expense
+
         }
 
         binding.AddIncomeCard.setOnClickListener{
@@ -72,13 +82,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        sharedViewModel = ViewModelProvider(this)[SharedViewModel::class.java]
-        sharedViewModel.bundle.observe(viewLifecycleOwner) {
-            formatArgumentCurrency("IncomeText",bindingA.tvAmountIncome)
-        }
-    }
 
 
     //function to format the currency.

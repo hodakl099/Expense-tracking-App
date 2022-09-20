@@ -1,11 +1,12 @@
 package com.example.trackingapp.ui.data
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Category::class], version = 1)
+@Database(entities = [Money::class], version = 1)
 abstract class CategoryDatabase : RoomDatabase() {
 
     abstract fun categoryDao() : CategoryDao
@@ -24,7 +25,7 @@ abstract class CategoryDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     CategoryDatabase::class.java,
-                    "Category_table"
+                    "money_table"
                 ).build()
 
                 INSTANCE = instance

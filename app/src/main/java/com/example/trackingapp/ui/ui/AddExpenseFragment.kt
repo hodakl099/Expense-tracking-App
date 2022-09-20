@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
-import com.example.trackingapp.ui.data.Category
+import com.example.trackingapp.ui.data.Money
 import com.example.trackingapp.ui.viewmodel.CategoryViewModel
 import java.util.*
 
@@ -109,7 +109,7 @@ class AddExpenseFragment : Fragment() {
     private fun insertIncomeToDatabase(){
         val incomeText = binding.inputTextAmount.text.toString()
 
-        val category = Category(null,null,incomeText)
+        val category = Money(null,null,incomeText)
 
         categoryViewModel.addUser(category)
 
