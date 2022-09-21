@@ -9,7 +9,7 @@ import java.math.BigDecimal
 data class Money(
     @PrimaryKey(autoGenerate = true) val id : Int?,
     @ColumnInfo(name = "Income") val Income : String?,
-    @ColumnInfo(name = "Expense") val Expense : String = "$0.00",
+    @ColumnInfo(name = "Expense", defaultValue = "$00.0") val Expense : String?,
 
 
 )

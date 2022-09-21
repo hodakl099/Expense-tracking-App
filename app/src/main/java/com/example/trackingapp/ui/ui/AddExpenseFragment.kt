@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
 import com.example.trackingapp.ui.data.Money
-import com.example.trackingapp.ui.viewmodel.CategoryViewModel
+import com.example.trackingapp.ui.viewmodel.MoneyViewModel
 import java.util.*
 
 
@@ -22,7 +22,7 @@ class AddExpenseFragment : Fragment() {
 
     private lateinit var binding : FragmentAddExpenseBinding
 
-    private lateinit var categoryViewModel : CategoryViewModel
+    private lateinit var categoryViewModel : MoneyViewModel
 
 
 
@@ -35,7 +35,7 @@ class AddExpenseFragment : Fragment() {
 
         val bindingFragment = FragmentAddExpenseBinding.inflate(layoutInflater,container,false)
 
-        categoryViewModel = ViewModelProvider(requireActivity())[CategoryViewModel::class.java]
+        categoryViewModel = ViewModelProvider(requireActivity())[MoneyViewModel::class.java]
 
          binding = bindingFragment
 
@@ -111,7 +111,7 @@ class AddExpenseFragment : Fragment() {
 
         val category = Money(null,null,incomeText)
 
-        categoryViewModel.addUser(category)
+        categoryViewModel.addMoney(category)
 
         findNavController().navigate(
             R.id.action_addExpenseFragment_to_homeFragment,
