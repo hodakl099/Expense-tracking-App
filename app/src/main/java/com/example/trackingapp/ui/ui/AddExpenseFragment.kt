@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
-import com.example.trackingapp.ui.data.Transaction
+import com.example.trackingapp.ui.data.AmountTransaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.util.*
 
@@ -19,11 +19,9 @@ import java.util.*
 class AddExpenseFragment : Fragment() {
 
 
-
-    private lateinit var binding : FragmentAddExpenseBinding
+    private lateinit var binding: FragmentAddExpenseBinding
 
     private lateinit var transactionViewModel: TransactionViewModel
-
 
 
     @SuppressLint("SetTextI18n")
@@ -33,12 +31,12 @@ class AddExpenseFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        val bindingFragment = FragmentAddExpenseBinding.inflate(layoutInflater,container,false)
+        val bindingFragment = FragmentAddExpenseBinding.inflate(layoutInflater, container, false)
 
-        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
+        transactionViewModel =
+            ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
-         binding = bindingFragment
-
+        binding = bindingFragment
 
 
         val categories = resources.getStringArray(R.array.categories_array)
@@ -62,7 +60,7 @@ class AddExpenseFragment : Fragment() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        binding.tvDateText.setOnClickListener{
+        binding.tvDateText.setOnClickListener {
             val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
 
                 binding.tvDateText.text = "$mDay/${mMonth + 1}/$mYear"
@@ -75,12 +73,13 @@ class AddExpenseFragment : Fragment() {
         binding.btnAdd.setOnClickListener {
 
             if (binding.inputTextAmount.text.isNullOrEmpty()) {
-                Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG)
+                    .show()
             } else {
                 if (binding.radioExpense.isChecked) {
                     val expenseText = binding.inputTextAmount.text.toString().toDouble()
 
-                    val expenseTransaction = Transaction(0,expenseText)
+                    val expenseTransaction = AmountTransaction(0, Expense = expenseText)
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -90,33 +89,22 @@ class AddExpenseFragment : Fragment() {
                 }
                 if (binding.radioIncome.isChecked) {
 
-//                    insertIncomeToDatabase()
+                    val incomeText = binding.inputTextAmount.text.toString().toDouble()
 
-//                    val bundle = Bundle()
-//                    bundle.putFloat("incomeText", incomeText)
-//                    findNavController().navigate(
-//                        R.id.action_addExpenseFragment_to_homeFragment,
-//                    )
+                    val incomeTransaction = AmountTransaction(0, Income = incomeText)
+
+                    transactionViewModel.addTransaction(incomeTransaction)
+                    findNavController().navigate(
+                        R.id.action_addExpenseFragment_to_homeFragment,
+                    )
                 }
 
 
             }
-            }
+        }
 
         return binding.root
     }
-
-//    private fun insertIncomeToDatabase(){
-//        val incomeText = binding.inputTextAmount.text.toString()
-//
-//        val category = TransactionViewModel(null,null,incomeText)
-//
-//        transactionViewModel.add(category)
-//
-//        findNavController().navigate(
-//            R.id.action_addExpenseFragment_to_homeFragment,
-//            )
-//
-//    }
 }
+
 

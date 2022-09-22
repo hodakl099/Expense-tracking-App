@@ -6,13 +6,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Transaction::class], version = 1,
+@Database(entities = [AmountTransaction::class], version = 1,
     exportSchema = true,
-
     )
 abstract class TransactionDatabase : RoomDatabase() {
 
-    abstract fun moneyDao() : TransactionDao
+    abstract fun moneyDao() : AmountTransactionDao
 
     companion object {
         @Volatile
@@ -28,7 +27,7 @@ abstract class TransactionDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     TransactionDatabase::class.java,
-                    "transaction"
+                    "amount_table"
                 ).build()
 
                 INSTANCE = instance

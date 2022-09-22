@@ -38,29 +38,39 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //this is
         // Inflate the layout for this fragment
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        binding = bindingHomeFragment
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
 
 
-        binding = bindingHomeFragment
 
+            transactionViewModel.getExpense.observe(viewLifecycleOwner) { column ->
 
-            transactionViewModel.getExpense.observe(viewLifecycleOwner) {
-                val expenseAmount = it.sumOf { it.Expense }
-                val dec = DecimalFormat("#,###.##")
-                val number = java.lang.Double.valueOf(expenseAmount)
-                val value = dec.format(number)
+                //format expense
+                val expenseAmount = column.sumOf { it.Expense }
+                val decExpense = DecimalFormat("#,###.##")
+                val numberExpense = java.lang.Double.valueOf(expenseAmount)
+                val valueExpense = decExpense.format(numberExpense)
                 val currency = Currency.getInstance("USD")
-                val symbol = currency.symbol
-                val format = String.format("$symbol$value","%.2f" )
-                binding.tvAmountExpense.text = format
+                val symbol= currency.symbol
+                val formatExpense = String.format("$symbol$valueExpense","%.2f" )
+                binding.tvAmountExpense.text = formatExpense
+
+                //format Income
+                val incomeAmount = column.sumOf { it.Income }
+                val decIncome = DecimalFormat("#,###.##")
+                val numberIncome = java.lang.Double.valueOf(incomeAmount)
+                val valueIncome = decIncome.format(numberIncome)
+                val formatIncome = String.format("$symbol$valueIncome","%.2f" )
+                binding.tvAmountIncome.text = formatIncome
+
 
                 loadPieChartData(
-                    expenseAmount.toFloat()
+                  expenseAmount = expenseAmount.toFloat(),
+                  incomeAmount =   incomeAmount.toFloat()
                 )
 
 
@@ -82,7 +92,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
     }
 
-    private fun loadPieChartData(expenseAmount : Float = 0.00f,incomeAmount : Float = 20.00f) {
+    private fun loadPieChartData(expenseAmount : Float = 0.00f,incomeAmount : Float = 0.00f) {
         val entries: ArrayList<PieEntry> = ArrayList()
 
         entries.add(PieEntry(incomeAmount,"Income"))
