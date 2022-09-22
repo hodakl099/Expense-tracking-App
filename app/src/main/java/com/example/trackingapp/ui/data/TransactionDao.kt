@@ -8,20 +8,20 @@ import androidx.room.OnConflictStrategy.IGNORE
 import androidx.room.Query
 
 @Dao
-interface MoneyDao {
+interface TransactionDao {
 
 
     @Insert(onConflict = IGNORE)
-    suspend fun insert(category: Money)
+    suspend fun insert(category: Transaction)
 
     @Delete
-    suspend fun delete(category: Money)
+    suspend fun delete(category: Transaction)
 
-    @Query("DELETE  FROM money_table ")
+    @Query("DELETE  FROM transaction_table ")
     suspend fun deleteAll()
 
-    @Query("SELECT Sum(Expense)  FROM money_table ")
-     fun getExpense() : LiveData<List<Money>>
+    @Query("SELECT Sum(Expense)  FROM transaction_table ")
+     fun getExpense() : LiveData<List<Transaction>>
 
 
 }

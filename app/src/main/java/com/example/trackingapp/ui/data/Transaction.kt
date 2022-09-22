@@ -5,11 +5,11 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.math.BigDecimal
 
-@Entity(tableName = "money_table")
-data class Money(
+@Entity(tableName = "transaction_table")
+data class Transaction(
     @PrimaryKey(autoGenerate = true) val id : Int?,
-    @ColumnInfo(name = "Income") val Income : String?,
-    @ColumnInfo(name = "Expense", defaultValue = "$00.0") val Expense : String?,
+    @ColumnInfo(name = "Income") val Income : Double?,
+    @ColumnInfo(name = "Expense") val Expense : Double?,
 
 
 )

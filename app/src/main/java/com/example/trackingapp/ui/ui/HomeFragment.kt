@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.get
 
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
-import com.example.trackingapp.ui.viewmodel.MoneyViewModel
+import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
@@ -28,7 +30,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
     private lateinit var bindingA : FragmentHomeBinding
 
-    private lateinit var categoryViewModel: MoneyViewModel
+    private lateinit var transactionViewModel: TransactionViewModel
 
 
 
@@ -41,7 +43,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-        categoryViewModel = ViewModelProvider(requireActivity())[MoneyViewModel::class.java]
+        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
 
 
@@ -58,10 +60,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 //        else if (requireArguments().containsKey("incomeText")) {
 //           formatArgumentCurrency("incomeText", binding.tvAmountIncome)
 //        }
-        categoryViewModel.getExpense.observe(viewLifecycleOwner) {expense ->
-//                bindingA.tvAmountExpense.text = expense.size.toString()
 
-        }
 
         binding.AddIncomeCard.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addIncomeFragment)

@@ -5,38 +5,35 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
+@Database(entities = [Transaction::class], version = 1)
+abstract class TransactionDatabase : RoomDatabase() {
 
-@Database(entities = [Money::class], version = 1)
-abstract class AppDatabase : RoomDatabase() {
-
-    abstract fun categoryDao() : CategoryDao
+    abstract fun moneyDao() : TransactionDao
 
     companion object {
-
-
-
         @Volatile
-        private var INSTANCE : AppDatabase? = null
+        private var INSTANCE : TransactionDatabase? = null
 
-        fun getDatabase(context : Context) : AppDatabase {
-
+        fun getDatabase(context : Context): TransactionDatabase {
             val tempInstance = INSTANCE
 
             if (tempInstance != null){
-
                 return tempInstance
             }
             synchronized(this){
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    AppDatabase::class.java,
-                    "Category_table"
+                    TransactionDatabase::class.java,
+                    "money_table"
                 ).build()
+
                 INSTANCE = instance
+
                 return instance
             }
-
         }
+
+
     }
 
 }

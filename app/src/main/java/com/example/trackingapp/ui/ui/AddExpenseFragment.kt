@@ -11,8 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
-import com.example.trackingapp.ui.data.Money
-import com.example.trackingapp.ui.viewmodel.MoneyViewModel
+import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.util.*
 
 
@@ -22,7 +21,7 @@ class AddExpenseFragment : Fragment() {
 
     private lateinit var binding : FragmentAddExpenseBinding
 
-    private lateinit var categoryViewModel : MoneyViewModel
+    private lateinit var transactionViewModel: TransactionViewModel
 
 
 
@@ -35,7 +34,7 @@ class AddExpenseFragment : Fragment() {
 
         val bindingFragment = FragmentAddExpenseBinding.inflate(layoutInflater,container,false)
 
-        categoryViewModel = ViewModelProvider(requireActivity())[MoneyViewModel::class.java]
+        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
          binding = bindingFragment
 
@@ -90,7 +89,7 @@ class AddExpenseFragment : Fragment() {
                 }
                 if (binding.radioIncome.isChecked) {
 
-                    insertIncomeToDatabase()
+//                    insertIncomeToDatabase()
 
 //                    val bundle = Bundle()
 //                    bundle.putFloat("incomeText", incomeText)
@@ -106,17 +105,17 @@ class AddExpenseFragment : Fragment() {
         return binding.root
     }
 
-    private fun insertIncomeToDatabase(){
-        val incomeText = binding.inputTextAmount.text.toString()
-
-        val category = Money(null,null,incomeText)
-
-        categoryViewModel.addMoney(category)
-
-        findNavController().navigate(
-            R.id.action_addExpenseFragment_to_homeFragment,
-            )
-
-    }
+//    private fun insertIncomeToDatabase(){
+//        val incomeText = binding.inputTextAmount.text.toString()
+//
+//        val category = TransactionViewModel(null,null,incomeText)
+//
+//        transactionViewModel.add(category)
+//
+//        findNavController().navigate(
+//            R.id.action_addExpenseFragment_to_homeFragment,
+//            )
+//
+//    }
 }
 

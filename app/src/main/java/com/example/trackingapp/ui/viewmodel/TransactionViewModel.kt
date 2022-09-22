@@ -4,27 +4,28 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.trackingapp.ui.data.Transaction
+import com.example.trackingapp.ui.data.TransactionDao
+import com.example.trackingapp.ui.data.TransactionDatabase
 
-import com.example.trackingapp.ui.data.MoneyDatabase
-import com.example.trackingapp.ui.data.Money
 import com.example.trackingapp.ui.repository.MoneyRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MoneyViewModel  constructor(application: Application) : AndroidViewModel(application) {
+class TransactionViewModel  constructor(application: Application) : AndroidViewModel(application) {
 
-     val getExpense : LiveData<List<Money>>
+     val getExpense : LiveData<List<Transaction>>
     private var repository : MoneyRepository
 
     init {
-        val moneyDao = MoneyDatabase.getDatabase(application).moneyDao()
+        val moneyDao = TransactionDatabase.getDatabase(application).moneyDao()
         repository = MoneyRepository(moneyDao)
         getExpense = repository.getExpense
     }
 
-     fun addMoney(money : Money){
+     fun addMoney(transaction : Transaction){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addMoney(money)
+            repository.addMoney(transaction)
         }
     }
 
