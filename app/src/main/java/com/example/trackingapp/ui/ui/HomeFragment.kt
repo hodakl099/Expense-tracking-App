@@ -38,6 +38,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        //this is
         // Inflate the layout for this fragment
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
@@ -77,7 +78,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         if(arguments == null)
             entries.add(PieEntry(0.00f, "Income"))
         else
-            entries.add(PieEntry(requireArguments().getFloat("incomeText"),"Income"))
+            entries.add(PieEntry(binding.tvAmountExpense.text.toString().toFloat(),"Income"))
 
         if (arguments == null)
             entries.add(PieEntry(0.00f, "Expense"))
@@ -104,7 +105,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
     private fun setupPieChart() {
 
-
         binding.homeMainPiechart.isDrawHoleEnabled = false
         binding.homeMainPiechart.setUsePercentValues(true)
         binding.homeMainPiechart.setEntryLabelTextSize(12f)
@@ -117,7 +117,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         legend.orientation = Legend.LegendOrientation.VERTICAL
         legend.setDrawInside(false)
         legend.isEnabled = true
-
 
     }
 
