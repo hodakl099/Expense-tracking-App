@@ -23,9 +23,9 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
         getExpense = repository.getExpense
     }
 
-     fun addMoney(transaction : Transaction){
+     fun addTransaction(transaction : Transaction){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addMoney(transaction)
+            repository.addTransaction(transaction)
         }
     }
 

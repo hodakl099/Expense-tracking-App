@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
+import com.example.trackingapp.ui.data.Transaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.util.*
 
@@ -77,14 +78,14 @@ class AddExpenseFragment : Fragment() {
                 Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG).show()
             } else {
                 if (binding.radioExpense.isChecked) {
-                    val expenseText = binding.inputTextAmount.text.toString().toFloat()
+                    val expenseText = binding.inputTextAmount.text.toString().toDouble()
 
-                    val bundle = Bundle()
+                    val expenseTransaction = Transaction(0,expenseText)
 
-                    bundle.putFloat("expenseText", expenseText)
+                    transactionViewModel.addTransaction(expenseTransaction)
+
                     findNavController().navigate(
                         R.id.action_addExpenseFragment_to_homeFragment,
-                        bundle
                     )
                 }
                 if (binding.radioIncome.isChecked) {

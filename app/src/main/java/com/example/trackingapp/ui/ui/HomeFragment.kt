@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
 
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -28,7 +26,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
 
 
-    private lateinit var bindingA : FragmentHomeBinding
+    private lateinit var binding : FragmentHomeBinding
 
     private lateinit var transactionViewModel: TransactionViewModel
 
@@ -41,32 +39,28 @@ class HomeFragment : androidx.fragment.app.Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        val binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+        val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
 
 
-        bindingA = binding
+        binding = bindingHomeFragment
 
 
-//        if (arguments == null) {
-//            binding.tvAmountExpense.text = "$00.0"
-//            binding.tvAmountIncome.text = "$00.0"
-//        }
-//        else if(requireArguments().containsKey("expenseText")) {
-//           formatArgumentCurrency("expenseText", binding.tvAmountExpense)
-//        }
-//        else if (requireArguments().containsKey("incomeText")) {
-//           formatArgumentCurrency("incomeText", binding.tvAmountIncome)
-//        }
+            transactionViewModel.getExpense.observe(viewLifecycleOwner) {
+                val expenseAmount = it.sumOf { it.Expense }
+                binding.tvAmountExpense.text = "$%.2f".format(expenseAmount)
+
+        }
 
 
-        binding.AddIncomeCard.setOnClickListener{
+
+        bindingHomeFragment.AddIncomeCard.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addIncomeFragment)
         }
 
-        binding.tvAddExpense.setOnClickListener{
+        bindingHomeFragment.tvAddExpense.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addExpenseFragment)
         }
 
@@ -74,22 +68,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         loadPieChartData()
 
 
-        return binding.root
-
-    }
-
-
-
-    //function to format the currency.
-    private fun formatArgumentCurrency(argument : String, textView: TextView) {
-
-        val valueText = requireArguments().getFloat(argument).toString()
-        val dec = DecimalFormat("#,###.##")
-        val number = java.lang.Double.valueOf(valueText)
-        val value = dec.format(number)
-        val currency = Currency.getInstance("USD")
-        val symbol = currency.symbol
-        textView.text = String.format("$symbol$value","%.2f" )
+        return bindingHomeFragment.root
 
     }
 
@@ -114,25 +93,25 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         dataSet.colors = colors
         val data = PieData(dataSet)
         data.setDrawValues(true)
-        data.setValueFormatter(PercentFormatter(bindingA.homeMainPiechart))
+        data.setValueFormatter(PercentFormatter(binding.homeMainPiechart))
         data.setValueTextSize(12f)
         data.setValueTextColor(Color.BLACK)
-        bindingA.homeMainPiechart.data = data
-        bindingA.homeMainPiechart.invalidate()
-        bindingA.homeMainPiechart.animateY(1400, Easing.EaseInOutQuad)
+        binding.homeMainPiechart.data = data
+        binding.homeMainPiechart.invalidate()
+        binding.homeMainPiechart.animateY(1400, Easing.EaseInOutQuad)
     }
 
 
     private fun setupPieChart() {
 
 
-        bindingA.homeMainPiechart.isDrawHoleEnabled = false
-        bindingA.homeMainPiechart.setUsePercentValues(true)
-        bindingA.homeMainPiechart.setEntryLabelTextSize(12f)
-        bindingA.homeMainPiechart.setEntryLabelColor(Color.BLACK)
-        bindingA.homeMainPiechart.setCenterTextSize(24f)
-        bindingA.homeMainPiechart.description.isEnabled = false
-        val legend = bindingA.homeMainPiechart.legend
+        binding.homeMainPiechart.isDrawHoleEnabled = false
+        binding.homeMainPiechart.setUsePercentValues(true)
+        binding.homeMainPiechart.setEntryLabelTextSize(12f)
+        binding.homeMainPiechart.setEntryLabelColor(Color.BLACK)
+        binding.homeMainPiechart.setCenterTextSize(24f)
+        binding.homeMainPiechart.description.isEnabled = false
+        val legend = binding.homeMainPiechart.legend
         legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
         legend.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT
         legend.orientation = Legend.LegendOrientation.VERTICAL
