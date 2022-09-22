@@ -51,8 +51,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
             transactionViewModel.getExpense.observe(viewLifecycleOwner) {
                 val expenseAmount = it.sumOf { it.Expense }
-//                = "$%.2f".format(expenseAmount)
-//                val expenseValue =  binding.tvAmountExpense.text.toString()
                 val dec = DecimalFormat("#,###.##")
                 val number = java.lang.Double.valueOf(expenseAmount)
                 val value = dec.format(number)
@@ -80,17 +78,14 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         setupPieChart()
 
 
-
         return bindingHomeFragment.root
 
     }
 
-    private fun loadPieChartData(expenseAmount : Float = 0.00f) {
+    private fun loadPieChartData(expenseAmount : Float = 0.00f,incomeAmount : Float = 20.00f) {
         val entries: ArrayList<PieEntry> = ArrayList()
-        if(arguments == null)
-            entries.add(PieEntry(0.00f, "Income"))
-        else
-            entries.add(PieEntry(binding.tvAmountExpense.text.toString().toFloat(),"Income"))
+
+        entries.add(PieEntry(incomeAmount,"Income"))
 
         entries.add(PieEntry(expenseAmount,"Expense"))
 
