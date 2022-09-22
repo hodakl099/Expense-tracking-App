@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
@@ -32,6 +31,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
 
 
+
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,10 +51,22 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
             transactionViewModel.getExpense.observe(viewLifecycleOwner) {
                 val expenseAmount = it.sumOf { it.Expense }
-                binding.tvAmountExpense.text = "$%.2f".format(expenseAmount)
+//                = "$%.2f".format(expenseAmount)
+//                val expenseValue =  binding.tvAmountExpense.text.toString()
+                val dec = DecimalFormat("#,###.##")
+                val number = java.lang.Double.valueOf(expenseAmount)
+                val value = dec.format(number)
+                val currency = Currency.getInstance("USD")
+                val symbol = currency.symbol
+                val format = String.format("$symbol$value","%.2f" )
+                binding.tvAmountExpense.text = format
+
+                loadPieChartData(
+                    expenseAmount.toFloat()
+                )
+
 
         }
-
 
 
         bindingHomeFragment.AddIncomeCard.setOnClickListener{
@@ -66,24 +78,21 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         }
 
         setupPieChart()
-        loadPieChartData()
+
 
 
         return bindingHomeFragment.root
 
     }
 
-    private fun loadPieChartData() {
+    private fun loadPieChartData(expenseAmount : Float = 0.00f) {
         val entries: ArrayList<PieEntry> = ArrayList()
         if(arguments == null)
             entries.add(PieEntry(0.00f, "Income"))
         else
             entries.add(PieEntry(binding.tvAmountExpense.text.toString().toFloat(),"Income"))
 
-        if (arguments == null)
-            entries.add(PieEntry(0.00f, "Expense"))
-        else
-            entries.add(PieEntry(requireArguments().getFloat("expenseText"),"Expense"))
+        entries.add(PieEntry(expenseAmount,"Expense"))
 
         val colors: ArrayList<Int> = ArrayList()
         for (color in ColorTemplate.MATERIAL_COLORS) {
