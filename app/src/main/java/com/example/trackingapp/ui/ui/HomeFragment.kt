@@ -42,6 +42,8 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding = bindingHomeFragment
 
+        binding.homeToolBar.inflateMenu(R.menu.menu_top_bar)
+
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
 
@@ -75,7 +77,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                 val valueBalance = decBalance.format(numberBalance)
                 val formatBalance = String.format("$symbol$valueBalance","%.2f" )
                 binding.tvAmountBalance.text = formatBalance
-
 
                 loadPieChartData(
                   expenseAmount = expenseAmount.toFloat(),
