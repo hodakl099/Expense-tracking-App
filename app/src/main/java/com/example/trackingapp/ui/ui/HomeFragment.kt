@@ -68,6 +68,15 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                 binding.tvAmountIncome.text = formatIncome
 
 
+                //formatBalanceAmount
+                val balanceAmount = incomeAmount - expenseAmount
+                val decBalance = DecimalFormat("#,###.##")
+                val numberBalance = java.lang.Double.valueOf(balanceAmount)
+                val valueBalance = decBalance.format(numberBalance)
+                val formatBalance = String.format("$symbol$valueBalance","%.2f" )
+                binding.tvAmountBalance.text = formatBalance
+
+
                 loadPieChartData(
                   expenseAmount = expenseAmount.toFloat(),
                   incomeAmount =   incomeAmount.toFloat()

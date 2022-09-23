@@ -23,4 +23,5 @@
     <string name="add">Add</string>
     <string name="add_income">Add Income</string>
     <string name="add_expense">Add Expense</string>
+    <string name="balance">Balance</string>
 </resources>
