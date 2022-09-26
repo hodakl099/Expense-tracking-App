@@ -12,21 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/homeToolBar"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewIncome"
             android:layout_width="379dp"
             android:layout_height="340dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:cardBackgroundColor="#109175"
             app:cardCornerRadius="20dp"
@@ -37,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/homeToolBar">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="341dp"

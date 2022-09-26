@@ -6,6 +6,7 @@
     <string name="income">Income</string>
     <string name="home">Home</string>
     <string name="transactions">transactions</string>
+    <string name="transaction_item">transaction</string>
     <string name="statistics">statistics</string>
     <string name="profile">profile</string>
     <!-- TODO: Remove or change this placeholder text -->
