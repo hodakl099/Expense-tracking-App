@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -25,6 +26,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
 
     private lateinit var binding : FragmentHomeBinding
+
     private lateinit var transactionViewModel: TransactionViewModel
 
 
@@ -40,6 +42,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding = bindingHomeFragment
 
+        binding.homeToolBar.inflateMenu(R.menu.menu_top_bar)
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
@@ -90,6 +93,10 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
         bindingHomeFragment.tvAddExpense.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_addExpenseFragment)
+        }
+
+        bindingHomeFragment.transactionCard.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_transactionFragment)
         }
 
         setupPieChart()

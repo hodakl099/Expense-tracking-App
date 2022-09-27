@@ -3,10 +3,9 @@ package com.example.trackingapp.ui.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.trackingapp.databinding.ActivityMainBinding.inflate
 import com.example.trackingapp.databinding.TransactionItemBinding
 import com.example.trackingapp.ui.data.Transaction
-import com.example.trackingapp.ui.viewmodel.TransactionViewModel
+
 
 class TransactionAdapter(private val transactionList: MutableList<Transaction>) : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
