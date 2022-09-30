@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Entity(tableName = "amount_table")
 data class AmountTransaction(
-    @PrimaryKey(autoGenerate = true) var id : Int = 0,
+    @PrimaryKey(autoGenerate = true) var id : Int,
     @ColumnInfo(name = "Expense") val Expense : Double = 00.0,
     @ColumnInfo(name = "Income") val Income : Double = 00.0,
 )
