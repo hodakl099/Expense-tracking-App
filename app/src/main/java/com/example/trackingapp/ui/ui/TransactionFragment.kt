@@ -52,7 +52,6 @@ class TransactionFragment : Fragment() {
                     val currency = Currency.getInstance("USD")
                     val symbol = currency.symbol
                     val formattedExpense = String.format("$symbol$valueExpense", "%.2f")
-
                     addTransaction(formattedExpense)
                 }
 
