@@ -1,5 +1,7 @@
 package com.example.trackingapp.ui.ui
 
+import android.annotation.SuppressLint
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentTransactionBinding
 import com.example.trackingapp.ui.adapters.TransactionAdapter
 import com.example.trackingapp.ui.data.Transaction
@@ -26,6 +29,8 @@ class TransactionFragment : Fragment() {
 
     private lateinit var transactionViewModel: TransactionViewModel
 
+
+    @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,31 +44,37 @@ class TransactionFragment : Fragment() {
 
 
 
-        transactionViewModel.getExpense.observe(viewLifecycleOwner){ data ->
-            data.listIterator().forEach { expense ->
+        val transactionAdapter = TransactionAdapter(list,requireContext())
 
-                //if the its the default value which is 00.0 then return the foreach list iterator.
-                if (expense.Expense == 00.0) return@forEach
-                else {
-                    //format expense
-                    val decExpense = DecimalFormat("#,###.##")
-                    val numberExpense = java.lang.Double.valueOf(expense.Expense)
-                    val valueExpense = decExpense.format(numberExpense)
-                    val currency = Currency.getInstance("USD")
-                    val symbol = currency.symbol
-                    val formattedExpense = String.format("$symbol$valueExpense", "%.2f")
-                    addTransaction(formattedExpense)
+        recyclerView = binding.rvTransaction
+
+        recyclerView.adapter = transactionAdapter
+
+        transactionViewModel.getExpense.observe(viewLifecycleOwner){ data ->
+            data.listIterator().forEach { column ->
+
+                if (column.Expense == column.Expense) {
+                    //if the its the default value which is 00.0 then return the foreach list iterator.
+                    if (column.Expense == 00.0) return@forEach
+                    else {
+                        //format expense
+                        val decExpense = DecimalFormat("#,###.##")
+                        val numberExpense = java.lang.Double.valueOf(column.Expense)
+                        val valueExpense = decExpense.format(numberExpense)
+                        val currency = Currency.getInstance("USD")
+                        val symbol = currency.symbol
+                        val formattedExpense = String.format("$symbol$valueExpense", "%.2f")
+                        addTransaction(formattedExpense)
+                    }
+                } else {
+                    return@observe
                 }
 
             }
 
         }
 
-        val transactionAdapter = TransactionAdapter(list)
 
-        recyclerView = binding.rvTransaction
-
-        recyclerView.adapter = transactionAdapter
 
 
 

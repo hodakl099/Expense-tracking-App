@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/menu/action_items.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/menu/add_edit_item.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.19375" />
+        <entry key="app/src/main/res/menu/menu_top_bar.xml" value="0.19375" />
       </map>
     </option>
   </component>

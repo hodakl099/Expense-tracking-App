@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -23,11 +22,10 @@ import java.util.*
 
 class HomeFragment : androidx.fragment.app.Fragment() {
 
-
-
     private lateinit var binding : FragmentHomeBinding
 
     private lateinit var transactionViewModel: TransactionViewModel
+
 
 
 
