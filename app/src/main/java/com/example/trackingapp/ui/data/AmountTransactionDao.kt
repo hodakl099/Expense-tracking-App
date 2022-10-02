@@ -27,7 +27,7 @@ interface AmountTransactionDao {
 
     //gets a list of Transaction Type either expense or income
     @Query("SELECT * FROM all_transactions WHERE transactionType == :transactionType")
-    fun getTransaction(transactionType : String) : LiveData<List<Transaction>>
+    fun getAllTransactionsByType(transactionType : String) : LiveData<List<Transaction>>
 
 
 

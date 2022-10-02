@@ -11,7 +11,7 @@ import androidx.room.RoomDatabase
     )
 abstract class TransactionDatabase : RoomDatabase() {
 
-    abstract fun moneyDao() : AmountTransactionDao
+    abstract fun transactionDao() : AmountTransactionDao
 
     companion object {
         @Volatile
