@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
-import com.example.trackingapp.ui.data.AmountTransaction
+import com.example.trackingapp.ui.data.Transaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.util.*
 
@@ -28,7 +28,7 @@ class AddExpenseFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         val bindingFragment = FragmentAddExpenseBinding.inflate(layoutInflater, container, false)
@@ -60,14 +60,17 @@ class AddExpenseFragment : Fragment() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        binding.tvDateText.setOnClickListener {
+        //when the user navigates the Calendar will be prompted and the user will choose,
+        //the data of the transaction.
             val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
-
                 binding.tvDateText.text = "$mDay/${mMonth + 1}/$mYear"
-
             }, year, month, day)
             dpd.show()
+        //when the user clicks on the text the calendar will be showed.
+        binding.tvDateText.setOnClickListener{
+            dpd.show()
         }
+
 
 
         binding.btnAdd.setOnClickListener {
@@ -79,7 +82,7 @@ class AddExpenseFragment : Fragment() {
                 if (binding.radioExpense.isChecked) {
                     val expenseText = binding.inputTextAmount.text.toString().toDouble()
 
-                    val expenseTransaction = AmountTransaction(0, Expense = expenseText)
+                    val expenseTransaction = Transaction(0, Expense = expenseText)
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -91,7 +94,7 @@ class AddExpenseFragment : Fragment() {
 
                     val incomeText = binding.inputTextAmount.text.toString().toDouble()
 
-                    val incomeTransaction = AmountTransaction(0, Income = incomeText)
+                    val incomeTransaction = Transaction(0, Income = incomeText)
 
                     transactionViewModel.addTransaction(incomeTransaction)
                     findNavController().navigate(

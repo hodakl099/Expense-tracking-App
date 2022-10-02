@@ -34,13 +34,12 @@ class HomeFragment : androidx.fragment.app.Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         // Inflate the layout for this fragment
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding = bindingHomeFragment
 
-//        binding.homeToolBar.inflateMenu(R.menu.menu_top_bar)
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
@@ -80,8 +79,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                   expenseAmount = expenseAmount.toFloat(),
                   incomeAmount =   incomeAmount.toFloat()
                 )
-
-
         }
 
 
