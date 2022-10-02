@@ -3,6 +3,7 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -10,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentTransactionBinding
 import com.example.trackingapp.ui.adapters.TransactionAdapter
+import com.example.trackingapp.ui.adapters.TransactionClickListener
 import com.example.trackingapp.ui.data.Transaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.text.DecimalFormat
 import java.util.*
 
 
-class TransactionFragment : Fragment() {
+class TransactionFragment : Fragment(), TransactionClickListener {
 
 
     private lateinit var binding: FragmentTransactionBinding
@@ -26,6 +28,8 @@ class TransactionFragment : Fragment() {
     private lateinit var recyclerView : RecyclerView
 
     private lateinit var transactionViewModel: TransactionViewModel
+
+    private lateinit var listener : TransactionClickListener
 
 
 
@@ -44,8 +48,9 @@ class TransactionFragment : Fragment() {
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
 
+        listener = this
 
-        val transactionAdapter = TransactionAdapter(list,requireContext())
+        val transactionAdapter = TransactionAdapter(list,listener)
 
         recyclerView = binding.rvTransaction
 
@@ -76,9 +81,7 @@ class TransactionFragment : Fragment() {
 
         }
 
-
         transactionViewModel.getExpense.observe(viewLifecycleOwner){ data ->
-
 
             data.listIterator().forEach { column ->
 
@@ -102,13 +105,15 @@ class TransactionFragment : Fragment() {
 
         }
 
-
         return binding.root
-
 
     }
      private fun addTransaction(data : String,textColor: String) {
         list.add(Transaction(data,textColor))
+    }
+
+    override fun onTransactionClickListener(view: View, transaction: Transaction) {
+        Toast.makeText(requireContext(),  transaction.transactionAmount +  "", Toast.LENGTH_SHORT).show()
     }
 
 

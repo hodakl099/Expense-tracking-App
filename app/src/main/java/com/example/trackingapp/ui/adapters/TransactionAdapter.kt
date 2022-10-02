@@ -2,18 +2,17 @@ package com.example.trackingapp.ui.adapters
 
 import android.content.Context
 import android.graphics.Color
-import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.trackingapp.R
 import com.example.trackingapp.databinding.TransactionItemBinding
 import com.example.trackingapp.ui.data.Transaction
-import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 
 
 class TransactionAdapter(private val transactionList: MutableList<Transaction>,
-                         private val context: Context)
+                         val transactionClickListener: TransactionClickListener)
     : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
 
@@ -33,10 +32,14 @@ class TransactionAdapter(private val transactionList: MutableList<Transaction>,
             val currentItem = transactionList[position]
             transactionText.text = currentItem.transactionAmount
             transactionText.setTextColor(Color.parseColor(currentItem.color))
+            holder.binding.root.setOnClickListener {
+                transactionClickListener.onTransactionClickListener(it, transactionList[position])
+            }
+
+
         }
-        holder.itemView.setOnClickListener{
-            Toast.makeText(context, "Yay", Toast.LENGTH_LONG).show()
-        }
+
+
     }
 
     override fun getItemCount(): Int {
