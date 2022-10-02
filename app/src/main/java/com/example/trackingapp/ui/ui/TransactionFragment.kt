@@ -52,6 +52,8 @@ class TransactionFragment : Fragment() {
         recyclerView.adapter = transactionAdapter
 
         transactionViewModel.getExpense.observe(viewLifecycleOwner){ data ->
+
+
             data.listIterator().forEach { column ->
 
                 if (column.Expense == column.Expense) {
@@ -67,13 +69,39 @@ class TransactionFragment : Fragment() {
                         val formattedExpense = String.format("$symbol$valueExpense", "%.2f")
                         addTransaction(formattedExpense,"#FF0000")
                     }
-                } else {
+                } else
+                //if the its the default value which is 00.0 then return the foreach list iterator.
                     return@observe
-                }
-
             }
 
         }
+
+
+        transactionViewModel.getExpense.observe(viewLifecycleOwner){ data ->
+
+
+            data.listIterator().forEach { column ->
+
+                if (column.Income == column.Income) {
+                    //if the its the default value which is 00.0 then return the foreach list iterator.
+                    if (column.Income == 00.0) return@forEach
+                    else {
+                        //format expense
+                        val decIncome = DecimalFormat("#,###.##")
+                        val numberIncome = java.lang.Double.valueOf(column.Income)
+                        val valueIncome = decIncome.format(numberIncome)
+                        val currency = Currency.getInstance("USD")
+                        val symbol = currency.symbol
+                        val formattedIncome = String.format("$symbol$valueIncome", "%.2f")
+                        addTransaction(formattedIncome,"#00FF00")
+                    }
+                } else
+                //if the its the default value which is 00.0 then return the foreach list iterator.
+                return@observe
+            }
+
+        }
+
 
         return binding.root
 
