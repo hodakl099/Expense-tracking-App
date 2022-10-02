@@ -4,4 +4,5 @@ import android.media.Image
 
 data class Transaction(
     val transactionAmount : String,
+    val color : String
 )

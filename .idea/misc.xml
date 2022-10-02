@@ -11,6 +11,8 @@
         <entry key="..\:/Users/pc/Desktop/Develpment/flutter/TrackingApp/app/src/main/res/layout/fragment_transaction.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/pc/Desktop/Develpment/flutter/TrackingApp/app/src/main/res/layout/goal_item.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/Develpment/flutter/TrackingApp/app/src/main/res/layout/item_card.xml" value="0.38697916666666665" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.121" />
         <entry key="app/src/main/res/drawable/ic_navigate_next.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_statistics.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_transaction.xml" value="0.1555" />
@@ -30,10 +32,11 @@
         <entry key="app/src/main/res/layout/item_card.xml" value="0.33" />
         <entry key="app/src/main/res/layout/menu_i.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.19270833333333334" />
-        <entry key="app/src/main/res/layout/transaction_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/transaction_item.xml" value="0.1" />
         <entry key="app/src/main/res/menu/action_items.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/menu/add_edit_item.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.19375" />
+        <entry key="app/src/main/res/menu/change_rv_items.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu_top_bar.xml" value="0.19375" />
       </map>
     </option>

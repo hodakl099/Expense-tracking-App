@@ -1,12 +1,10 @@
 package com.example.trackingapp.ui.ui
 
 import android.annotation.SuppressLint
-import android.opengl.Visibility
 import android.os.Bundle
+import android.view.*
+
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
@@ -30,6 +28,8 @@ class TransactionFragment : Fragment() {
     private lateinit var transactionViewModel: TransactionViewModel
 
 
+
+
     @SuppressLint("ResourceType")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +38,7 @@ class TransactionFragment : Fragment() {
         // Inflate the layout for this fragment
         val bindingFragmentTransaction = FragmentTransactionBinding.inflate(layoutInflater, container,false)
         binding = bindingFragmentTransaction
+
 
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
@@ -64,7 +65,7 @@ class TransactionFragment : Fragment() {
                         val currency = Currency.getInstance("USD")
                         val symbol = currency.symbol
                         val formattedExpense = String.format("$symbol$valueExpense", "%.2f")
-                        addTransaction(formattedExpense)
+                        addTransaction(formattedExpense,"#FF0000")
                     }
                 } else {
                     return@observe
@@ -74,17 +75,14 @@ class TransactionFragment : Fragment() {
 
         }
 
-
-
-
-
         return binding.root
 
 
     }
-    private fun addTransaction(data : String) {
-        list.add(Transaction(data))
+     private fun addTransaction(data : String,textColor: String) {
+        list.add(Transaction(data,textColor))
     }
+
 
 
 }

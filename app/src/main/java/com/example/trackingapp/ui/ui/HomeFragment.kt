@@ -40,7 +40,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding = bindingHomeFragment
 
-        binding.homeToolBar.inflateMenu(R.menu.menu_top_bar)
+//        binding.homeToolBar.inflateMenu(R.menu.menu_top_bar)
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
