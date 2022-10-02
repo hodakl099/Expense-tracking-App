@@ -57,7 +57,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                 val currency = Currency.getInstance("USD")
                 val symbol= currency.symbol
                 val formatExpense = String.format("$symbol$valueExpense","%.2f" )
-//                val formatExpense =  "%.2f".format("$symbol$valueExpense")
                 binding.tvAmountExpense.text = formatExpense
 
                 //format Income
@@ -65,7 +64,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                 val decIncome = DecimalFormat("#,###.##")
                 val numberIncome = java.lang.Double.valueOf(incomeAmount)
                 val valueIncome = decIncome.format(numberIncome)
-                val formatIncome = String.format("$symbol$valueIncome", "%.2f")
+                val formatIncome = String.format("$symbol$valueIncome" ,"%.2f")
                 binding.tvAmountIncome.text = formatIncome
 
 
@@ -75,7 +74,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                 val numberBalance = java.lang.Double.valueOf(balanceAmount)
                 val valueBalance = decBalance.format(numberBalance)
                 val formatBalance = String.format("$symbol$valueBalance", "%.2f")
-                binding.tvAmountBalance.text =  formatBalance
+                binding.tvAmountBalance.text = formatBalance
 
                 loadPieChartData(
                   expenseAmount = expenseAmount.toFloat(),

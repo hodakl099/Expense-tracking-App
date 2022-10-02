@@ -4,15 +4,15 @@ import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.trackingapp.R
 import com.example.trackingapp.databinding.TransactionItemBinding
 import com.example.trackingapp.ui.data.Transaction
 
 
+
 class TransactionAdapter(private val transactionList: MutableList<Transaction>,
-                         val transactionClickListener: TransactionClickListener)
+                         private val transactionClickListener: TransactionClickListener)
     : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
 

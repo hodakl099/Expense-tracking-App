@@ -1,12 +1,16 @@
 package com.example.trackingapp.ui.ui
 
 import android.annotation.SuppressLint
-import android.os.Bundle
-import android.view.*
-import android.widget.Toast
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentTransactionBinding
@@ -38,7 +42,7 @@ class TransactionFragment : Fragment(), TransactionClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val bindingFragmentTransaction = FragmentTransactionBinding.inflate(layoutInflater, container,false)
         binding = bindingFragmentTransaction
@@ -71,7 +75,7 @@ class TransactionFragment : Fragment(), TransactionClickListener {
                         val valueExpense = decExpense.format(numberExpense)
                         val currency = Currency.getInstance("USD")
                         val symbol = currency.symbol
-                        val formattedExpense = String.format("$symbol$valueExpense", "%.2f")
+                        val formattedExpense = String.format("$symbol$valueExpense", ".2f")
                         addTransaction(formattedExpense,"#FF0000")
                     }
                 } else
@@ -100,7 +104,7 @@ class TransactionFragment : Fragment(), TransactionClickListener {
                     }
                 } else
                 //if the its the default value which is 00.0 then return the foreach list iterator.
-                return@observe
+                    return@observe
             }
 
         }
@@ -108,12 +112,16 @@ class TransactionFragment : Fragment(), TransactionClickListener {
         return binding.root
 
     }
-     private fun addTransaction(data : String,textColor: String) {
+    private fun addTransaction(data : String,textColor: String) {
         list.add(Transaction(data,textColor))
     }
 
     override fun onTransactionClickListener(view: View, transaction: Transaction) {
-        Toast.makeText(requireContext(),  transaction.transactionAmount +  "", Toast.LENGTH_SHORT).show()
+
+        val bundle = bundleOf("transactionAmount" to transaction.transactionAmount)
+
+
+        findNavController().navigate(R.id.action_transactionFragment_to_editExpenseFragment, bundle)
     }
 
 
