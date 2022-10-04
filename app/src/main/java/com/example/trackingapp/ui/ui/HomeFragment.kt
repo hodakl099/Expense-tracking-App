@@ -46,6 +46,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
 
 
+
             transactionViewModel.getExpense.observe(viewLifecycleOwner) { column ->
 
                 //format expense

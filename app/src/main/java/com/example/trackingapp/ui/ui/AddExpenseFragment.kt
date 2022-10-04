@@ -73,6 +73,12 @@ class AddExpenseFragment : Fragment() {
 
 
 
+
+        if (binding.radioExpense.isChecked) {
+            transactionViewModel.
+        }
+
+
         binding.btnAdd.setOnClickListener {
 
             if (binding.inputTextAmount.text.isNullOrEmpty()) {
