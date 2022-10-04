@@ -45,42 +45,43 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
 
 
-
-
-            transactionViewModel.getExpense.observe(viewLifecycleOwner) { column ->
-
-                //format expense
-                val expenseAmount = column.sumOf { it.Expense }
+     transactionViewModel.getTransactionExpense.observe(viewLifecycleOwner) { expense ->
+                 //format expense
+                val expenseAmount =expense.sumOf { it.amount }
                 val decExpense = DecimalFormat("#,###.##")
                 val numberExpense = java.lang.Double.valueOf(expenseAmount)
                 val valueExpense = decExpense.format(numberExpense)
                 val currency = Currency.getInstance("USD")
                 val symbol= currency.symbol
-                val formatExpense = String.format("$symbol$valueExpense","%.2f" )
+                val formatExpense = String.format("$symbol${valueExpense}","%.2f" )
                 binding.tvAmountExpense.text = formatExpense
 
-                //format Income
-                val incomeAmount = column.sumOf { it.Income }
-                val decIncome = DecimalFormat("#,###.##")
-                val numberIncome = java.lang.Double.valueOf(incomeAmount)
-                val valueIncome = decIncome.format(numberIncome)
-                val formatIncome = String.format("$symbol$valueIncome" ,"%.2f")
-                binding.tvAmountIncome.text = formatIncome
 
+     }
 
-                //formatBalanceAmount
-                val balanceAmount = incomeAmount - expenseAmount
-                val decBalance = DecimalFormat("#,###.##")
-                val numberBalance = java.lang.Double.valueOf(balanceAmount)
-                val valueBalance = decBalance.format(numberBalance)
-                val formatBalance = String.format("$symbol$valueBalance", "%.2f")
-                binding.tvAmountBalance.text = formatBalance
+        transactionViewModel.getTransactionIncome.observe(viewLifecycleOwner) { income ->
 
-                loadPieChartData(
-                  expenseAmount = expenseAmount.toFloat(),
-                  incomeAmount =   incomeAmount.toFloat()
-                )
+            val incomeAmount = income.sumOf { it.amount }
+
+                    val decIncome= DecimalFormat("#,###.##")
+                    val numberIncome = java.lang.Double.valueOf(incomeAmount)
+                    val valueIncome = decIncome.format(numberIncome)
+                    val currency = Currency.getInstance("USD")
+                    val symbol= currency.symbol
+                    val formatIncome = String.format("$symbol$valueIncome","%.2f" )
+                    binding.tvAmountIncome.text = formatIncome
         }
+        transactionViewModel.getAllTransaction.observe(viewLifecycleOwner) {
+            it.listIterator().forEach { transaction ->
+                if (transaction.transactionType == "Income") {
+                    val incomeTotal  = it.sumOf { it.amount }
+                } else if(transaction.transactionType == "Expense") {
+                    val expenseTotal = it.sumOf { it.amount }
+                }
+
+            }
+        }
+
 
 
         bindingHomeFragment.AddIncomeCard.setOnClickListener{

@@ -7,7 +7,7 @@ import androidx.room.OnConflictStrategy.REPLACE
 import kotlinx.coroutines.flow.StateFlow
 
 @Dao
-interface AmountTransactionDao {
+interface TransactionDao {
 
 
     //to insert new transaction to all_transaction table
@@ -24,11 +24,13 @@ interface AmountTransactionDao {
 
     //get all Transactions from all_transactions table
     @Query("SELECT * FROM all_transactions ")
-     fun getAllTransactions() : StateFlow<List<Transaction>>
+     fun getAllTransactions() : LiveData<List<Transaction>>
 
     //gets a list of Transaction Type either expense or income
     @Query("SELECT * FROM all_transactions WHERE transactionType == :transactionType")
-    fun getAllTransactionsByType(transactionType : String) : StateFlow<List<Transaction>>
+    fun getAllTransactionsByType(transactionType : String) : LiveData<List<Transaction>>
+
+
 
 
 

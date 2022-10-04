@@ -74,21 +74,55 @@ class AddExpenseFragment : Fragment() {
 
 
 
-        if (binding.radioExpense.isChecked) {
-            transactionViewModel.
-        }
+//        if (binding.radioExpense.isChecked) {
+//            transactionViewModel.
+//        }
 
 
+//        binding.btnAdd.setOnClickListener {
+//
+//            if (binding.inputTextAmount.text.isNullOrEmpty()) {
+//                Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG)
+//                    .show()
+//            } else {
+//                if (binding.radioExpense.isChecked) {
+//                    val expenseText = binding.inputTextAmount.text.toString().toDouble()
+//
+//                    val expenseTransaction = Transaction(0, Expense = expenseText)
+//
+//                    transactionViewModel.addTransaction(expenseTransaction)
+//
+//                    findNavController().navigate(
+//                        R.id.action_addExpenseFragment_to_homeFragment,
+//                    )
+//                }
+//                if (binding.radioIncome.isChecked) {
+//
+//                    val incomeText = binding.inputTextAmount.text.toString().toDouble()
+//
+//                    val incomeTransaction = Transaction(0, Income = incomeText)
+//
+//                    transactionViewModel.addTransaction(incomeTransaction)
+//                    findNavController().navigate(
+//                        R.id.action_addExpenseFragment_to_homeFragment,
+//                    )
+//                }
+//
+//
+//            }
+//        }
         binding.btnAdd.setOnClickListener {
 
             if (binding.inputTextAmount.text.isNullOrEmpty()) {
-                Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(), "Please enter an amount", Toast.LENGTH_LONG)
                     .show()
             } else {
                 if (binding.radioExpense.isChecked) {
                     val expenseText = binding.inputTextAmount.text.toString().toDouble()
 
-                    val expenseTransaction = Transaction(0, Expense = expenseText)
+                    val transactionType = binding.radioExpense.text.toString()
+
+                    val expenseTransaction = Transaction(0, "Test",expenseText, "",transactionType,"","","",22222)
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -100,9 +134,10 @@ class AddExpenseFragment : Fragment() {
 
                     val incomeText = binding.inputTextAmount.text.toString().toDouble()
 
-                    val incomeTransaction = Transaction(0, Income = incomeText)
+                    val transactionType = binding.radioIncome.text.toString()
+                    val expenseTransaction = Transaction(0, "Test",incomeText, "",transactionType,"","","",22222)
 
-                    transactionViewModel.addTransaction(incomeTransaction)
+                    transactionViewModel.addTransaction(expenseTransaction)
                     findNavController().navigate(
                         R.id.action_addExpenseFragment_to_homeFragment,
                     )

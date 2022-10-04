@@ -13,7 +13,7 @@ data class Transaction(
     @ColumnInfo(name = "title")
     var title : String,
     @ColumnInfo(name = "amount")
-    var amount : Double,
+    var amount : Double = 00.0,
     @ColumnInfo(name = "category")
     var category : String,
     @ColumnInfo(name = "transactionType")

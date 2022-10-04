@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.trackingapp.ui.repository.TransactionRepository
 
 @Database(entities = [Transaction::class],
     version = 1,
@@ -11,7 +12,7 @@ import androidx.room.RoomDatabase
     )
 abstract class TransactionDatabase : RoomDatabase() {
 
-    abstract fun transactionDao() : AmountTransactionDao
+    abstract fun transactionDao() : TransactionDao
 
     companion object {
         @Volatile

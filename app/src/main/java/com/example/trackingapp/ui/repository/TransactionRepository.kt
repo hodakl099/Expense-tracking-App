@@ -30,5 +30,4 @@ class TransactionRepository(private val database: TransactionDatabase) {
     }
 
 
-
 }

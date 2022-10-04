@@ -30,8 +30,8 @@ class TransactionAdapter(private val transactionList: MutableList<Transaction>,
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         holder.binding.apply {
             val currentItem = transactionList[position]
-            transactionText.text = currentItem.transactionAmount
-            transactionText.setTextColor(Color.parseColor(currentItem.color))
+            transactionText.text = currentItem.transactionType
+//            transactionText.setTextColor(Color.parseColor(currentItem.color))
             holder.binding.root.setOnClickListener {
                 transactionClickListener.onTransactionClickListener(it, transactionList[position])
             }
