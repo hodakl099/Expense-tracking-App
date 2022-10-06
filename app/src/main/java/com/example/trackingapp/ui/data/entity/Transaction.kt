@@ -1,4 +1,4 @@
-package com.example.trackingapp.ui.data
+package com.example.trackingapp.ui.data.entity
 
 
 import androidx.room.ColumnInfo
@@ -27,6 +27,7 @@ data class Transaction(
     @ColumnInfo(name = "timeAt")
     var timeAt : Long = System.currentTimeMillis()
 ) {
+
     val createdAtDataFormat : String
     get() = DateFormat.getDateTimeInstance().format(timeAt)
 }

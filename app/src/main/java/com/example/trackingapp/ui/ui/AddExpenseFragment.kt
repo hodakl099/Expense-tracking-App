@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
-import com.example.trackingapp.ui.data.Transaction
+import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.util.*
 
@@ -72,49 +72,10 @@ class AddExpenseFragment : Fragment() {
         }
 
 
-
-
-//        if (binding.radioExpense.isChecked) {
-//            transactionViewModel.
-//        }
-
-
-//        binding.btnAdd.setOnClickListener {
-//
-//            if (binding.inputTextAmount.text.isNullOrEmpty()) {
-//                Toast.makeText(requireContext(), "Please enter the amount", Toast.LENGTH_LONG)
-//                    .show()
-//            } else {
-//                if (binding.radioExpense.isChecked) {
-//                    val expenseText = binding.inputTextAmount.text.toString().toDouble()
-//
-//                    val expenseTransaction = Transaction(0, Expense = expenseText)
-//
-//                    transactionViewModel.addTransaction(expenseTransaction)
-//
-//                    findNavController().navigate(
-//                        R.id.action_addExpenseFragment_to_homeFragment,
-//                    )
-//                }
-//                if (binding.radioIncome.isChecked) {
-//
-//                    val incomeText = binding.inputTextAmount.text.toString().toDouble()
-//
-//                    val incomeTransaction = Transaction(0, Income = incomeText)
-//
-//                    transactionViewModel.addTransaction(incomeTransaction)
-//                    findNavController().navigate(
-//                        R.id.action_addExpenseFragment_to_homeFragment,
-//                    )
-//                }
-//
-//
-//            }
-//        }
         binding.btnAdd.setOnClickListener {
 
             if (binding.inputTextAmount.text.isNullOrEmpty()) {
-                Toast.makeText(requireContext(), "Please enter an amount", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(), "Please enter a valid amount", Toast.LENGTH_LONG)
                     .show()
             } else {
                 if (binding.radioExpense.isChecked) {
@@ -142,8 +103,6 @@ class AddExpenseFragment : Fragment() {
                         R.id.action_addExpenseFragment_to_homeFragment,
                     )
                 }
-
-
             }
         }
 

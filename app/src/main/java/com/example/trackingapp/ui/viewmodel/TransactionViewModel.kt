@@ -3,14 +3,19 @@ package com.example.trackingapp.ui.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.trackingapp.ui.data.Transaction
+import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.data.TransactionDatabase
 import com.example.trackingapp.ui.repository.TransactionRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class TransactionViewModel  constructor(application: Application) : AndroidViewModel(application) {
+
+
+    private val _transactionFilter = MutableLiveData("Overall")
+    val transactionFilter: MutableLiveData<String> = _transactionFilter
 
      val getTransactionExpense : LiveData<List<Transaction>>
      val getTransactionIncome : LiveData<List<Transaction>>
@@ -32,6 +37,16 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
             repository.insert(transaction)
         }
     }
+
+    // to add new transaction
+    fun getTransactionById(id : Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getTransactionById(id)
+        }
+    }
+
+
+
 
 
 

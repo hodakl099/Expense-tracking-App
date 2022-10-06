@@ -1,6 +1,6 @@
 package com.example.trackingapp.ui.utils
 
-import com.example.trackingapp.ui.data.Transaction
+import com.example.trackingapp.ui.data.entity.Transaction
 
 sealed class ViewState {
     object  Loading : ViewState()

@@ -1,7 +1,7 @@
 package com.example.trackingapp.ui.repository
 
 
-import com.example.trackingapp.ui.data.Transaction
+import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.data.TransactionDatabase
 
 class TransactionRepository(private val database: TransactionDatabase) {
@@ -28,6 +28,9 @@ class TransactionRepository(private val database: TransactionDatabase) {
     } else {
         database.transactionDao().getAllTransactionsByType(transactionType)
     }
+
+    // get transaction by id
+    fun getTransactionById(id : Int) = database.transactionDao().getTransactionByID(id)
 
 
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -25,10 +26,6 @@ class HomeFragment : androidx.fragment.app.Fragment() {
     private lateinit var binding : FragmentHomeBinding
 
     private lateinit var transactionViewModel: TransactionViewModel
-
-
-
-
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -55,14 +52,11 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                 val symbol= currency.symbol
                 val formatExpense = String.format("$symbol${valueExpense}","%.2f" )
                 binding.tvAmountExpense.text = formatExpense
-
-
      }
 
         transactionViewModel.getTransactionIncome.observe(viewLifecycleOwner) { income ->
 
             val incomeAmount = income.sumOf { it.amount }
-
                     val decIncome= DecimalFormat("#,###.##")
                     val numberIncome = java.lang.Double.valueOf(incomeAmount)
                     val valueIncome = decIncome.format(numberIncome)
@@ -70,18 +64,43 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                     val symbol= currency.symbol
                     val formatIncome = String.format("$symbol$valueIncome","%.2f" )
                     binding.tvAmountIncome.text = formatIncome
+
         }
-        transactionViewModel.getAllTransaction.observe(viewLifecycleOwner) {
-            it.listIterator().forEach { transaction ->
-                if (transaction.transactionType == "Income") {
-                    val incomeTotal  = it.sumOf { it.amount }
-                } else if(transaction.transactionType == "Expense") {
-                    val expenseTotal = it.sumOf { it.amount }
+
+
+        transactionViewModel.getAllTransaction.observe(viewLifecycleOwner) { transaction ->
+
+            val (totalIncome, totalExpense ) =
+                transaction.partition {
+                    it.transactionType == "Income"
                 }
 
-            }
-        }
+            val incomeAmount = totalIncome.sumOf { it.amount }
+            val expenseAmount = totalExpense.sumOf { it.amount }
+            val balanceAmount = incomeAmount - expenseAmount
 
+            //format Balance
+            val decBalance = DecimalFormat("#,###.##")
+            val numberBalance = java.lang.Double.valueOf(balanceAmount)
+            val valueBalance = decBalance.format(numberBalance)
+            val currency = Currency.getInstance("USD")
+            val symbol= currency.symbol
+            val formattedBalance = String.format("$symbol${valueBalance}","%.2f" )
+            binding.tvAmountBalance.text = formattedBalance
+
+
+            // if the value is less than $00.0 then set the color of the text to red.
+            if (balanceAmount < 0.00) {
+               binding.tvAmountBalance.setTextColor(
+               ContextCompat.getColor(
+                   binding.tvAmountBalance.context,
+                   R.color.holo_red_light)
+               )
+            }
+
+            loadPieChartData(expenseAmount = expenseAmount.toFloat(), incomeAmount = incomeAmount.toFloat())
+
+        }
 
 
         bindingHomeFragment.AddIncomeCard.setOnClickListener{
@@ -96,14 +115,16 @@ class HomeFragment : androidx.fragment.app.Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_transactionFragment)
         }
 
+        loadPieChartData()
         setupPieChart()
+
 
 
         return bindingHomeFragment.root
 
     }
 
-    private fun loadPieChartData(expenseAmount : Float = 0.00f,incomeAmount : Float = 0.00f) {
+    private fun loadPieChartData(expenseAmount : Float = 00.0f,incomeAmount : Float = 0.00f) {
         val entries: ArrayList<PieEntry> = ArrayList()
 
         entries.add(PieEntry(incomeAmount,"Income"))
