@@ -21,9 +21,6 @@ class EditExpenseFragment : Fragment() {
 
     private lateinit var transactionViewModel: TransactionViewModel
 
-
-
-
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

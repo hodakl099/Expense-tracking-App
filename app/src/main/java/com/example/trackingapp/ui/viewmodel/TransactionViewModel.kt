@@ -25,8 +25,8 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
     init {
         val transactionDatabase = TransactionDatabase.getDatabase(application)
         repository = TransactionRepository(transactionDatabase)
-        getTransactionExpense = repository.getTransactionByType("Expense")
-        getTransactionIncome = repository.getTransactionByType("Income")
+        getTransactionExpense = repository.getTransactionByType("EXPENSE")
+        getTransactionIncome = repository.getTransactionByType("INCOME")
         getAllTransaction = repository.getAllSingleTransaction("Overall")
     }
 

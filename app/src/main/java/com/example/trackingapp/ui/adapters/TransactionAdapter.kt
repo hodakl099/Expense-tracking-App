@@ -54,27 +54,30 @@ class TransactionAdapter()
 
                 transactionText.text = itemValue
                 when (item.transactionType) {
-                    "Income" ->  {
+                    "INCOME" ->  {
                         transactionText.setTextColor(
                             ContextCompat.getColor(
                                 transactionText.context,
                                 R.color.holo_green_light
                             )
-                        )
+                        ).also {
+                            tvTransactionTitle.text = "INCOME"
+                        }
 
 
                     }
-                    "Expense" ->  {
+                    "EXPENSE" ->  {
                         transactionText.setTextColor(
                             ContextCompat.getColor(
                                 transactionText.context,
                                 R.color.holo_red_light
                             )
-                        )
+                        ).also {
+                            tvTransactionTitle.text = "EXPENSE"
+                        }
                     }
 
             }
-
 
             holder.itemView.setOnClickListener{
                 onItemClickListener?.let {
@@ -105,11 +108,5 @@ class TransactionAdapter()
         val symbol = currency.symbol
         return String.format("$symbol$valueExpense", ".2f")
     }
-
-
-    fun removeItem(position: Int) {
-        differ.currentList.removeAt(position)
-    }
-
 
 }

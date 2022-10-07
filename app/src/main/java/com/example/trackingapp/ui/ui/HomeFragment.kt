@@ -43,7 +43,8 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
 
      transactionViewModel.getTransactionExpense.observe(viewLifecycleOwner) { expense ->
-                 //format expense
+
+                //format expense
                 val expenseAmount =expense.sumOf { it.amount }
                 val decExpense = DecimalFormat("#,###.##")
                 val numberExpense = java.lang.Double.valueOf(expenseAmount)
@@ -52,11 +53,14 @@ class HomeFragment : androidx.fragment.app.Fragment() {
                 val symbol= currency.symbol
                 val formatExpense = String.format("$symbol${valueExpense}","%.2f" )
                 binding.tvAmountExpense.text = formatExpense
+
      }
 
         transactionViewModel.getTransactionIncome.observe(viewLifecycleOwner) { income ->
 
-            val incomeAmount = income.sumOf { it.amount }
+            val incomeAmount = income.sumOf {
+                it.amount
+            }
                     val decIncome= DecimalFormat("#,###.##")
                     val numberIncome = java.lang.Double.valueOf(incomeAmount)
                     val valueIncome = decIncome.format(numberIncome)
@@ -72,7 +76,7 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
             val (totalIncome, totalExpense ) =
                 transaction.partition {
-                    it.transactionType == "Income"
+                    it.transactionType == "INCOME"
                 }
 
             val incomeAmount = totalIncome.sumOf { it.amount }

@@ -54,7 +54,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:padding="2dp"
-                    android:text="@string/income"
+                    android:text="@string/income_lower_case"
                     android:textSize="20sp"
                     app:layout_constraintEnd_toStartOf="@+id/tvAmountIncome"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -69,6 +69,7 @@
                     android:layout_marginEnd="16dp"
                     android:padding="2dp"
                     android:text="@string/_00_0"
+                    android:textColor="@color/holo_green_light"
                     android:textSize="15sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tvTitleIncome"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -80,7 +81,7 @@
                     android:layout_gravity="left"
                     android:layout_marginTop="16dp"
                     android:padding="2dp"
-                    android:text="@string/expense"
+                    android:text="@string/expense_lower_case"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="@+id/tvTitleIncome"
                     app:layout_constraintTop_toBottomOf="@+id/tvTitleIncome" />
@@ -92,6 +93,7 @@
                     android:layout_gravity="end"
                     android:padding="2dp"
                     android:text="@string/_00_0"
+                    android:textColor="@color/holo_red_light"
                     android:textSize="15sp"
                     app:layout_constraintBaseline_toBaselineOf="@+id/tvTitleExpense"
                     app:layout_constraintEnd_toEndOf="@+id/tvAmountIncome"

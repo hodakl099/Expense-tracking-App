@@ -3,7 +3,7 @@
     <string name="hello">Hello</string>
     <string name="goals">Goals</string>
     <string name="_00_0">$00.0</string>
-    <string name="income">Income</string>
+    <string name="income">INCOME</string>
     <string name="home">Home</string>
     <string name="transactions">transactions</string>
     <string name="transaction_item">transaction</string>
@@ -11,7 +11,7 @@
     <string name="profile">profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="expense">Expense</string>
+    <string name="expense">EXPENSE</string>
     <string name="type">Type</string>
     <string name="amount">Amount</string>
     <string name="category">Category</string>
@@ -26,4 +26,8 @@
     <string name="add_expense">Add Expense</string>
     <string name="balance">Balance</string>
     <string name="edit">Edit</string>
+    <string name="description">description</string>
+    <string name="title">Title</string>
+    <string name="income_lower_case">Income</string>
+    <string name="expense_lower_case">Expense</string>
 </resources>

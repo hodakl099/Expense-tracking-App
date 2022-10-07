@@ -66,7 +66,6 @@ class TransactionFragment : Fragment(), TransactionClickListener {
 
         transactionViewModel.getAllTransaction.observe(viewLifecycleOwner){transactions->
                  adapter.differ.submitList(transactions)
-
         }
 
         setUpRecyclerView()

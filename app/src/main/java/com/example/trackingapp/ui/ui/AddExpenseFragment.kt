@@ -53,7 +53,7 @@ class AddExpenseFragment : Fragment() {
             R.layout.dropdown_item,
             paymentMethods
         )
-        binding.tvAutoCompletePaymentText.setAdapter(arrayPaymentAdapter)
+        binding.tvAutoCompleteCategory.setAdapter(arrayPaymentAdapter)
 
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -83,7 +83,7 @@ class AddExpenseFragment : Fragment() {
 
                     val transactionType = binding.radioExpense.text.toString()
 
-                    val expenseTransaction = Transaction(0, "Test",expenseText, "",transactionType,"","","",22222)
+                    val expenseTransaction = Transaction(0, "Test",expenseText, "",transactionType,"","","")
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -96,7 +96,7 @@ class AddExpenseFragment : Fragment() {
                     val incomeText = binding.inputTextAmount.text.toString().toDouble()
 
                     val transactionType = binding.radioIncome.text.toString()
-                    val expenseTransaction = Transaction(0, "Test",incomeText, "",transactionType,"","","",22222)
+                    val expenseTransaction = Transaction(0, "Test",incomeText, "",transactionType,"","","")
 
                     transactionViewModel.addTransaction(expenseTransaction)
                     findNavController().navigate(
