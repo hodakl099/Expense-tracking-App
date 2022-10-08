@@ -32,11 +32,6 @@
         android:name="com.example.trackingapp.ui.ui.TransactionFragment"
         android:label="Transactions"
         tools:layout="@layout/fragment_transaction" >
-        <action
-            android:id="@+id/action_transactionFragment_to_editExpenseFragment"
-            app:destination="@id/editExpenseFragment"
-            app:popUpTo="@id/transactionFragment"
-            app:popUpToInclusive="true"/>
         <argument
             android:name="amountTransaction"
             app:argType="string" />
@@ -67,5 +62,9 @@
         android:id="@+id/detailTransactionFragment"
         android:name="com.example.trackingapp.ui.ui.DetailTransactionFragment"
         android:label="fragment_detial_transaction"
-        tools:layout="@layout/fragment_detail_transaction" />
+        tools:layout="@layout/fragment_detail_transaction" >
+        <action
+            android:id="@+id/action_detailTransactionFragment_to_editExpenseFragment"
+            app:destination="@id/editExpenseFragment" />
+    </fragment>
 </navigation>

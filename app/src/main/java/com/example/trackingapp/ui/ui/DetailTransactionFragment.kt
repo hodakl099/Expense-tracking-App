@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.trackingapp.R
-import com.example.trackingapp.databinding.FragmentDetialTransactionBinding
+import com.example.trackingapp.databinding.FragmentDetailTransactionBinding
+
 
 class DetailTransactionFragment : Fragment() {
 
 
 
-    private lateinit var binding: FragmentDetialTransactionBinding
+    private lateinit var binding: FragmentDetailTransactionBinding
 
 
     override fun onCreateView(
@@ -20,7 +21,7 @@ class DetailTransactionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val detailTransactionBinding = FragmentDetialTransactionBinding.inflate(layoutInflater)
+        val detailTransactionBinding = FragmentDetailTransactionBinding.inflate(layoutInflater)
         binding = detailTransactionBinding
         return binding.root
     }
