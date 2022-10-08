@@ -23,6 +23,7 @@
         <entry key="app/src/main/res/layout/fragment_add_expense.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_add_income.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_detial_transaction.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_edit_expense.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3875" />
         <entry key="app/src/main/res/layout/fragment_income.xml" value="0.14" />

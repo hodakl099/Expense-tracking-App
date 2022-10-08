@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentTransactionBinding
 import com.example.trackingapp.ui.adapters.TransactionAdapter
 import com.example.trackingapp.ui.adapters.TransactionClickListener
@@ -60,6 +62,9 @@ class TransactionFragment : Fragment(), TransactionClickListener {
 
         transactionViewModel.getAllTransaction.observe(viewLifecycleOwner){transactions->
                  adapter.differ.submitList(transactions)
+        }
+        adapter.setOnItemClickListener {
+            findNavController().navigate(R.id.action_transactionFragment_to_detailTransactionFragment)
         }
 
         setUpRecyclerView()

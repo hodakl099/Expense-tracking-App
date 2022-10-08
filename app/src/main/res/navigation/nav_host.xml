@@ -40,6 +40,9 @@
         <argument
             android:name="amountTransaction"
             app:argType="string" />
+        <action
+            android:id="@+id/action_transactionFragment_to_detailTransactionFragment"
+            app:destination="@id/detailTransactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/addExpenseFragment"
@@ -60,4 +63,9 @@
         android:name="com.example.trackingapp.ui.ui.menufragments.CalendarFragment"
         android:label="Calendar"
         tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/detailTransactionFragment"
+        android:name="com.example.trackingapp.ui.ui.DetailTransactionFragment"
+        android:label="fragment_detial_transaction"
+        tools:layout="@layout/fragment_detail_transaction" />
 </navigation>
