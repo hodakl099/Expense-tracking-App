@@ -38,12 +38,16 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
         }
     }
 
+
+    fun getTransactionById(id: Int) : LiveData<Transaction> = repository.getTransactionById(id)
+
+
     // to add new transaction
-    fun getTransactionById(id : Int){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.getTransactionById(id)
-        }
-    }
+//    fun getTransactionById(id : Int){
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.getTransactionById(id)
+//        }
+//    }
 
 
 

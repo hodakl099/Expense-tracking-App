@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -20,7 +22,7 @@ import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 
 
-class TransactionFragment : Fragment(), TransactionClickListener {
+class TransactionFragment : Fragment() {
 
 
     private lateinit var binding: FragmentTransactionBinding
@@ -31,7 +33,6 @@ class TransactionFragment : Fragment(), TransactionClickListener {
 
     private lateinit var transactionViewModel: TransactionViewModel
 
-    private lateinit var listener : TransactionClickListener
 
 
 
@@ -50,29 +51,25 @@ class TransactionFragment : Fragment(), TransactionClickListener {
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
 
-        listener = this
-
-        val transactionAdapter = TransactionAdapter()
+        adapter = TransactionAdapter()
 
         recyclerView = binding.rvTransaction
 
-        recyclerView.adapter = transactionAdapter
-
-
+        recyclerView.adapter = adapter
 
         transactionViewModel.getAllTransaction.observe(viewLifecycleOwner){transactions->
                  adapter.differ.submitList(transactions)
         }
+        //initialize the recyclerView.
+        setUpRecyclerView()
+
         adapter.setOnItemClickListener {
-            findNavController().navigate(R.id.action_transactionFragment_to_detailTransactionFragment)
+            val bundle = Bundle()
+            bundle.putSerializable("transaction",it)
+            findNavController().navigate(R.id.action_transactionFragment_to_detailTransactionFragment,bundle)
         }
 
-        setUpRecyclerView()
         return binding.root
-    }
-
-    override fun onTransactionClickListener(view: View, transaction: Transaction) {
-        TODO("Not yet implemented")
     }
 
     private fun setUpRecyclerView() = lifecycleScope.launchWhenCreated {
@@ -80,6 +77,7 @@ class TransactionFragment : Fragment(), TransactionClickListener {
         binding.rvTransaction.adapter = adapter
         binding.rvTransaction.layoutManager = LinearLayoutManager(activity)
     }
+
 
 
 

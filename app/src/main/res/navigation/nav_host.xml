@@ -66,5 +66,8 @@
         <action
             android:id="@+id/action_detailTransactionFragment_to_editExpenseFragment"
             app:destination="@id/editExpenseFragment" />
+        <argument
+            android:name="transaction"
+            app:argType="com.example.trackingapp.ui.data.entity.Transaction" />
     </fragment>
 </navigation>

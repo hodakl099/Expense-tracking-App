@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.trackingapp.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.example.trackingapp.databinding.FragmentDetailTransactionBinding
+import com.example.trackingapp.ui.viewmodel.TransactionViewModel
+import kotlinx.coroutines.launch
 
 
 class DetailTransactionFragment : Fragment() {
@@ -14,6 +18,8 @@ class DetailTransactionFragment : Fragment() {
 
 
     private lateinit var binding: FragmentDetailTransactionBinding
+    private val args: DetailTransactionFragmentArgs by navArgs()
+    private lateinit var transactionViewModel: TransactionViewModel
 
 
     override fun onCreateView(
@@ -23,7 +29,21 @@ class DetailTransactionFragment : Fragment() {
         // Inflate the layout for this fragment
         val detailTransactionBinding = FragmentDetailTransactionBinding.inflate(layoutInflater)
         binding = detailTransactionBinding
+
+        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
+        getData()
+
         return binding.root
+    }
+
+    private fun getData() = with(binding) {
+
+        val transactionItem = transactionViewModel.getTransactionById(args.transaction.id)
+         transactionItem.observe(viewLifecycleOwner) {
+             tvDetailsAmount.text = it.amount.toString()
+         }
+
+
     }
 
 }
