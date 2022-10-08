@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.TransactionItemBinding
-import com.example.trackingapp.ui.data.TransactionColor
 import com.example.trackingapp.ui.data.entity.Transaction
 import java.text.DecimalFormat
 import java.util.*

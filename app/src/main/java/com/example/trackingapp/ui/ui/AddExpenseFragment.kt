@@ -45,15 +45,18 @@ class AddExpenseFragment : Fragment() {
             R.layout.dropdown_item,
             categories
         )
-        binding.tvAutoCompleteCategory.setAdapter(arrayAdapter)
-
+        binding.transactionInputFields.let{
+            it.etTransactionCategory.setAdapter(arrayAdapter)
+        }
         val paymentMethods = resources.getStringArray(R.array.payment_methods)
         val arrayPaymentAdapter = ArrayAdapter(
             requireContext(),
             R.layout.dropdown_item,
             paymentMethods
         )
-        binding.tvAutoCompleteCategory.setAdapter(arrayPaymentAdapter)
+        binding.transactionInputFields.let {
+            it.etPaymentMethod.setAdapter(arrayPaymentAdapter)
+        }
 
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -63,27 +66,39 @@ class AddExpenseFragment : Fragment() {
         //when the user navigates the Calendar will be prompted and the user will choose,
         //the data of the transaction.
             val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
-                binding.tvDateText.text = "$mDay/${mMonth + 1}/$mYear"
+                binding.transactionInputFields.let {
+                    it.etTransactionDate.setText("$mDay/${mMonth + 1}/$mYear")
+                }
             }, year, month, day)
             dpd.show()
         //when the user clicks on the text the calendar will be showed.
-        binding.tvDateText.setOnClickListener{
-            dpd.show()
+        binding.transactionInputFields.let {
+            it.etTransactionDate.setOnClickListener {
+                dpd.show()
+            }
         }
 
 
         binding.btnAdd.setOnClickListener {
 
-            if (binding.inputTextAmount.text.isNullOrEmpty()) {
+            if (binding.transactionInputFields.let {
+                   it.etTransactionAmount.text.isNullOrEmpty()
+                } ) {
                 Toast.makeText(requireContext(), "Please enter a valid amount", Toast.LENGTH_LONG)
                     .show()
             } else {
-                if (binding.radioExpense.isChecked) {
-                    val expenseText = binding.inputTextAmount.text.toString().toDouble()
+                if (binding.transactionInputFields.let{
+                    it.radioExpense.isChecked
+                    }) {
+                    val expenseAmount = binding.transactionInputFields.let {
+                        it.etTransactionAmount.text.toString().toDouble()
+                    }
 
-                    val transactionType = binding.radioExpense.text.toString()
+                    val transactionType = binding.transactionInputFields.let {
+                        it.radioExpense.text.toString()
+                    }
 
-                    val expenseTransaction = Transaction(0, "Test",expenseText, "",transactionType,"","","")
+                    val expenseTransaction = Transaction(0, "Test",expenseAmount, "",transactionType,"","","")
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -91,14 +106,21 @@ class AddExpenseFragment : Fragment() {
                         R.id.action_addExpenseFragment_to_homeFragment,
                     )
                 }
-                if (binding.radioIncome.isChecked) {
+                if (binding.transactionInputFields.let{
+                        it.radioIncome.isChecked
+                    }) {
+                    val incomeAmount = binding.transactionInputFields.let {
+                        it.etTransactionAmount.text.toString().toDouble()
+                    }
 
-                    val incomeText = binding.inputTextAmount.text.toString().toDouble()
+                    val transactionType = binding.transactionInputFields.let {
+                        it.radioIncome.text.toString()
+                    }
 
-                    val transactionType = binding.radioIncome.text.toString()
-                    val expenseTransaction = Transaction(0, "Test",incomeText, "",transactionType,"","","")
+                    val incomeTransaction = Transaction(0, "Test",incomeAmount, "",transactionType,"","","")
 
-                    transactionViewModel.addTransaction(expenseTransaction)
+                    transactionViewModel.addTransaction(incomeTransaction)
+
                     findNavController().navigate(
                         R.id.action_addExpenseFragment_to_homeFragment,
                     )
