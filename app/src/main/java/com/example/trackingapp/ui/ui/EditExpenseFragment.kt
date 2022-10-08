@@ -14,27 +14,27 @@ import java.text.NumberFormat
 import java.util.*
 
 
-//class EditExpenseFragment : Fragment() {
+class EditExpenseFragment : Fragment() {
 //
 //
-//    private lateinit var binding: FragmentEditExpenseBinding
-//
-//    private lateinit var transactionViewModel: TransactionViewModel
-//
-//    @SuppressLint("SetTextI18n")
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//
-//        val bindingFragment = FragmentEditExpenseBinding.inflate(layoutInflater, container, false)
-//
-//        transactionViewModel =
-//            ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
-//
-//        binding = bindingFragment
-//
+    private lateinit var binding: FragmentEditExpenseBinding
+
+    private lateinit var transactionViewModel: TransactionViewModel
+
+    @SuppressLint("SetTextI18n")
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+
+        val bindingFragment = FragmentEditExpenseBinding.inflate(layoutInflater, container, false)
+
+        transactionViewModel =
+            ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
+
+        binding = bindingFragment
+
 //
 //        val categories = resources.getStringArray(R.array.categories_array)
 //        val arrayAdapter = ArrayAdapter(
@@ -71,11 +71,11 @@ import java.util.*
 //        binding.inputTextAmount.setText(value)
 //
 //
-//        return binding.root
-//    }
+        return binding.root
+    }
 //
 //
 //
-//}
+}
 //
 

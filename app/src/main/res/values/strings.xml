@@ -30,4 +30,7 @@
     <string name="title">Title</string>
     <string name="income_lower_case">Income</string>
     <string name="expense_lower_case">Expense</string>
+    <string name="reports">reports</string>
+    <string name="settings">settings</string>
+    <string name="nav_drawer_header">Track Your Expenses</string>
 </resources>

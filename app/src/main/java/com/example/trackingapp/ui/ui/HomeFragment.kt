@@ -3,9 +3,18 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.view.*
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
@@ -21,11 +30,12 @@ import java.text.DecimalFormat
 import java.util.*
 
 
-class HomeFragment : androidx.fragment.app.Fragment() {
+class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
 
     private lateinit var binding : FragmentHomeBinding
 
     private lateinit var transactionViewModel: TransactionViewModel
+
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -33,10 +43,10 @@ class HomeFragment : androidx.fragment.app.Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
+
         // Inflate the layout for this fragment
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding = bindingHomeFragment
-
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
@@ -170,5 +180,37 @@ class HomeFragment : androidx.fragment.app.Fragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        activity?.addMenuProvider(this,viewLifecycleOwner)
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.home_main_fragmnet,menu)
+    }
+
+    override fun onMenuItemSelected(item: MenuItem): Boolean {
+        val actionToStatisticsFragment =
+            HomeFragmentDirections.actionHomeFragmentToStatisticsFragment()
+
+        val actionToCalendarFragment =
+            HomeFragmentDirections.actionHomeFragmentToCalendarFragment()
+        return when (item.itemId) {
+            R.id.transactionFragment -> {
+                requireView().findNavController().navigate(actionToStatisticsFragment)
+                true
+            }
+            R.id.calendarFragment ->{
+               requireView().findNavController().navigate(actionToCalendarFragment)
+            true
+        }
+            R.id.transactionFragment -> {
+                false
+            }
+            else -> false
+    }
+
+
+}
 }

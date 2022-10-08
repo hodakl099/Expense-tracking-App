@@ -8,20 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentTransactionBinding
 import com.example.trackingapp.ui.adapters.TransactionAdapter
 import com.example.trackingapp.ui.adapters.TransactionClickListener
-import com.example.trackingapp.ui.data.TransactionColor
 import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
-import java.text.DecimalFormat
-import java.util.*
 
 
 class TransactionFragment : Fragment(), TransactionClickListener {
@@ -80,9 +75,6 @@ class TransactionFragment : Fragment(), TransactionClickListener {
         adapter = TransactionAdapter()
         binding.rvTransaction.adapter = adapter
         binding.rvTransaction.layoutManager = LinearLayoutManager(activity)
-        adapter.setOnItemClickListener {
-            Toast.makeText(requireContext(), "item${it.amount}",Toast.LENGTH_LONG).show()
-        }
     }
 
 
