@@ -4,6 +4,7 @@ package com.example.trackingapp.ui.data.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.text.DateFormat
 
 @Entity(tableName = "all_transactions")
@@ -26,7 +27,7 @@ data class Transaction(
     var note : String,
     @ColumnInfo(name = "timeAt")
     var timeAt : Long = System.currentTimeMillis()
-) {
+) : Serializable {
 
     val createdAtDataFormat : String
     get() = DateFormat.getDateTimeInstance().format(timeAt)

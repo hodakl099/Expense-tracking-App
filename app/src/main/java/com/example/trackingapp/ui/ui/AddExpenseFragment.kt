@@ -98,7 +98,7 @@ class AddExpenseFragment : Fragment() {
                         it.radioExpense.text.toString()
                     }
 
-                    val expenseTransaction = Transaction(0, "Test",expenseAmount, "",transactionType,"","","")
+                    val expenseTransaction = Transaction(0, "Test",expenseAmount, "",transactionType,"","","",222)
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -117,7 +117,7 @@ class AddExpenseFragment : Fragment() {
                         it.radioIncome.text.toString()
                     }
 
-                    val incomeTransaction = Transaction(0, "Test",incomeAmount, "",transactionType,"","","")
+                    val incomeTransaction = Transaction(0, "Test",incomeAmount, "",transactionType,"","","",122)
 
                     transactionViewModel.addTransaction(incomeTransaction)
 
