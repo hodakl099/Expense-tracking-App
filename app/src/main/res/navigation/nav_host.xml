@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_host"
     app:startDestination="@id/homeFragment">
+
+    <!--Done-->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.trackingapp.ui.ui.HomeFragment"
@@ -11,17 +13,38 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_transactionFragment"
-            app:destination="@id/transactionFragment" />
+            app:destination="@id/transactionFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_right"
+            app:popExitAnim="@anim/slide_out_left"/>
         <action
             android:id="@+id/action_homeFragment_to_statisticsFragment"
-            app:destination="@id/statisticsFragment" />
+            app:destination="@id/statisticsFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_right"
+            app:popExitAnim="@anim/slide_out_left"/>
         <action
             android:id="@+id/action_homeFragment_to_addExpenseFragment"
-            app:destination="@id/addExpenseFragment" />
+            app:destination="@id/addExpenseFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_right"
+            app:popExitAnim="@anim/slide_out_left"/>
         <action
             android:id="@+id/action_homeFragment_to_calendarFragment"
-            app:destination="@id/calendarFragment" />
+            app:destination="@id/calendarFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_right"
+            app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
+
+    <!--Done-->
+
+
+    <!--Done-->
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.example.trackingapp.ui.ui.StatisticsFragment"
@@ -37,8 +60,16 @@
             app:argType="string" />
         <action
             android:id="@+id/action_transactionFragment_to_detailTransactionFragment"
-            app:destination="@id/detailTransactionFragment" />
+            app:destination="@id/detailTransactionFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_right"
+            app:popExitAnim="@anim/slide_out_left"
+            />
     </fragment>
+    <!--Done-->
+
+<!--Done-->
     <fragment
         android:id="@+id/addExpenseFragment"
         android:name="com.example.trackingapp.ui.ui.AddExpenseFragment"
@@ -47,17 +78,31 @@
             android:id="@+id/action_addExpenseFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpToSaveState="true"
+            app:popUpToInclusive="true"/>
     </fragment>
+    <!--Done-->
+
+
     <fragment
         android:id="@+id/editExpenseFragment"
         android:name="com.example.trackingapp.ui.ui.EditExpenseFragment"
-        android:label="Edit Transaction" />
+        android:label="Edit Transaction" >
+        <argument
+            android:name="transaction"
+            app:argType="com.example.trackingapp.ui.data.entity.Transaction" />
+    </fragment>
+
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.example.trackingapp.ui.ui.menufragments.CalendarFragment"
         android:label="Calendar"
         tools:layout="@layout/fragment_calendar" />
+
     <fragment
         android:id="@+id/detailTransactionFragment"
         android:name="com.example.trackingapp.ui.ui.DetailTransactionFragment"
@@ -70,4 +115,6 @@
             android:name="transaction"
             app:argType="com.example.trackingapp.ui.data.entity.Transaction" />
     </fragment>
+
+
 </navigation>

@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
 import com.example.trackingapp.ui.data.entity.Transaction
+import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.util.*
@@ -40,25 +41,25 @@ class AddExpenseFragment : Fragment() {
         binding = bindingFragment
 
 
-        val categories = resources.getStringArray(R.array.categories_array)
-        val arrayAdapter = ArrayAdapter(
-            requireContext(),
-            R.layout.dropdown_item,
-            categories
-        )
-
-
-        binding.transactionInputFields.let{
-            it.etTransactionCategory.setAdapter(arrayAdapter)
-        }
-        val paymentMethods = resources.getStringArray(R.array.payment_methods)
-        val arrayPaymentAdapter = ArrayAdapter(
-            requireContext(),
-            R.layout.dropdown_item,
-            paymentMethods
-        )
         binding.transactionInputFields.let {
-            it.etPaymentMethod.setAdapter(arrayPaymentAdapter)
+            it.etTransactionCategory.setAdapter(
+                ArrayAdapter(
+                    requireContext(),
+                    R.layout.dropdown_item,
+                    Constants(requireContext()).TRANSACTION_CATEGORTY
+                )
+
+            )
+        }
+
+        binding.transactionInputFields.let {
+            it.etPaymentMethod.setAdapter(
+                ArrayAdapter(
+                    requireContext(),
+                    R.layout.dropdown_item,
+                    Constants(requireContext()).PAYMENT_METHOD
+                )
+            )
         }
 
         val calendar = Calendar.getInstance()
@@ -71,6 +72,11 @@ class AddExpenseFragment : Fragment() {
             val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
                 binding.transactionInputFields.let {
                     it.etTransactionDate.setText("$mDay/${mMonth + 1}/$mYear")
+                    it.etTransactionDate.apply {
+                        isClickable = true
+                        isFocusable = true
+                        isFocusableInTouchMode
+                    }
                 }
             }, year, month, day)
             dpd.show()
@@ -80,7 +86,6 @@ class AddExpenseFragment : Fragment() {
                 dpd.show()
             }
         }
-
 
         binding.btnAdd.setOnClickListener {
 
@@ -131,7 +136,7 @@ class AddExpenseFragment : Fragment() {
                         it.etTransactionDate.text.toString()
                     }
                     val transactionPayment = binding.transactionInputFields.let {
-                        it.etTransactionDate.text.toString()
+                        it.etPaymentMethod.text.toString()
                     }
                     val transactionNote = binding.transactionInputFields.let {
                         it.etTransactionNotes.text.toString()
@@ -155,7 +160,7 @@ class AddExpenseFragment : Fragment() {
                     }
 
                     val transactionType = binding.transactionInputFields.let {
-                        it.radioExpense.text.toString()
+                        it.radioIncome.text.toString()
                     }
 
                     val incomeAmount = binding.transactionInputFields.let {
@@ -183,7 +188,7 @@ class AddExpenseFragment : Fragment() {
                         it.etTransactionDate.text.toString()
                     }
                     val transactionPayment = binding.transactionInputFields.let {
-                        it.etTransactionDate.text.toString()
+                        it.etPaymentMethod.text.toString()
                     }
                     val transactionNote = binding.transactionInputFields.let {
                         it.etTransactionNotes.text.toString()

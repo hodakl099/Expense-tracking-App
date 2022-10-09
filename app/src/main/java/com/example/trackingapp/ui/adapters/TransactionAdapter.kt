@@ -47,35 +47,32 @@ class TransactionAdapter()
         holder.binding.apply {
           val itemValue =  formatAmount(item.amount)
 
-          val transactionDescription = item.category
-
                 transactionText.text = itemValue
                 tvTransactionDescription.text = holder.itemView.context.getString(item.category.categoryDescription)
-            ivTransactionIcon.setImageResource(item.category.categoryIcon)
-
+                ivTransactionIcon.setImageResource(item.category.categoryIcon)
 
 
                 when (item.transactionType) {
-                    "INCOME" ->  {
+                    "Income" ->  {
                         transactionText.setTextColor(
                             ContextCompat.getColor(
                                 transactionText.context,
                                 R.color.holo_green_light
                             )
                         ).also {
-                            tvTransactionTitle.text = "INCOME"
+                            tvTransactionTitle.text = "Income"
                         }
 
 
                     }
-                    "EXPENSE" ->  {
+                    "Expense" ->  {
                         transactionText.setTextColor(
                             ContextCompat.getColor(
                                 transactionText.context,
                                 R.color.holo_red_light
                             )
                         ).also {
-                            tvTransactionTitle.text = "EXPENSE"
+                            tvTransactionTitle.text = "Expense"
                         }
                     }
 

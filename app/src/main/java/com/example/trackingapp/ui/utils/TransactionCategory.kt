@@ -38,7 +38,7 @@ data class TransactionCategory(
 
         val Housing = TransactionCategory(
             categoryDescription = R.string.housing,
-            categoryIcon = R.drawable.ic_entertainment
+            categoryIcon = R.drawable.ic_home
         )
 
         val Health = TransactionCategory(

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.trackingapp.databinding.FragmentDetailTransactionBinding
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
@@ -43,10 +44,19 @@ class DetailTransactionFragment : Fragment() {
              tvDetailsTitle.text = it.title
              tvTypeDetail.text = it.transactionType
              tvDetailsAmount.text = it.amount.toString()
-//             tvDetailsCategory.text = it.category.categoryDescription
+             tvDetailsCategory.text = getString(it.category.categoryDescription)
              tvDetailsPaymentMethod.text = it.payment
              tvDetailsDate.text = it.date
              tvDetailsNotes.text = it.note
+
+
+             val editFabAction =
+                 DetailTransactionFragmentDirections.actionDetailTransactionFragmentToEditExpenseFragment(
+                     it
+                 )
+             fabAddTransaction.setOnClickListener {
+                 findNavController().navigate(editFabAction)
+             }
          }
 
 

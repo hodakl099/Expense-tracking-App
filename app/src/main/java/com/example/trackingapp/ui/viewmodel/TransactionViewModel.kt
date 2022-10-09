@@ -25,8 +25,8 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
     init {
         val transactionDatabase = TransactionDatabase.getDatabase(application)
         repository = TransactionRepository(transactionDatabase)
-        getTransactionExpense = repository.getTransactionByType("EXPENSE")
-        getTransactionIncome = repository.getTransactionByType("INCOME")
+        getTransactionExpense = repository.getTransactionByType("Expense")
+        getTransactionIncome = repository.getTransactionByType("Income")
         getAllTransaction = repository.getAllSingleTransaction("Overall")
     }
 
@@ -37,6 +37,11 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
             repository.insert(transaction)
         }
     }
+    fun deleteTransaction(transaction: Transaction) =
+        viewModelScope.launch { repository.delete(transaction) }
+
+    fun updateTransaction(transaction: Transaction) =
+        viewModelScope.launch { repository.update(transaction) }
 
 
     fun getTransactionById(id: Int) : LiveData<Transaction> = repository.getTransactionById(id)

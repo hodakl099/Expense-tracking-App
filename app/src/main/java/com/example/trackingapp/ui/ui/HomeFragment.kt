@@ -85,7 +85,7 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
 
             val (totalIncome, totalExpense ) =
                 transaction.partition {
-                    it.transactionType == "INCOME"
+                    it.transactionType == "Income"
                 }
 
             val incomeAmount = totalIncome.sumOf { it.amount }

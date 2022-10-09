@@ -21,4 +21,12 @@ class Constants(context : Context) {
         context.getString(TransactionCategory.Other.categoryDescription)
     )
 
+
+    val PAYMENT_METHOD = arrayListOf(
+        context.getString(R.string.cash),
+        context.getString(R.string.online_banking),
+        context.getString(R.string.credit_card),
+        context.getString(R.string.debit_card),
+    )
+
 }

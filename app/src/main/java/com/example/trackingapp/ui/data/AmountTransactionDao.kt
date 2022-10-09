@@ -14,7 +14,7 @@ interface TransactionDao {
     suspend fun insertTransaction(transaction: Transaction)
 
     //to update  transaction in all_transaction table
-    @Update(onConflict = REPLACE)
+    @Update
     suspend fun updateTransaction(transaction: Transaction)
 
     //used to delete transaction

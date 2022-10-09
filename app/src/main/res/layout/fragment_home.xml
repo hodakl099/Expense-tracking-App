@@ -28,7 +28,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            app:cardBackgroundColor="#109175"
+            app:cardBackgroundColor="#EDF0F7"
             app:cardCornerRadius="20dp"
             app:cardElevation="10dp"
             app:cardMaxElevation="12dp"
@@ -142,12 +142,12 @@
             android:id="@+id/AddIncomeCard"
             android:layout_width="150dp"
             android:layout_height="135dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/background"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/bud_green"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/transactionCard"
+            app:layout_constraintStart_toEndOf="@+id/AddExpenseCard"
             app:layout_constraintTop_toBottomOf="@+id/cardViewIncome">
 
             <TextView
@@ -164,13 +164,12 @@
             android:id="@+id/transactionCard"
             android:layout_width="150dp"
             android:layout_height="135dp"
-            android:layout_marginTop="30dp"
-            android:backgroundTint="@color/background"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/bud_green"
             app:cardCornerRadius="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/AddIncomeCard"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardViewIncome">
+            app:layout_constraintEnd_toEndOf="@+id/AddIncomeCard"
+            app:layout_constraintStart_toStartOf="@+id/AddExpenseCard"
+            app:layout_constraintTop_toBottomOf="@+id/AddExpenseCard">
 
             <TextView
                 android:id="@+id/tvTransaction"
@@ -186,13 +185,13 @@
             android:id="@+id/AddExpenseCard"
             android:layout_width="150dp"
             android:layout_height="135dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="@color/background"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/bud_green"
             app:cardCornerRadius="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/StatisticsCard"
+            app:layout_constraintEnd_toStartOf="@+id/AddIncomeCard"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/transactionCard">
+            app:layout_constraintTop_toBottomOf="@+id/cardViewIncome">
 
             <TextView
                 android:id="@+id/tvAddExpense"
@@ -203,30 +202,6 @@
                 android:textSize="16sp" />
 
         </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/StatisticsCard"
-            android:layout_width="150dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="@color/background"
-            app:cardCornerRadius="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/AddExpenseCard"
-            app:layout_constraintTop_toBottomOf="@+id/AddIncomeCard">
-
-            <TextView
-                android:id="@+id/tvStatistics"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/statistics"
-                android:textSize="16sp" />
-
-        </androidx.cardview.widget.CardView>
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
