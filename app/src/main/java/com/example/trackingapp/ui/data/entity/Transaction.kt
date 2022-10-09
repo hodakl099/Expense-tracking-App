@@ -4,6 +4,7 @@ package com.example.trackingapp.ui.data.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.trackingapp.ui.utils.TransactionCategory
 import java.io.Serializable
 import java.text.DateFormat
 
@@ -16,7 +17,7 @@ data class Transaction(
     @ColumnInfo(name = "amount")
     var amount : Double = 00.0,
     @ColumnInfo(name = "category")
-    var category : String,
+    var category : TransactionCategory,
     @ColumnInfo(name = "transactionType")
     var transactionType : String,
     @ColumnInfo(name = "date")

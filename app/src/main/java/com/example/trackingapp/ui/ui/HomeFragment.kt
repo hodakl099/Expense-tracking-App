@@ -3,7 +3,6 @@ package com.example.trackingapp.ui.ui
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
-
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem

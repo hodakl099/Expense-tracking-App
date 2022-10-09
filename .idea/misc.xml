@@ -12,6 +12,7 @@
         <entry key="..\:/Users/pc/Desktop/Develpment/flutter/TrackingApp/app/src/main/res/layout/goal_item.xml" value="0.1" />
         <entry key="..\:/Users/pc/Desktop/Develpment/flutter/TrackingApp/app/src/main/res/layout/item_card.xml" value="0.38697916666666665" />
         <entry key="app/src/main/res/drawable/ic_add.xml" value="0.121" />
+        <entry key="app/src/main/res/drawable/ic_bill.xml" value="0.1085" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.121" />
         <entry key="app/src/main/res/drawable/ic_navigate_next.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/ic_statistics.xml" value="0.1" />
@@ -23,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_add_expense.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_add_income.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_detail_transaction.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_detial_transaction.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_edit_expense.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3875" />

@@ -40,7 +40,13 @@ class DetailTransactionFragment : Fragment() {
 
         val transactionItem = transactionViewModel.getTransactionById(args.transaction.id)
          transactionItem.observe(viewLifecycleOwner) {
+             tvDetailsTitle.text = it.title
+             tvTypeDetail.text = it.transactionType
              tvDetailsAmount.text = it.amount.toString()
+//             tvDetailsCategory.text = it.category.categoryDescription
+             tvDetailsPaymentMethod.text = it.payment
+             tvDetailsDate.text = it.date
+             tvDetailsNotes.text = it.note
          }
 
 

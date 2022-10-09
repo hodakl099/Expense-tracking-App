@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentAddExpenseBinding
 import com.example.trackingapp.ui.data.entity.Transaction
+import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import java.util.*
 
@@ -45,6 +46,8 @@ class AddExpenseFragment : Fragment() {
             R.layout.dropdown_item,
             categories
         )
+
+
         binding.transactionInputFields.let{
             it.etTransactionCategory.setAdapter(arrayAdapter)
         }
@@ -83,22 +86,60 @@ class AddExpenseFragment : Fragment() {
 
             if (binding.transactionInputFields.let {
                    it.etTransactionAmount.text.isNullOrEmpty()
+                    it.etTransactionCategory.text.isNullOrEmpty()
+                    it.etTransactionDate.text.isNullOrEmpty()
+                    it.etPaymentMethod.text.isNullOrEmpty()
+                    it.etTransactionTitle.text.isNullOrEmpty()
                 } ) {
-                Toast.makeText(requireContext(), "Please enter a valid amount", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(), "All fields required to be filled", Toast.LENGTH_LONG)
                     .show()
             } else {
                 if (binding.transactionInputFields.let{
                     it.radioExpense.isChecked
                     }) {
-                    val expenseAmount = binding.transactionInputFields.let {
-                        it.etTransactionAmount.text.toString().toDouble()
+
+                    val transactionTitle = binding.transactionInputFields.let {
+                        it.etTransactionTitle.text.toString()
                     }
 
                     val transactionType = binding.transactionInputFields.let {
                         it.radioExpense.text.toString()
                     }
 
-                    val expenseTransaction = Transaction(0, "Test",expenseAmount, "",transactionType,"","","",222)
+                    val expenseAmount = binding.transactionInputFields.let {
+                        it.etTransactionAmount.text.toString().toDouble()
+                    }
+                    val transactionCategory = when (binding.transactionInputFields.let {
+                        it.etTransactionCategory.text.toString()
+                    }) {
+                        getString(R.string.bills) -> TransactionCategory.Bills
+                        getString(R.string.food) -> TransactionCategory.Food
+                        getString(R.string.education) -> TransactionCategory.Education
+                        getString(R.string.entertainment) -> TransactionCategory.Entertainment
+                        getString(R.string.housing) -> TransactionCategory.Housing
+                        getString(R.string.health) -> TransactionCategory.Health
+                        getString(R.string.travel)-> TransactionCategory.Travel
+                        getString(R.string.transportation)-> TransactionCategory.Transportation
+                        getString(R.string.shopping)-> TransactionCategory.Shopping
+                        getString(R.string.salary)-> TransactionCategory.Salary
+                        getString(R.string.investments)-> TransactionCategory.Investments
+                        getString(R.string.other)-> TransactionCategory.Other
+                        else -> TransactionCategory.Other
+                    }
+
+                    val transactionDate = binding.transactionInputFields.let {
+                        it.etTransactionDate.text.toString()
+                    }
+                    val transactionPayment = binding.transactionInputFields.let {
+                        it.etTransactionDate.text.toString()
+                    }
+                    val transactionNote = binding.transactionInputFields.let {
+                        it.etTransactionNotes.text.toString()
+                    }
+
+
+
+                    val expenseTransaction = Transaction(0,transactionTitle,expenseAmount,transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,222)
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -109,15 +150,45 @@ class AddExpenseFragment : Fragment() {
                 if (binding.transactionInputFields.let{
                         it.radioIncome.isChecked
                     }) {
-                    val incomeAmount = binding.transactionInputFields.let {
-                        it.etTransactionAmount.text.toString().toDouble()
+                    val transactionTitle = binding.transactionInputFields.let {
+                        it.etTransactionTitle.text.toString()
                     }
 
                     val transactionType = binding.transactionInputFields.let {
-                        it.radioIncome.text.toString()
+                        it.radioExpense.text.toString()
                     }
 
-                    val incomeTransaction = Transaction(0, "Test",incomeAmount, "",transactionType,"","","",122)
+                    val incomeAmount = binding.transactionInputFields.let {
+                        it.etTransactionAmount.text.toString().toDouble()
+                    }
+                    val transactionCategory = when (binding.transactionInputFields.let {
+                        it.etTransactionCategory.text.toString()
+                    }) {
+                        getString(R.string.bills) -> TransactionCategory.Bills
+                        getString(R.string.food) -> TransactionCategory.Food
+                        getString(R.string.education) -> TransactionCategory.Education
+                        getString(R.string.entertainment) -> TransactionCategory.Entertainment
+                        getString(R.string.housing) -> TransactionCategory.Housing
+                        getString(R.string.health) -> TransactionCategory.Health
+                        getString(R.string.travel)-> TransactionCategory.Travel
+                        getString(R.string.transportation)-> TransactionCategory.Transportation
+                        getString(R.string.shopping)-> TransactionCategory.Shopping
+                        getString(R.string.salary)-> TransactionCategory.Salary
+                        getString(R.string.investments)-> TransactionCategory.Investments
+                        getString(R.string.other)-> TransactionCategory.Other
+                        else -> TransactionCategory.Other
+                    }
+
+                    val transactionDate = binding.transactionInputFields.let {
+                        it.etTransactionDate.text.toString()
+                    }
+                    val transactionPayment = binding.transactionInputFields.let {
+                        it.etTransactionDate.text.toString()
+                    }
+                    val transactionNote = binding.transactionInputFields.let {
+                        it.etTransactionNotes.text.toString()
+                    }
+                    val incomeTransaction = Transaction(0, transactionTitle,incomeAmount, transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,122)
 
                     transactionViewModel.addTransaction(incomeTransaction)
 

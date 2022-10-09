@@ -10,12 +10,10 @@
     <string name="statistics">statistics</string>
     <string name="profile">profile</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="expense">EXPENSE</string>
     <string name="type">Type</string>
     <string name="amount">Amount</string>
     <string name="category">Category</string>
-    <string name="entertainment">Entertainment</string>
     <string name="date">Date</string>
     <string name="payment_method">Payment Method</string>
     <string name="cash">Cash</string>
@@ -33,4 +31,22 @@
     <string name="reports">reports</string>
     <string name="settings">settings</string>
     <string name="nav_drawer_header">Track Your Expenses</string>
+
+
+    <!--list of transacation categories-->
+
+    <string name="bills">Bills</string>
+    <string name="food">Food </string>
+    <string name="education">Education</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="housing">Housing</string>
+    <string name="health">Health</string>
+    <string name="travel">Travel</string>
+    <string name="transportation">Transportation</string>
+    <string name="shopping">Shopping</string>
+    <string name="other">Other</string>
+    <string name="salary">Salary</string>
+    <string name="investments">Investments</string>
+
+
 </resources>

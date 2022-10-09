@@ -18,10 +18,6 @@ class TransactionAdapter()
     : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
 
-
-
-
-
     inner class TransactionViewHolder(val binding : TransactionItemBinding) : RecyclerView.ViewHolder(binding.root)
 
 
@@ -51,7 +47,14 @@ class TransactionAdapter()
         holder.binding.apply {
           val itemValue =  formatAmount(item.amount)
 
+          val transactionDescription = item.category
+
                 transactionText.text = itemValue
+                tvTransactionDescription.text = holder.itemView.context.getString(item.category.categoryDescription)
+            ivTransactionIcon.setImageResource(item.category.categoryIcon)
+
+
+
                 when (item.transactionType) {
                     "INCOME" ->  {
                         transactionText.setTextColor(

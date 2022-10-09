@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:padding="12dp"
     tools:context=".ui.ui.DetailTransactionFragment">
 
@@ -67,8 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category"
-            android:textSize="25sp"
-            />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/tv_details_category"
@@ -76,6 +75,7 @@
             android:layout_height="wrap_content"
             android:text="Category Type"
             android:textSize="20sp" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -84,15 +84,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/category_detail">
+        app:layout_constraintStart_toStartOf="@+id/payment_detail"
+        app:layout_constraintTop_toBottomOf="@+id/payment_detail">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Amount"
-            android:textSize="25sp"
-            />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/tv_details_amount"
@@ -108,15 +107,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/transaction_detail_amount">
+        app:layout_constraintStart_toStartOf="@+id/ll_details_transaction_date"
+        app:layout_constraintTop_toBottomOf="@+id/ll_details_transaction_date">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Note"
-            android:textSize="25sp"
-            />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/tv_details_notes"
@@ -132,8 +130,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_details_transaction_notes">
+        app:layout_constraintStart_toStartOf="@+id/transaction_detail_amount"
+        app:layout_constraintTop_toBottomOf="@+id/transaction_detail_amount">
 
         <TextView
             android:layout_width="wrap_content"
@@ -160,5 +158,28 @@
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/payment_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/category_detail"
+        app:layout_constraintTop_toBottomOf="@+id/category_detail">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_details_payment_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Method"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

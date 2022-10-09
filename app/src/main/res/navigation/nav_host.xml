@@ -61,7 +61,7 @@
     <fragment
         android:id="@+id/detailTransactionFragment"
         android:name="com.example.trackingapp.ui.ui.DetailTransactionFragment"
-        android:label="fragment_detial_transaction"
+        android:label="Transaction Details"
         tools:layout="@layout/fragment_detail_transaction" >
         <action
             android:id="@+id/action_detailTransactionFragment_to_editExpenseFragment"
