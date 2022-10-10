@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.trackingapp.databinding.FragmentDetailTransactionBinding
+import com.example.trackingapp.ui.utility.formatCurrency
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import kotlinx.coroutines.launch
 
@@ -43,7 +44,7 @@ class DetailTransactionFragment : Fragment() {
          transactionItem.observe(viewLifecycleOwner) {
              tvDetailsTitle.text = it.title
              tvTypeDetail.text = it.transactionType
-             tvDetailsAmount.text = it.amount.toString()
+             tvDetailsAmount.text = formatCurrency(it.amount)
              tvDetailsCategory.text = getString(it.category.categoryDescription)
              tvDetailsPaymentMethod.text = it.payment
              tvDetailsDate.text = it.date

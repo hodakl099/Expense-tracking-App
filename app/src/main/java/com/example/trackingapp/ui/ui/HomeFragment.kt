@@ -17,6 +17,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.example.trackingapp.ui.utility.formatCurrency
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.Legend
@@ -55,13 +56,8 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
 
                 //format expense
                 val expenseAmount =expense.sumOf { it.amount }
-                val decExpense = DecimalFormat("#,###.##")
-                val numberExpense = java.lang.Double.valueOf(expenseAmount)
-                val valueExpense = decExpense.format(numberExpense)
-                val currency = Currency.getInstance("USD")
-                val symbol= currency.symbol
-                val formatExpense = String.format("$symbol${valueExpense}","%.2f" )
-                binding.tvAmountExpense.text = formatExpense
+                val formattedExpense = formatCurrency(expenseAmount)
+                binding.tvAmountExpense.text = formattedExpense
 
      }
 
@@ -70,14 +66,8 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
             val incomeAmount = income.sumOf {
                 it.amount
             }
-                    val decIncome= DecimalFormat("#,###.##")
-                    val numberIncome = java.lang.Double.valueOf(incomeAmount)
-                    val valueIncome = decIncome.format(numberIncome)
-                    val currency = Currency.getInstance("USD")
-                    val symbol= currency.symbol
-                    val formatIncome = String.format("$symbol$valueIncome","%.2f" )
-                    binding.tvAmountIncome.text = formatIncome
-
+            val formattedIncome = formatCurrency(incomeAmount)
+            binding.tvAmountIncome.text = formattedIncome
         }
 
 
@@ -93,12 +83,7 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
             val balanceAmount = incomeAmount - expenseAmount
 
             //format Balance
-            val decBalance = DecimalFormat("#,###.##")
-            val numberBalance = java.lang.Double.valueOf(balanceAmount)
-            val valueBalance = decBalance.format(numberBalance)
-            val currency = Currency.getInstance("USD")
-            val symbol= currency.symbol
-            val formattedBalance = String.format("$symbol${valueBalance}","%.2f" )
+            val formattedBalance = formatCurrency(balanceAmount)
             binding.tvAmountBalance.text = formattedBalance
 
 

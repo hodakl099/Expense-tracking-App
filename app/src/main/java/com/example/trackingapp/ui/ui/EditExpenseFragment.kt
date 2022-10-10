@@ -17,7 +17,6 @@ import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.snackbar.Snackbar
-import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.lang.Double.parseDouble
 import java.util.*
@@ -186,6 +185,9 @@ class EditExpenseFragment : Fragment() {
                     it.radioExpense.isChecked
                 }) {
 
+
+                val transactionId = args.transaction.id
+
                 val transactionTitle = binding.transactionInputFields.let {
                     it.etTransactionTitle.text.toString()
                 }
@@ -227,7 +229,7 @@ class EditExpenseFragment : Fragment() {
 
 
 
-                val expenseTransaction = Transaction(0,transactionTitle,expenseAmount,transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,222)
+                val expenseTransaction = Transaction(transactionId,transactionTitle,expenseAmount,transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,222)
 
                 transactionViewModel.updateTransaction(expenseTransaction)
                 Snackbar.make(binding.root,"Transaction Saved", Snackbar.LENGTH_SHORT)
@@ -237,6 +239,9 @@ class EditExpenseFragment : Fragment() {
             if (binding.transactionInputFields.let{
                     it.radioIncome.isChecked
                 }) {
+
+                val transactionId = args.transaction.id
+
                 val transactionTitle = binding.transactionInputFields.let {
                     it.etTransactionTitle.text.toString()
                 }
@@ -275,7 +280,7 @@ class EditExpenseFragment : Fragment() {
                 val transactionNote = binding.transactionInputFields.let {
                     it.etTransactionNotes.text.toString()
                 }
-                val incomeTransaction = Transaction(0, transactionTitle,incomeAmount, transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,122)
+                val incomeTransaction = Transaction(transactionId, transactionTitle,incomeAmount, transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,122)
 
                 transactionViewModel.updateTransaction(incomeTransaction)
                 Snackbar.make(binding.root,"Transaction Saved", Snackbar.LENGTH_SHORT)

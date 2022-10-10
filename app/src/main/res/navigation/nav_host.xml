@@ -110,7 +110,13 @@
         tools:layout="@layout/fragment_detail_transaction" >
         <action
             android:id="@+id/action_detailTransactionFragment_to_editExpenseFragment"
-            app:destination="@id/editExpenseFragment" />
+            app:destination="@id/editExpenseFragment"
+            app:enterAnim="@anim/slide_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpToSaveState="true"
+            app:popUpToInclusive="true"/>
         <argument
             android:name="transaction"
             app:argType="com.example.trackingapp.ui.data.entity.Transaction" />
