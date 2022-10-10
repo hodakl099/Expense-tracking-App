@@ -11,7 +11,7 @@ import java.text.DateFormat
 @Entity(tableName = "all_transactions")
 data class Transaction(
     @PrimaryKey(autoGenerate = true)
-    var id : Int,
+    var id : Int = 0,
     @ColumnInfo(name = "title")
     var title : String,
     @ColumnInfo(name = "amount")
