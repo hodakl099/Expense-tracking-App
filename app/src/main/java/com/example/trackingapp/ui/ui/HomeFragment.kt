@@ -180,8 +180,11 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
 
         val actionToCalendarFragment =
             HomeFragmentDirections.actionHomeFragmentToCalendarFragment()
+
+        val actionToSettingsFragment =
+            HomeFragmentDirections.actionHomeFragmentToSettingFragment()
         return when (item.itemId) {
-            R.id.transactionFragment -> {
+            R.id.statisticsFragment -> {
                 requireView().findNavController().navigate(actionToStatisticsFragment)
                 true
             }
@@ -189,8 +192,9 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
                requireView().findNavController().navigate(actionToCalendarFragment)
             true
         }
-            R.id.transactionFragment -> {
-                false
+            R.id.settingsFragment -> {
+                requireView().findNavController().navigate(actionToSettingsFragment)
+                true
             }
             else -> false
     }

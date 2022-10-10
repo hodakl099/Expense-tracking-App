@@ -4,7 +4,7 @@
         tools:showIn="navigation_view">
 
         <item
-            android:id="@+id/calendarFragment"
+            android:id="@+id/statisticsFragment"
             android:icon="@drawable/ic_statistics"
             android:title="@string/statistics" />
 
