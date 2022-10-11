@@ -30,11 +30,14 @@ class SettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val fragmentSettings = FragmentSettingBinding.inflate(layoutInflater)
+        val fragmentSettings = FragmentSettingBinding.inflate(layoutInflater,container,false)
+
+        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
         binding = fragmentSettings
 
-        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
+
+
 
         getPreference()
         setupWarning()
@@ -85,11 +88,11 @@ class SettingFragment : Fragment() {
                 val expenseAmount = it.sumOf { it.amount }
 
                 val spendingOnLimit = if (expenseSpendingLimit == null || expenseSpendingLimit == 0) {
-                    binding.spendingPrgress.tvSpendingLimit.text =
+                    binding.spendingProgress.tvSpendingLimit.text =
                         "limit not set"
                     0.00
                 } else {
-                    binding.spendingPrgress.tvSpendingLimit.text =
+                    binding.spendingProgress.tvSpendingLimit.text =
                         formatCurrency(expenseSpendingLimit.toDouble())
                     expenseAmount / expenseSpendingLimit
                 }
@@ -101,13 +104,13 @@ class SettingFragment : Fragment() {
                     0
                 }
 
-                binding.spendingPrgress.tvProgressPercentage.text = "$spendingPercentage%"
+                binding.spendingProgress.tvProgressPercentage.text = "$spendingPercentage%"
                 val progress = if (spendingOnLimit > 0) {
                     (spendingOnLimit * 10).roundToInt()
                 } else {
                     0
                 }
-                binding.spendingPrgress.progressBarSpending.progress = progress
+                binding.spendingProgress.progressBarSpending.progress = progress
 
                 transactionViewModel.isWarningIsGone.observe(viewLifecycleOwner) { warning ->
 

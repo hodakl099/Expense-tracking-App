@@ -22,7 +22,7 @@
 
 
     <include
-        android:id="@+id/spendingPrgress"
+        android:id="@+id/spendingProgress"
         layout="@layout/expense_spending_progress_layout"
         android:layout_width="match_parent"
         android:layout_height="150dp"
