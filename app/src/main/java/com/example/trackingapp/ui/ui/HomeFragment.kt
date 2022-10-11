@@ -147,6 +147,8 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
     }
 
 
+
+
     private fun setupPieChart() {
 
         binding.homeMainPiechart.isDrawHoleEnabled = false

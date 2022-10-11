@@ -17,11 +17,12 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/surface"
             app:tabGravity="fill"
             app:tabInlineLabel="true"
+            android:backgroundTint="@color/surface"
             app:tabMode="fixed"
-            app:tabTextColor="@color/black" />
+            app:tabTextColor="@color/black"
+            />
 
     </com.google.android.material.appbar.AppBarLayout>
 
