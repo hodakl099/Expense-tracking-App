@@ -1,4 +1,4 @@
-package com.example.trackingapp.ui.ui.menufragments.statisticsfragments
+package com.example.trackingapp.ui.ui.menufragments
 
 import android.graphics.Color
 import android.os.Bundle

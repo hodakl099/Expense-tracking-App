@@ -1,5 +1,6 @@
-package com.example.trackingapp.ui.ui.menufragments.statisticsfragments
+package com.example.trackingapp.ui.ui.menufragments
 
+import android.content.res.Resources.NotFoundException
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,9 +12,7 @@ import com.example.trackingapp.databinding.FragmentExpenseStatisticsBinding
 import com.example.trackingapp.databinding.FragmentStatisticsBinding
 import com.example.trackingapp.ui.adapters.ViewPagerAdapter
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
-
-
-
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 private lateinit var binding : FragmentStatisticsBinding
@@ -41,11 +40,15 @@ class StatisticsFragment : Fragment() {
 }
 
 private fun setUpTabs() {
-
     adapter = ViewPagerAdapter(this)
     binding.viewPager.adapter = adapter
-
-
+    TabLayoutMediator(binding.tabs, binding.viewPager){tab,index ->
+        tab.text = when(index) {
+            0 -> "Expense"
+            1 -> "Income"
+            else -> throw NotFoundException("index is not found!")
+        }
+    }
 }
 
 }

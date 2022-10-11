@@ -3,8 +3,8 @@ package com.example.trackingapp.ui.adapters
 import android.content.res.Resources
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.trackingapp.ui.ui.menufragments.statisticsfragments.ExpenseStatisticsFragment
-import com.example.trackingapp.ui.ui.menufragments.statisticsfragments.IncomeStatisticsFragment
+import com.example.trackingapp.ui.ui.menufragments.ExpenseStatisticsFragment
+import com.example.trackingapp.ui.ui.menufragments.IncomeStatisticsFragment
 
 class ViewPagerAdapter(fragment: Fragment) :  FragmentStateAdapter(fragment){
 

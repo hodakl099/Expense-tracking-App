@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             app:tabGravity="fill"
             app:tabInlineLabel="true"
-            android:backgroundTint="@color/surface"
             app:tabMode="fixed"
             app:tabTextColor="@color/black"
             />
