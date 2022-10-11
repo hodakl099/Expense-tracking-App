@@ -17,8 +17,8 @@ import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.snackbar.Snackbar
-import java.text.SimpleDateFormat
 import java.lang.Double.parseDouble
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -161,14 +161,6 @@ class EditExpenseFragment : Fragment() {
        }
    }
 
-//    private fun updateCurrentTransaction() {
-//            transactionViewModel.updateTransaction(getCurrentTransactionData())
-//            Snackbar.make(binding.root,"Transaction Saved", Snackbar.LENGTH_SHORT)
-//                .show()
-//            findNavController().navigateUp()
-//
-//
-//    }
 
     private fun validateFields() {
         if (binding.transactionInputFields.let {

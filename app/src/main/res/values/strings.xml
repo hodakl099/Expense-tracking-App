@@ -31,6 +31,7 @@
     <string name="settings">settings</string>
     <string name="date_format">dd/MM/yyyy</string>
     <string name="nav_drawer_header">Track Your Expenses</string>
+    <string name="spending_limit">Spending Limit</string>
 
 
     <!--list of transacation categories-->

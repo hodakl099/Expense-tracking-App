@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -49,8 +50,6 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
         binding = bindingHomeFragment
 
         transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
-
-
 
      transactionViewModel.getTransactionExpense.observe(viewLifecycleOwner) { expense ->
 
@@ -121,6 +120,7 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
         return bindingHomeFragment.root
 
     }
+
 
     private fun loadPieChartData(expenseAmount : Float = 00.0f,incomeAmount : Float = 0.00f) {
         val entries: ArrayList<PieEntry> = ArrayList()

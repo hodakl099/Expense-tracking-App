@@ -1,6 +1,7 @@
 package com.example.trackingapp.ui.adapters
 
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -10,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.TransactionItemBinding
 import com.example.trackingapp.ui.data.entity.Transaction
-import java.text.DecimalFormat
-import java.util.*
+import com.example.trackingapp.ui.utility.formatCurrency
 
 
-class TransactionAdapter()
+
+class TransactionAdapter
     : RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
 
@@ -42,10 +43,11 @@ class TransactionAdapter()
         return TransactionViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.binding.apply {
-          val itemValue =  formatAmount(item.amount)
+          val itemValue =  formatCurrency(item.amount)
 
                 transactionText.text = itemValue
                 tvTransactionDescription.text = holder.itemView.context.getString(item.category.categoryDescription)
@@ -98,14 +100,6 @@ class TransactionAdapter()
         onItemClickListener = listener
     }
 
-    // return formatted amount.
-    private fun formatAmount(amount: Double): String {
-        val decimal = DecimalFormat("#,###.##")
-        val amountValue = java.lang.Double.valueOf(amount)
-        val valueExpense = decimal.format(amountValue)
-        val currency = Currency.getInstance("USD")
-        val symbol = currency.symbol
-        return String.format("$symbol$valueExpense", ".2f")
-    }
+
 
 }
