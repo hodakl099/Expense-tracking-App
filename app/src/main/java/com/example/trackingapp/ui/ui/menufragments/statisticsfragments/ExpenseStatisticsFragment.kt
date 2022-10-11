@@ -1,4 +1,4 @@
-package com.example.trackingapp.ui.ui
+package com.example.trackingapp.ui.ui.menufragments.statisticsfragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import com.example.trackingapp.R
 
 
-
-class StatisticsFragment : Fragment() {
+class ExpenseStatisticsFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -17,7 +16,7 @@ class StatisticsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistics, container, false)
+        return inflater.inflate(R.layout.fragment_expense_statistics, container, false)
     }
 
 }

@@ -24,15 +24,17 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/dropdown_item.xml" value="0.19375" />
-        <entry key="app/src/main/res/layout/expense_spending_progress_layout.xml" value="0.2627939142461964" />
+        <entry key="app/src/main/res/layout/expense_spending_progress_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_expense.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_add_income.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_detail_transaction.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_detial_transaction.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_edit_expense.xml" value="0.19375" />
+        <entry key="app/src/main/res/layout/fragment_expense_statistics.xml" value="0.4241733181299886" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3875" />
         <entry key="app/src/main/res/layout/fragment_income.xml" value="0.14" />
+        <entry key="app/src/main/res/layout/fragment_income_statistics.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.19375" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.19375" />

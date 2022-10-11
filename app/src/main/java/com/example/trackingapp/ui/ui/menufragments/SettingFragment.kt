@@ -1,4 +1,4 @@
-package com.example.trackingapp.ui.ui
+package com.example.trackingapp.ui.ui.menufragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -105,6 +105,7 @@ class SettingFragment : Fragment() {
                 }
 
                 binding.spendingProgress.tvProgressPercentage.text = "$spendingPercentage%"
+
                 val progress = if (spendingOnLimit > 0) {
                     (spendingOnLimit * 10).roundToInt()
                 } else {
@@ -114,7 +115,7 @@ class SettingFragment : Fragment() {
 
                 transactionViewModel.isWarningIsGone.observe(viewLifecycleOwner) { warning ->
 
-                    if (spendingPercentage >= 80 && !warning) {
+                    if (spendingPercentage >= 70 && !warning) {
 
                         binding.warningView.root.visibility = View.VISIBLE
 

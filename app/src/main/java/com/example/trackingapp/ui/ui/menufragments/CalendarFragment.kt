@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentCalendarBinding
 
 private lateinit var binding: FragmentCalendarBinding
@@ -21,16 +20,6 @@ class CalendarFragment : Fragment() {
 
       val  calendarFragment = FragmentCalendarBinding.inflate(layoutInflater)
          binding = calendarFragment
-
-
-
-
-
-
-
-
         return binding.root
     }
-
-
 }

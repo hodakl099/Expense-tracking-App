@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentTransactionBinding
 import com.example.trackingapp.ui.adapters.TransactionAdapter
-import com.example.trackingapp.ui.adapters.TransactionClickListener
-import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 
 

@@ -50,7 +50,7 @@
     <!--Done-->
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.trackingapp.ui.ui.StatisticsFragment"
+        android:name="com.example.trackingapp.ui.ui.menufragments.StatisticsFragment"
         android:label="Statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
@@ -126,7 +126,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.trackingapp.ui.ui.SettingFragment"
+        android:name="com.example.trackingapp.ui.ui.menufragments.SettingFragment"
         android:label="Settings"
         tools:layout="@layout/fragment_setting" />
 
