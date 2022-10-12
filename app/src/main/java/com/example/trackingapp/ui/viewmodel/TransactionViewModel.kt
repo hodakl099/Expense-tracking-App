@@ -2,6 +2,7 @@ package com.example.trackingapp.ui.viewmodel
 
 import android.app.Application
 import android.content.Context
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
@@ -19,10 +20,11 @@ import kotlinx.coroutines.launch
 class TransactionViewModel  constructor(application: Application) : AndroidViewModel(application) {
 
 
-//    private val _transactionFilter = MutableLiveData("Overall")
-//    val transactionFilter: MutableLiveData<String> = _transactionFilter
 
     private val Context.limitDataStore by preferencesDataStore("expense_limit")
+
+    private val Context.UIdataStore by preferencesDataStore("UI_preference")
+    private val UIdataStore = getApplication<Application>().UIdataStore
 
     private val limitDataStore = getApplication<Application>().limitDataStore
 
@@ -42,6 +44,20 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
         getTransactionIncome = repository.getTransactionByType("Income")
         getAllTransaction = repository.getAllSingleTransaction("Overall")
     }
+
+    suspend fun readUIPreference(key: String): Boolean? {
+        val dataStoreKey = booleanPreferencesKey(key)
+        val preferences = UIdataStore.data.first()
+        return preferences[dataStoreKey]
+    }
+
+    suspend fun saveUIPreference(key: String, value: Boolean) {
+        val preferenceKey = booleanPreferencesKey(key)
+        UIdataStore.edit {
+            it[preferenceKey] = value
+        }
+    }
+
 
 
     // to add new transaction
