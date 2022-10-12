@@ -8,6 +8,12 @@
             android:icon="@drawable/ic_statistics"
             android:title="@string/statistics" />
 
+    <item
+        android:id="@+id/restrictionFragment"
+        android:icon="@drawable/ic_restriction"
+        android:title="@string/restriction"
+        />
+
         <item
             android:id="@+id/settingsFragment"
             android:icon="@drawable/ic_settings"

@@ -177,14 +177,24 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
     }
 
     override fun onMenuItemSelected(item: MenuItem): Boolean {
+
+        //action to StatisticsFragment
         val actionToStatisticsFragment =
             HomeFragmentDirections.actionHomeFragmentToStatisticsFragment()
 
+        //action to CalendarFragment
         val actionToCalendarFragment =
             HomeFragmentDirections.actionHomeFragmentToCalendarFragment()
 
+        //action to SettingsFragment
         val actionToSettingsFragment =
             HomeFragmentDirections.actionHomeFragmentToSettingFragment()
+
+        //action to SettingsFragment
+        val actionToRestrictionFragment =
+            HomeFragmentDirections.actionHomeFragmentToRestrictionFragment()
+
+
         return when (item.itemId) {
             R.id.statisticsFragment -> {
                 requireView().findNavController().navigate(actionToStatisticsFragment)
@@ -196,6 +206,10 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
         }
             R.id.settingsFragment -> {
                 requireView().findNavController().navigate(actionToSettingsFragment)
+                true
+            }
+            R.id.restrictionFragment -> {
+                requireView().findNavController().navigate(actionToRestrictionFragment)
                 true
             }
             else -> false

@@ -48,7 +48,7 @@ private fun setUpTabs() {
             1 -> "Income"
             else -> throw NotFoundException("index is not found!")
         }
-    }
+    }.attach()
 }
 
 }

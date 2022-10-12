@@ -46,7 +46,7 @@ class IncomeStatisticsFragment : Fragment() {
 
     private fun loadPieChartData() {
 
-        transactionViewModel.getTransactionExpense.observe(viewLifecycleOwner) {incomeTransaction ->
+        transactionViewModel.getTransactionIncome.observe(viewLifecycleOwner) {incomeTransaction ->
             val incomeAmount =   incomeTransaction.sumOf { it.amount }
 
             val entries: ArrayList<PieEntry> = ArrayList()
