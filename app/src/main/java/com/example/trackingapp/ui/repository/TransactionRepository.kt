@@ -32,5 +32,8 @@ class TransactionRepository(private val database: TransactionDatabase) {
     // get transaction by id
     fun getTransactionById(id : Int) = database.transactionDao().getTransactionByID(id)
 
+    // delete all transactions
+     fun deleteAllTransactions() = database.transactionDao().deleteAllTransactions()
+
 
 }

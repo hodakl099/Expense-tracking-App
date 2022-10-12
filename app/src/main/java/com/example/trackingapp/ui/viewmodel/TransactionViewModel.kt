@@ -32,6 +32,7 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
      val getTransactionExpense : LiveData<List<Transaction>>
      val getTransactionIncome : LiveData<List<Transaction>>
      val getAllTransaction : LiveData<List<Transaction>>
+
     private var repository : TransactionRepository
 
     init {
@@ -48,12 +49,20 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
         viewModelScope.launch(Dispatchers.IO) {
             repository.insert(transaction)
         }
-    }
+    }  // to add new transaction
+
     fun deleteTransaction(transaction: Transaction) =
         viewModelScope.launch { repository.delete(transaction) }
 
     fun updateTransaction(transaction: Transaction) =
         viewModelScope.launch { repository.update(transaction) }
+
+    fun deleteAllTransactions() =
+        viewModelScope.launch(Dispatchers.IO) {
+
+            repository.deleteAllTransactions()
+        }
+
 
 
     fun getTransactionById(id: Int) : LiveData<Transaction> = repository.getTransactionById(id)

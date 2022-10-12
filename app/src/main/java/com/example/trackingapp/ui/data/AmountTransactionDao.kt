@@ -21,9 +21,15 @@ interface TransactionDao {
     @Delete
     suspend fun deleteTransaction(transaction: Transaction)
 
+
     //get all Transactions from all_transactions table
     @Query("SELECT * FROM all_transactions ")
      fun getAllTransactions() : LiveData<List<Transaction>>
+
+
+    //delete all Transactions from all_transactions table
+    @Query("DELETE  FROM all_transactions ")
+    fun deleteAllTransactions()
 
     //gets a list of Transaction Type either expense or income
     @Query("SELECT * FROM all_transactions WHERE transactionType == :transactionType")

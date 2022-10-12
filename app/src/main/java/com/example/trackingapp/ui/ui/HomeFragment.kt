@@ -16,6 +16,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
 import com.example.trackingapp.ui.utility.formatCurrency
@@ -27,6 +29,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.android.material.snackbar.Snackbar
 import java.text.DecimalFormat
 import java.util.*
 
@@ -94,9 +97,7 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
                    R.color.holo_red_light)
                )
             }
-
             loadPieChartData(expenseAmount = expenseAmount.toFloat(), incomeAmount = incomeAmount.toFloat())
-
         }
 
 
@@ -214,7 +215,8 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
             }
             else -> false
     }
-
-
 }
+
+
+
 }

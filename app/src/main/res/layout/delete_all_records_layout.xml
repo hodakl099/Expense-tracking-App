@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvDeleteRecords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ptsansnarrowbold"
+        android:text="@string/delete_all_records"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDeleteRecordsInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:textSize="18sp"
+        android:text="@string/this_will_clear_all_your_income_expense_entries"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/tvDeleteRecords"
+        app:layout_constraintTop_toBottomOf="@+id/tvDeleteRecords" />
+
+    <ImageView
+        android:id="@+id/iv_delete_icon"
+        android:layout_width="42dp"
+        android:layout_height="52dp"
+        android:background="@drawable/background_shape"
+        android:padding="10dp"
+        android:src="@drawable/ic_navigate_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/tvDeleteRecordsInfo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/black" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
