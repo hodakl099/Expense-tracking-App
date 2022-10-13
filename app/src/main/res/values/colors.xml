@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="holo_green_light">#95e06c</color>
-    <color name="holo_red_light">#FF4747</color>
-    <color name="colorPrimary">#86BB77</color>
-    <color name="light_cyan">#D9FCFC</color>
-    <color name="paris_green">#3EC988</color>
-    <color name="black">#FF000000</color>
-    <color name="colorPrimaryVariant">#FFFFFF</color>
-    <color name="background">#BCF1F0</color>
-    <color name="dark_white">#fbfbff</color>
-    <color name="celadon">#B7D6AE</color>
+    <color name="black">#FFFFFFFF</color>
+    <color name="black_text">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="surface">#FFFFFFFF</color>
-    <color name="white">#FFFFFF</color>
-
+    <color name="dark_white">#fbfbff</color>
+    <color name="colorPrimary">#457b9d</color>
+    <color name="blue_500">#006AF6</color>
+    <color name="btn_text">#FFFFFFFF</color>
+    <color name="holo_red_light">#FF4747</color>
+    <color name="holo_green_light">#95e06c</color>
 
 </resources>
