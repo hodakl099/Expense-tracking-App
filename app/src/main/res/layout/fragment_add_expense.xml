@@ -18,7 +18,7 @@
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/bud_green"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_margin="18dp"
         android:text="@string/add"
         android:textColor="@color/white"

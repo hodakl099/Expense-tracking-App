@@ -2,16 +2,13 @@
 <resources>
     <color name="holo_green_light">#95e06c</color>
     <color name="holo_red_light">#FF4747</color>
-    <color name="colorPrimary">#86BB77</color>
     <color name="light_cyan">#D9FCFC</color>
     <color name="paris_green">#3EC988</color>
-    <color name="black">#FF000000</color>
-    <color name="colorPrimaryVariant">#FFFFFF</color>
+    <color name="colorPrimaryVariant">#FF000000</color>
+    <color name="colorPrimary">#5F8EDE</color>
     <color name="background">#BCF1F0</color>
     <color name="dark_white">#fbfbff</color>
     <color name="celadon">#B7D6AE</color>
     <color name="surface">#FFFFFFFF</color>
     <color name="white">#FFFFFF</color>
-
-
 </resources>

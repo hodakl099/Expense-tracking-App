@@ -15,6 +15,8 @@ import java.util.stream.DoubleStream.builder
 import java.util.stream.Stream.builder
 import android.app.AlertDialog.Builder
 import android.content.DialogInterface
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.lifecycleScope
 
 
 class SettingFragment : Fragment() {
@@ -56,6 +58,7 @@ class SettingFragment : Fragment() {
 
 
         }
+        setUpNightMode()
 
 
         return binding.root
@@ -64,6 +67,26 @@ class SettingFragment : Fragment() {
     private fun deleteAll() {
         transactionViewModel.deleteAllTransactions()
         Toast.makeText(requireContext(),"All transactions are deleted",Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setUpNightMode() {
+        lifecycleScope.launchWhenCreated {
+            binding.switchDarkTheme.switchDarkTheme.isChecked = transactionViewModel.readUIPreference("dark_mode") == true
+
+            binding.switchDarkTheme.switchDarkTheme.setOnCheckedChangeListener { _, DarkMode->
+                lifecycleScope.launchWhenCreated {
+                    if (DarkMode) {
+                        transactionViewModel.saveUIPreference("dark_mode", true)
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    }
+                    else{
+                        transactionViewModel.saveUIPreference("dark_mode", false)
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    }
+                }
+
+            }
+        }
     }
 
 }

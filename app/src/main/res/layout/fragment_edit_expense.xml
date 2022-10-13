@@ -17,7 +17,7 @@
         android:id="@+id/btnEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/bud_green"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_margin="18dp"
         android:text="@string/save"
         android:textColor="@color/white"
