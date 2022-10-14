@@ -20,7 +20,7 @@
             app:tabGravity="fill"
             app:tabInlineLabel="true"
             app:tabMode="fixed"
-            app:tabTextColor="@color/black"
+            app:tabTextColor="@color/black_text"
             />
 
     </com.google.android.material.appbar.AppBarLayout>

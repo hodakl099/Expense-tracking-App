@@ -93,7 +93,7 @@ class ExpenseStatisticsFragment : Fragment() {
         binding.expenseChart.setUsePercentValues(true)
         binding.expenseChart.setEntryLabelTextSize(12f)
         binding.expenseChart.centerText = "Expense By Category"
-        binding.expenseChart.setEntryLabelColor(Color.BLACK)
+        binding.expenseChart.setEntryLabelColor(Color.WHITE)
         binding.expenseChart.setCenterTextSize(24f)
         binding.expenseChart.description.isEnabled = false
         val legend = binding.expenseChart.legend
