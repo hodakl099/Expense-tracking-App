@@ -5,7 +5,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="surface">#FFFFFFFF</color>
     <color name="dark_white">#fbfbff</color>
-    <color name="colorPrimary">#457b9d</color>
+    <color name="card_view">#EDF0F7</color>
+    <color name="colorPrimary">#B1D5C5</color>
     <color name="blue_500">#006AF6</color>
     <color name="btn_text">#FFFFFFFF</color>
     <color name="holo_red_light">#FF4747</color>

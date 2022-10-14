@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FF000000</color>
     <color name="surface">#1A191E</color>
+    <color name="card_view">#32A9B2</color>
     <color name="black_text">#FFFFFFFF</color>
     <color name="colorPrimary">#32A9B2</color>
     <color name="btn_text">#FFFFFFFF</color>

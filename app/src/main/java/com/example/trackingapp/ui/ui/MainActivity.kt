@@ -18,7 +18,6 @@ import com.example.trackingapp.ui.repository.TransactionRepository
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.navigation.NavigationView
 
-
 class MainActivity : AppCompatActivity() {
 
 

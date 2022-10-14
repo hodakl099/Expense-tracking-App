@@ -6,18 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.trackingapp.databinding.FragmentDetailTransactionBinding
 import com.example.trackingapp.ui.utility.formatCurrency
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
-import kotlinx.coroutines.launch
 
 
 class DetailTransactionFragment : Fragment() {
-
-
 
     private lateinit var binding: FragmentDetailTransactionBinding
     private val args: DetailTransactionFragmentArgs by navArgs()

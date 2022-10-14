@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fab_Bottom_app_bar"
+        android:label="Expensar"
         tools:targetApi="31">
 <!--        <activity-->
 <!--            android:name=".HomeActivity"-->

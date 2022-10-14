@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    app:cardBackgroundColor="@color/cardview_light_background"
     android:elevation="0dp"
     app:cardCornerRadius="0dp">
+<!--    app:cardBackgroundColor="@color/cardview_light_background"-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:background="@drawable/background_shape"
             android:padding="10dp"
             android:src="@drawable/ic_entertainment"
-            app:tint="@color/black"
+            app:tint="@color/black_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:textSize="18sp"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             app:layout_constraintStart_toEndOf="@id/iv_transaction_icon"
             app:layout_constraintTop_toTopOf="@id/iv_transaction_icon"
             tools:text="Transaction" />
@@ -72,7 +72,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black" />
+            app:tint="@color/black_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
