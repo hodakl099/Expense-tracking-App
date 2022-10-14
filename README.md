@@ -4,7 +4,7 @@
 Built in Kotlin using modern architecture components(mvvm architecture pattern).
 
 
-## Build 🏗️
+## Develop :heart_on_fire:
 
 My Expense Tracker is built following MVVM design pattern and using the following components:
 
