@@ -28,7 +28,7 @@ class RestrictionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentRestrictionBinding.inflate(layoutInflater,container,false)
 
@@ -38,7 +38,7 @@ class RestrictionFragment : Fragment() {
 
         getPreference()
         setupWarning()
-        binding.btnSave.setOnClickListener { btn ->
+        binding.btnSave.setOnClickListener {
 
             if (binding.etExpenseLimit.text!!.isNotEmpty()) {
                 updatePreference()
@@ -80,9 +80,9 @@ class RestrictionFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             val expenseSpendingLimit = transactionViewModel.getLimit("limit")
 
-            transactionViewModel.getTransactionExpense.observe(viewLifecycleOwner) {
+            transactionViewModel.getTransactionExpense.observe(viewLifecycleOwner) { expense ->
 
-                val expenseAmount = it.sumOf { it.amount }
+                val expenseAmount = expense.sumOf { it.amount }
 
                 val spendingOnLimit = if (expenseSpendingLimit == null || expenseSpendingLimit == 0) {
                     binding.spendingProgress.tvSpendingLimit.text =

@@ -7,27 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.example.trackingapp.R
-import com.example.trackingapp.databinding.FragmentExpenseStatisticsBinding
 import com.example.trackingapp.databinding.FragmentStatisticsBinding
 import com.example.trackingapp.ui.adapters.ViewPagerAdapter
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-private lateinit var binding : FragmentStatisticsBinding
 
-private lateinit var transactionViewModel: TransactionViewModel
-
-private lateinit var adapter: ViewPagerAdapter
 class StatisticsFragment : Fragment() {
 
 
+    private lateinit var binding : FragmentStatisticsBinding
+
+    private lateinit var transactionViewModel: TransactionViewModel
+
+    private lateinit var adapter: ViewPagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 // Inflate the layout for this fragment
 
     val fragmentStatistics = FragmentStatisticsBinding.inflate(layoutInflater,container,false)

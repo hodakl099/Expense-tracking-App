@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Transaction Title"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Transaction Type"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category Type"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Transaction Amount"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Transaction note"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -155,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Transaction Date"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -192,7 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Method"
-            android:textColor="@color/black"
+            android:textColor="@color/black_text"
             android:textSize="20sp" />
     </LinearLayout>
 

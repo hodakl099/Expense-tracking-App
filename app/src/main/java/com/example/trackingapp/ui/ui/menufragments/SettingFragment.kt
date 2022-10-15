@@ -1,6 +1,6 @@
 package com.example.trackingapp.ui.ui.menufragments
 
-import android.app.AlertDialog
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,11 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.trackingapp.databinding.FragmentSettingBinding
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
-import com.google.android.material.shape.ShapeAppearanceModel.builder
-import java.util.stream.DoubleStream.builder
-import java.util.stream.Stream.builder
 import android.app.AlertDialog.Builder
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 
@@ -30,7 +26,7 @@ class SettingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentSettingBinding.inflate(layoutInflater, container, false)
 
@@ -39,24 +35,7 @@ class SettingFragment : Fragment() {
 
 
         binding.deleteAllRecords.tvDeleteRecords.setOnClickListener {
-
-            val alertDialog = Builder(requireContext())
-            alertDialog.setMessage("Do you want to delete all transaction ?")
-                .setCancelable(false)
-                .setPositiveButton("Proceed") { _, _ ->
-                    deleteAll()
-                }
-                .setNegativeButton("Cancel") { dialog, _ ->
-                    dialog.cancel()
-                }
-            // create dialog box
-            val alert = alertDialog.create()
-            // set title for alert dialog box
-            alert.setTitle("Delete All Transactions")
-            // show alert dialog
-            alert.show()
-
-
+            alertDialog()
         }
         setUpNightMode()
 
@@ -64,11 +43,14 @@ class SettingFragment : Fragment() {
         return binding.root
     }
 
+
+    // To delete all transactions
     private fun deleteAll() {
         transactionViewModel.deleteAllTransactions()
         Toast.makeText(requireContext(),"All transactions are deleted",Toast.LENGTH_SHORT).show()
     }
 
+    // to switch night mode to light mode and vice versa.
     private fun setUpNightMode() {
         lifecycleScope.launchWhenCreated {
             binding.switchDarkTheme.switchDarkTheme.isChecked = transactionViewModel.readUIPreference("dark_mode") == true
@@ -87,6 +69,27 @@ class SettingFragment : Fragment() {
 
             }
         }
+    }
+
+
+    //function to alert the user before deleting all transactions in database.
+    private fun alertDialog() {
+
+        val alertDialog = Builder(requireContext())
+        alertDialog.setMessage("Do you want to delete all transaction ?")
+            .setCancelable(false)
+            .setPositiveButton("Proceed") { _, _ ->
+                deleteAll()
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.cancel()
+            }
+        // create dialog box
+        val alert = alertDialog.create()
+        // set title for alert dialog box
+        alert.setTitle("Delete All Transactions")
+        // show alert dialog
+        alert.show()
     }
 
 }

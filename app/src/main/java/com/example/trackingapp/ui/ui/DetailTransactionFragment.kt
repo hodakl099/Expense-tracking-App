@@ -23,7 +23,7 @@ class DetailTransactionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val detailTransactionBinding = FragmentDetailTransactionBinding.inflate(layoutInflater)
         binding = detailTransactionBinding
@@ -34,6 +34,7 @@ class DetailTransactionFragment : Fragment() {
         return binding.root
     }
 
+    // to get the current transaction data.
     private fun getData() = with(binding) {
 
         val transactionItem = transactionViewModel.getTransactionById(args.transaction.id)

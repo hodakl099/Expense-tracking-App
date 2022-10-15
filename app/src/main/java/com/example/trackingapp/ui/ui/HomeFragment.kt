@@ -8,18 +8,14 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.*
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentHomeBinding
+import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.utility.formatCurrency
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.github.mikephil.charting.animation.Easing
@@ -29,8 +25,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
-import com.google.android.material.snackbar.Snackbar
-import java.text.DecimalFormat
 import java.util.*
 
 
@@ -123,12 +117,13 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
     }
 
 
+    // load pie chart data.
     private fun loadPieChartData(expenseAmount : Float = 00.0f,incomeAmount : Float = 0.00f) {
         val entries: ArrayList<PieEntry> = ArrayList()
 
-        entries.add(PieEntry(incomeAmount,"Income"))
+        entries.add(PieEntry(incomeAmount,Constants.PIE_ENTRY_INCOME))
 
-        entries.add(PieEntry(expenseAmount,"Expense"))
+        entries.add(PieEntry(expenseAmount,Constants.PIE_ENTRY_EXPENSE))
 
         val colors: ArrayList<Int> = ArrayList()
         for (color in ColorTemplate.MATERIAL_COLORS) {
@@ -150,6 +145,7 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
 
 
 
+    //Set up pie chart data.
     private fun setupPieChart() {
 
         binding.homeMainPiechart.isDrawHoleEnabled = false

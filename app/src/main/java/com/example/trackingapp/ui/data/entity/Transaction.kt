@@ -6,7 +6,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.trackingapp.ui.utils.TransactionCategory
 import java.io.Serializable
-import java.text.DateFormat
 
 @Entity(tableName = "all_transactions")
 data class Transaction(
@@ -26,12 +25,5 @@ data class Transaction(
     var payment : String,
     @ColumnInfo(name = "note")
     var note : String,
-    @ColumnInfo(name = "timeAt")
-    var timeAt : Long = System.currentTimeMillis()
-) : Serializable {
-
-    val createdAtDataFormat : String
-    get() = DateFormat.getDateTimeInstance().format(timeAt)
-}
-
+) : Serializable
 

@@ -17,7 +17,6 @@ import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.snackbar.Snackbar
-import java.lang.Double.parseDouble
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,7 +32,7 @@ class EditExpenseFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         val bindingFragment = FragmentEditExpenseBinding.inflate(layoutInflater, container, false)
@@ -119,49 +118,6 @@ class EditExpenseFragment : Fragment() {
         }
     }
 
-   private fun getCurrentTransactionData() : Transaction  {
-       binding.transactionInputFields.let{
-           val title = it.etTransactionTitle.text.toString()
-           val amount = parseDouble(it.etTransactionAmount.toString())
-           val date = it.etTransactionDate.text.toString()
-           val transactionCategory = when(it.etTransactionCategory.text.toString()) {
-               getString(R.string.bills) -> TransactionCategory.Bills
-               getString(R.string.food) -> TransactionCategory.Food
-               getString(R.string.education) -> TransactionCategory.Education
-               getString(R.string.entertainment) -> TransactionCategory.Entertainment
-               getString(R.string.housing) -> TransactionCategory.Housing
-               getString(R.string.health) -> TransactionCategory.Health
-               getString(R.string.travel)-> TransactionCategory.Travel
-               getString(R.string.transportation)-> TransactionCategory.Transportation
-               getString(R.string.shopping)-> TransactionCategory.Shopping
-               getString(R.string.salary)-> TransactionCategory.Salary
-               getString(R.string.investments)-> TransactionCategory.Investments
-               getString(R.string.other)-> TransactionCategory.Other
-               else -> TransactionCategory.Other
-           }
-           val transactionPayment = it.etPaymentMethod.toString()
-           val transactionType = if(it.radioExpense.isChecked){
-               getString(R.string.income)
-           } else {
-               getString(R.string.expense)
-           }
-           val transactionNote = it.etTransactionNotes.text.toString()
-
-           return Transaction(
-               id = 0,
-               title = title,
-               transactionType = transactionType,
-               amount = amount,
-               category = transactionCategory,
-               payment = transactionPayment,
-               date = date,
-               note = transactionNote,
-
-           )
-       }
-   }
-
-
     private fun validateFields() {
         if (binding.transactionInputFields.let {
                 it.etTransactionAmount.text.isNullOrEmpty()
@@ -173,9 +129,7 @@ class EditExpenseFragment : Fragment() {
             Toast.makeText(requireContext(), "All fields required to be filled", Toast.LENGTH_LONG)
                 .show()
         } else {
-            if (binding.transactionInputFields.let{
-                    it.radioExpense.isChecked
-                }) {
+            if (binding.transactionInputFields.radioExpense.isChecked) {
 
 
                 val transactionId = args.transaction.id
@@ -184,16 +138,12 @@ class EditExpenseFragment : Fragment() {
                     it.etTransactionTitle.text.toString()
                 }
 
-                val transactionType = binding.transactionInputFields.let {
-                    it.radioExpense.text.toString()
-                }
+                val transactionType = binding.transactionInputFields.radioExpense.text.toString()
 
                 val expenseAmount = binding.transactionInputFields.let {
                     it.etTransactionAmount.text.toString().toDouble()
                 }
-                val transactionCategory = when (binding.transactionInputFields.let {
-                    it.etTransactionCategory.text.toString()
-                }) {
+                val transactionCategory = when (binding.transactionInputFields.etTransactionCategory.text.toString()) {
                     getString(R.string.bills) -> TransactionCategory.Bills
                     getString(R.string.food) -> TransactionCategory.Food
                     getString(R.string.education) -> TransactionCategory.Education
@@ -212,25 +162,21 @@ class EditExpenseFragment : Fragment() {
                 val transactionDate = binding.transactionInputFields.let {
                     it.etTransactionDate.text.toString()
                 }
-                val transactionPayment = binding.transactionInputFields.let {
-                    it.etPaymentMethod.text.toString()
-                }
+                val transactionPayment = binding.transactionInputFields.etPaymentMethod.text.toString()
                 val transactionNote = binding.transactionInputFields.let {
                     it.etTransactionNotes.text.toString()
                 }
 
 
 
-                val expenseTransaction = Transaction(transactionId,transactionTitle,expenseAmount,transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,222)
+                val expenseTransaction = Transaction(transactionId,transactionTitle,expenseAmount,transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote)
 
                 transactionViewModel.updateTransaction(expenseTransaction)
                 Snackbar.make(binding.root,"Transaction Saved", Snackbar.LENGTH_SHORT)
                     .show()
                 findNavController().navigateUp()
             }
-            if (binding.transactionInputFields.let{
-                    it.radioIncome.isChecked
-                }) {
+            if (binding.transactionInputFields.radioIncome.isChecked) {
 
                 val transactionId = args.transaction.id
 
@@ -238,16 +184,12 @@ class EditExpenseFragment : Fragment() {
                     it.etTransactionTitle.text.toString()
                 }
 
-                val transactionType = binding.transactionInputFields.let {
-                    it.radioIncome.text.toString()
-                }
+                val transactionType = binding.transactionInputFields.radioIncome.text.toString()
 
                 val incomeAmount = binding.transactionInputFields.let {
                     it.etTransactionAmount.text.toString().toDouble()
                 }
-                val transactionCategory = when (binding.transactionInputFields.let {
-                    it.etTransactionCategory.text.toString()
-                }) {
+                val transactionCategory = when (binding.transactionInputFields.etTransactionCategory.text.toString()) {
                     getString(R.string.bills) -> TransactionCategory.Bills
                     getString(R.string.food) -> TransactionCategory.Food
                     getString(R.string.education) -> TransactionCategory.Education
@@ -266,13 +208,11 @@ class EditExpenseFragment : Fragment() {
                 val transactionDate = binding.transactionInputFields.let {
                     it.etTransactionDate.text.toString()
                 }
-                val transactionPayment = binding.transactionInputFields.let {
-                    it.etPaymentMethod.text.toString()
-                }
+                val transactionPayment = binding.transactionInputFields.etPaymentMethod.text.toString()
                 val transactionNote = binding.transactionInputFields.let {
                     it.etTransactionNotes.text.toString()
                 }
-                val incomeTransaction = Transaction(transactionId, transactionTitle,incomeAmount, transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,122)
+                val incomeTransaction = Transaction(transactionId, transactionTitle,incomeAmount, transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote)
 
                 transactionViewModel.updateTransaction(incomeTransaction)
                 Snackbar.make(binding.root,"Transaction Saved", Snackbar.LENGTH_SHORT)

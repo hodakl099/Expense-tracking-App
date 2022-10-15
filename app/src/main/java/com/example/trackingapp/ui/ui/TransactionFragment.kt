@@ -17,6 +17,7 @@ import com.example.trackingapp.R
 import com.example.trackingapp.databinding.FragmentTransactionBinding
 import com.example.trackingapp.ui.adapters.TransactionAdapter
 import com.example.trackingapp.ui.data.entity.Transaction
+import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -65,7 +66,7 @@ class TransactionFragment : Fragment() {
 
         adapter.setOnItemClickListener {
             val bundle = Bundle()
-            bundle.putSerializable("transaction",it)
+            bundle.putSerializable(Constants.TRANSACTION_KEY,it)
             findNavController().navigate(R.id.action_transactionFragment_to_detailTransactionFragment,bundle)
         }
 
@@ -103,7 +104,6 @@ class TransactionFragment : Fragment() {
                     payment = transaction.payment,
                     note = transaction.note,
                     date = transaction.date,
-                    timeAt = 222
                 )
                 transactionViewModel.deleteTransaction(transactionItem)
 

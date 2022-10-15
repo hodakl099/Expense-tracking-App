@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.example.trackingapp.R
-import com.example.trackingapp.databinding.FragmentExpenseStatisticsBinding
 import com.example.trackingapp.databinding.FragmentIncomeStatisticsBinding
 import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
@@ -22,16 +20,20 @@ import com.github.mikephil.charting.utils.ColorTemplate
 import java.util.ArrayList
 
 
-private lateinit var binding : FragmentIncomeStatisticsBinding
 
-private lateinit var transactionViewModel: TransactionViewModel
+
+
 
 class IncomeStatisticsFragment : Fragment() {
+
+
+    private lateinit var binding : FragmentIncomeStatisticsBinding
+    private lateinit var transactionViewModel: TransactionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val fragmentIncomeStatistics = FragmentIncomeStatisticsBinding.inflate(layoutInflater,container,false)
 
@@ -44,6 +46,8 @@ class IncomeStatisticsFragment : Fragment() {
         return binding.root
     }
 
+
+    // to load pie chart data needed for analysis.
     private fun loadPieChartData() {
 
         transactionViewModel.getTransactionIncome.observe(viewLifecycleOwner) {incomeTransaction ->
@@ -85,6 +89,7 @@ class IncomeStatisticsFragment : Fragment() {
 
     }
 
+    // to set up pie chart.
     private fun setupPieChart() {
 
         binding.expenseChart.isDrawHoleEnabled = false

@@ -60,6 +60,7 @@
     <string name="restriction">restriction</string>
     <string name="delete_all_records">Delete All Records</string>
     <string name="this_will_clear_all_your_income_expense_entries">This will clear all your income expense entries</string>
+    <string name="optional">Optional</string>
 
 
 </resources>

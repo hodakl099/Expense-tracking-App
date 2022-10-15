@@ -6,6 +6,15 @@ import com.example.trackingapp.ui.utils.TransactionCategory
 
 class Constants(context : Context) {
 
+    companion object {
+        val CURRENCY_CODE = "USD"
+        val FORMAT_PATTERN = "#,###.##"
+        val MINIMUM_FRACTION_DIGITS = 2
+        val TRANSACTION_KEY = "transaction"
+        val PIE_ENTRY_INCOME = "Income"
+        val PIE_ENTRY_EXPENSE = "Expense"
+    }
+
     val TRANSACTION_CATEGORTY = arrayListOf(
         context.getString(TransactionCategory.Bills.categoryDescription),
         context.getString(TransactionCategory.Food.categoryDescription),
@@ -28,5 +37,9 @@ class Constants(context : Context) {
         context.getString(R.string.credit_card),
         context.getString(R.string.debit_card),
     )
+
+
+
+
 
 }

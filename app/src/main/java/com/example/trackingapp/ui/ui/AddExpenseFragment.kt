@@ -41,26 +41,22 @@ class AddExpenseFragment : Fragment() {
         binding = bindingFragment
 
 
-        binding.transactionInputFields.let {
-            it.etTransactionCategory.setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_item,
-                    Constants(requireContext()).TRANSACTION_CATEGORTY
-                )
-
+        binding.transactionInputFields.etTransactionCategory.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_item,
+                Constants(requireContext()).TRANSACTION_CATEGORTY
             )
-        }
 
-        binding.transactionInputFields.let {
-            it.etPaymentMethod.setAdapter(
-                ArrayAdapter(
-                    requireContext(),
-                    R.layout.dropdown_item,
-                    Constants(requireContext()).PAYMENT_METHOD
-                )
+        )
+
+        binding.transactionInputFields.etPaymentMethod.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.dropdown_item,
+                Constants(requireContext()).PAYMENT_METHOD
             )
-        }
+        )
 
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -69,7 +65,7 @@ class AddExpenseFragment : Fragment() {
 
         //when the user navigates the Calendar will be prompted and the user will choose,
         //the data of the transaction.
-            val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
+            val dpd = DatePickerDialog(requireContext(), { _, mYear, mMonth, mDay ->
                 binding.transactionInputFields.let {
                     it.etTransactionDate.setText("$mDay/${mMonth + 1}/$mYear")
                     it.etTransactionDate.apply {
@@ -89,34 +85,22 @@ class AddExpenseFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener {
 
-            if (binding.transactionInputFields.let {
-                   it.etTransactionAmount.text.isNullOrEmpty()
-                    it.etTransactionCategory.text.isNullOrEmpty()
-                    it.etTransactionDate.text.isNullOrEmpty()
-                    it.etPaymentMethod.text.isNullOrEmpty()
-                    it.etTransactionTitle.text.isNullOrEmpty()
-                } ) {
+            if (fieldsNullOrEmpty()) {
                 Toast.makeText(requireContext(), "All fields required to be filled", Toast.LENGTH_LONG)
                     .show()
             } else {
-                if (binding.transactionInputFields.let{
-                    it.radioExpense.isChecked
-                    }) {
+                if (binding.transactionInputFields.radioExpense.isChecked) {
 
                     val transactionTitle = binding.transactionInputFields.let {
                         it.etTransactionTitle.text.toString()
                     }
 
-                    val transactionType = binding.transactionInputFields.let {
-                        it.radioExpense.text.toString()
-                    }
+                    val transactionType = binding.transactionInputFields.radioExpense.text.toString()
 
                     val expenseAmount = binding.transactionInputFields.let {
                         it.etTransactionAmount.text.toString().toDouble()
                     }
-                    val transactionCategory = when (binding.transactionInputFields.let {
-                        it.etTransactionCategory.text.toString()
-                    }) {
+                    val transactionCategory = when (binding.transactionInputFields.etTransactionCategory.text.toString()) {
                         getString(R.string.bills) -> TransactionCategory.Bills
                         getString(R.string.food) -> TransactionCategory.Food
                         getString(R.string.education) -> TransactionCategory.Education
@@ -135,16 +119,14 @@ class AddExpenseFragment : Fragment() {
                     val transactionDate = binding.transactionInputFields.let {
                         it.etTransactionDate.text.toString()
                     }
-                    val transactionPayment = binding.transactionInputFields.let {
-                        it.etPaymentMethod.text.toString()
-                    }
+                    val transactionPayment = binding.transactionInputFields.etPaymentMethod.text.toString()
                     val transactionNote = binding.transactionInputFields.let {
                         it.etTransactionNotes.text.toString()
                     }
 
 
 
-                    val expenseTransaction = Transaction(0,transactionTitle,expenseAmount,transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,222)
+                    val expenseTransaction = Transaction(0,transactionTitle,expenseAmount,transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote)
 
                     transactionViewModel.addTransaction(expenseTransaction)
 
@@ -152,23 +134,17 @@ class AddExpenseFragment : Fragment() {
                         R.id.action_addExpenseFragment_to_homeFragment,
                     )
                 }
-                if (binding.transactionInputFields.let{
-                        it.radioIncome.isChecked
-                    }) {
+                if (binding.transactionInputFields.radioIncome.isChecked) {
                     val transactionTitle = binding.transactionInputFields.let {
                         it.etTransactionTitle.text.toString()
                     }
 
-                    val transactionType = binding.transactionInputFields.let {
-                        it.radioIncome.text.toString()
-                    }
+                    val transactionType = binding.transactionInputFields.radioIncome.text.toString()
 
                     val incomeAmount = binding.transactionInputFields.let {
                         it.etTransactionAmount.text.toString().toDouble()
                     }
-                    val transactionCategory = when (binding.transactionInputFields.let {
-                        it.etTransactionCategory.text.toString()
-                    }) {
+                    val transactionCategory = when (binding.transactionInputFields.etTransactionCategory.text.toString()) {
                         getString(R.string.bills) -> TransactionCategory.Bills
                         getString(R.string.food) -> TransactionCategory.Food
                         getString(R.string.education) -> TransactionCategory.Education
@@ -187,13 +163,11 @@ class AddExpenseFragment : Fragment() {
                     val transactionDate = binding.transactionInputFields.let {
                         it.etTransactionDate.text.toString()
                     }
-                    val transactionPayment = binding.transactionInputFields.let {
-                        it.etPaymentMethod.text.toString()
-                    }
+                    val transactionPayment = binding.transactionInputFields.etPaymentMethod.text.toString()
                     val transactionNote = binding.transactionInputFields.let {
                         it.etTransactionNotes.text.toString()
                     }
-                    val incomeTransaction = Transaction(0, transactionTitle,incomeAmount, transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote,122)
+                    val incomeTransaction = Transaction(0, transactionTitle,incomeAmount, transactionCategory,transactionType,transactionDate,transactionPayment,transactionNote)
 
                     transactionViewModel.addTransaction(incomeTransaction)
 
@@ -205,6 +179,19 @@ class AddExpenseFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+
+    // function to check if fields are empty or null.
+    private fun fieldsNullOrEmpty() : Boolean {
+        binding.transactionInputFields.let {
+            it.etTransactionAmount.text.isNullOrEmpty()
+            it.etTransactionCategory.text.isNullOrEmpty()
+            it.etTransactionDate.text.isNullOrEmpty()
+            it.etPaymentMethod.text.isNullOrEmpty()
+            it.etTransactionTitle.text.isNullOrEmpty()
+        }
+        return true
     }
 }
 
