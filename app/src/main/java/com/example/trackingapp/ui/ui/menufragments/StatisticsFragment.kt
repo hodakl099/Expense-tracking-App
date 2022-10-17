@@ -6,21 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.trackingapp.databinding.FragmentStatisticsBinding
 import com.example.trackingapp.ui.adapters.ViewPagerAdapter
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class StatisticsFragment : Fragment() {
 
 
+    val transactionViewModel: TransactionViewModel by activityViewModels()
     private lateinit var binding : FragmentStatisticsBinding
-
-    private lateinit var transactionViewModel: TransactionViewModel
-
     private lateinit var adapter: ViewPagerAdapter
 
     override fun onCreateView(
@@ -29,15 +29,13 @@ class StatisticsFragment : Fragment() {
     ): View {
 // Inflate the layout for this fragment
 
-    val fragmentStatistics = FragmentStatisticsBinding.inflate(layoutInflater,container,false)
+        val fragmentStatistics = FragmentStatisticsBinding.inflate(layoutInflater,container,false)
 
-    transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
-    binding = fragmentStatistics
-    setUpTabs()
-    return binding.root
-}
-
+        binding = fragmentStatistics
+        setUpTabs()
+        return binding.root
+    }
 private fun setUpTabs() {
     adapter = ViewPagerAdapter(this)
     binding.viewPager.adapter = adapter

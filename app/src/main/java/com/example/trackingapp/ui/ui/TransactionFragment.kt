@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -20,8 +21,9 @@ import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class TransactionFragment : Fragment() {
 
 
@@ -31,7 +33,7 @@ class TransactionFragment : Fragment() {
 
     private lateinit var adapter: TransactionAdapter
 
-    private lateinit var transactionViewModel: TransactionViewModel
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
 
 
@@ -45,11 +47,6 @@ class TransactionFragment : Fragment() {
         // Inflate the layout for this fragment
         val bindingFragmentTransaction = FragmentTransactionBinding.inflate(layoutInflater, container,false)
         binding = bindingFragmentTransaction
-
-
-
-        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
-
 
         adapter = TransactionAdapter()
 

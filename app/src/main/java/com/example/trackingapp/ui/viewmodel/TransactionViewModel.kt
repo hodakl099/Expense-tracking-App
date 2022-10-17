@@ -6,27 +6,35 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.trackingapp.ui.data.entity.Transaction
-import com.example.trackingapp.ui.data.TransactionDatabase
 import com.example.trackingapp.ui.repository.TransactionRepository
+import dagger.hilt.android.internal.Contexts.getApplication
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class TransactionViewModel  constructor(application: Application) : AndroidViewModel(application) {
+
+@HiltViewModel
+class TransactionViewModel @Inject constructor(
+    private val repository: TransactionRepository,
+     application: Application
+
+) : ViewModel() {
 
 
 
     private val Context.limitDataStore by preferencesDataStore("expense_limit")
 
     private val Context.UIdataStore by preferencesDataStore("UI_preference")
-    private val UIdataStore = getApplication<Application>().UIdataStore
+    private val UIdataStore = getApplication(application).UIdataStore
 
-    private val limitDataStore = getApplication<Application>().limitDataStore
+    private val limitDataStore = getApplication(application).limitDataStore
 
     private val _isWarningIsGone = MutableLiveData(false)
     var isWarningIsGone = _isWarningIsGone
@@ -35,11 +43,9 @@ class TransactionViewModel  constructor(application: Application) : AndroidViewM
      val getTransactionIncome : LiveData<List<Transaction>>
      val getAllTransaction : LiveData<List<Transaction>>
 
-    private var repository : TransactionRepository
+
 
     init {
-        val transactionDatabase = TransactionDatabase.getDatabase(application)
-        repository = TransactionRepository(transactionDatabase)
         getTransactionExpense = repository.getTransactionByType("Expense")
         getTransactionIncome = repository.getTransactionByType("Income")
         getAllTransaction = repository.getAllSingleTransaction("Overall")

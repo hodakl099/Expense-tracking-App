@@ -5,19 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.trackingapp.databinding.FragmentDetailTransactionBinding
 import com.example.trackingapp.ui.utility.formatCurrency
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class DetailTransactionFragment : Fragment() {
+
+
 
     private lateinit var binding: FragmentDetailTransactionBinding
     private val args: DetailTransactionFragmentArgs by navArgs()
-    private lateinit var transactionViewModel: TransactionViewModel
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -28,11 +33,11 @@ class DetailTransactionFragment : Fragment() {
         val detailTransactionBinding = FragmentDetailTransactionBinding.inflate(layoutInflater)
         binding = detailTransactionBinding
 
-        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
         getData()
 
         return binding.root
     }
+
 
     // to get the current transaction data.
     private fun getData() = with(binding) {

@@ -10,6 +10,7 @@ import android.view.View
 import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -25,15 +26,16 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 
+@AndroidEntryPoint
 class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
 
     private lateinit var binding : FragmentHomeBinding
 
-    private lateinit var transactionViewModel: TransactionViewModel
-
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -45,8 +47,6 @@ class HomeFragment : androidx.fragment.app.Fragment(),MenuProvider {
         // Inflate the layout for this fragment
         val bindingHomeFragment = FragmentHomeBinding.inflate(layoutInflater, container, false)
         binding = bindingHomeFragment
-
-        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
      transactionViewModel.getTransactionExpense.observe(viewLifecycleOwner) { expense ->
 

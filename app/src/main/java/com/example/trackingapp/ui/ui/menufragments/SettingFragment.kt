@@ -9,18 +9,20 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.trackingapp.databinding.FragmentSettingBinding
-import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import android.app.AlertDialog.Builder
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.trackingapp.ui.viewmodel.TransactionViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SettingFragment : Fragment() {
 
 
     private lateinit var binding: FragmentSettingBinding
 
-    private lateinit var transactionViewModel: TransactionViewModel
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -30,12 +32,28 @@ class SettingFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSettingBinding.inflate(layoutInflater, container, false)
 
-        transactionViewModel =
-            ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
+
 
 
         binding.deleteAllRecords.tvDeleteRecords.setOnClickListener {
-            alertDialog()
+
+            val alertDialog = Builder(requireContext())
+            alertDialog.setMessage("Do you want to delete all transaction ?")
+                .setCancelable(false)
+                .setPositiveButton("Proceed") { _, _ ->
+                    deleteAll()
+                }
+                .setNegativeButton("Cancel") { dialog, _ ->
+                    dialog.cancel()
+                }
+            // create dialog box
+            val alert = alertDialog.create()
+            // set title for alert dialog box
+            alert.setTitle("Delete All Transactions")
+            // show alert dialog
+            alert.show()
+
+
         }
         setUpNightMode()
 

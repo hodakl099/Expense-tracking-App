@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -17,14 +18,16 @@ import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 
 
+@AndroidEntryPoint
 class EditExpenseFragment : Fragment() {
 
     private lateinit var binding: FragmentEditExpenseBinding
-    private lateinit var transactionViewModel: TransactionViewModel
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
     private val args: EditExpenseFragmentArgs by navArgs()
 
@@ -37,8 +40,6 @@ class EditExpenseFragment : Fragment() {
 
         val bindingFragment = FragmentEditExpenseBinding.inflate(layoutInflater, container, false)
 
-        transactionViewModel =
-            ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
         binding = bindingFragment
 
         getData()
@@ -120,12 +121,12 @@ class EditExpenseFragment : Fragment() {
 
     private fun validateFields() {
         if (binding.transactionInputFields.let {
-                it.etTransactionAmount.text.isNullOrEmpty()
-                it.etTransactionCategory.text.isNullOrEmpty()
-                it.etTransactionDate.text.isNullOrEmpty()
-                it.etPaymentMethod.text.isNullOrEmpty()
-                it.etTransactionTitle.text.isNullOrEmpty()
-            } ) {
+            it.etTransactionAmount.text.isNullOrEmpty()
+            it.etTransactionCategory.text.isNullOrEmpty()
+            it.etTransactionDate.text.isNullOrEmpty()
+            it.etPaymentMethod.text.isNullOrEmpty()
+            it.etTransactionTitle.text.isNullOrEmpty()
+        } ) {
             Toast.makeText(requireContext(), "All fields required to be filled", Toast.LENGTH_LONG)
                 .show()
         } else {

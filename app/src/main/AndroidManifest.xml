@@ -4,6 +4,7 @@
     package="com.example.trackingapp">
 
     <application
+        android:name=".ui.ExpensarApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

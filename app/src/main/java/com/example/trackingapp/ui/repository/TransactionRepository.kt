@@ -1,10 +1,12 @@
 package com.example.trackingapp.ui.repository
 
 
+
 import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.data.TransactionDatabase
+import javax.inject.Inject
 
-class TransactionRepository(private val database: TransactionDatabase) {
+class TransactionRepository @Inject constructor(private val database: TransactionDatabase) {
 
 
     // insert transaction
@@ -33,7 +35,7 @@ class TransactionRepository(private val database: TransactionDatabase) {
     fun getTransactionById(id : Int) = database.transactionDao().getTransactionByID(id)
 
     // delete all transactions
-     fun deleteAllTransactions() = database.transactionDao().deleteAllTransactions()
+    fun deleteAllTransactions() = database.transactionDao().deleteAllTransactions()
 
 
 }

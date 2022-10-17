@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.trackingapp.databinding.FragmentExpenseStatisticsBinding
 import com.example.trackingapp.ui.utils.TransactionCategory
@@ -17,15 +18,16 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.ArrayList
 
-
+@AndroidEntryPoint
 class ExpenseStatisticsFragment : Fragment() {
 
 
     private lateinit var binding : FragmentExpenseStatisticsBinding
 
-    private lateinit var transactionViewModel: TransactionViewModel
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +36,6 @@ class ExpenseStatisticsFragment : Fragment() {
         // Inflate the layout for this fragment
 
         val fragmentExpenseStatistics = FragmentExpenseStatisticsBinding.inflate(layoutInflater,container,false)
-
-        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
         binding = fragmentExpenseStatistics
 

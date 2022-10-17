@@ -7,22 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.trackingapp.databinding.FragmentRestrictionBinding
 import com.example.trackingapp.ui.utility.formatCurrency
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
-
+@AndroidEntryPoint
 class RestrictionFragment : Fragment() {
 
 
     private lateinit var binding: FragmentRestrictionBinding
 
-    private lateinit var transactionViewModel: TransactionViewModel
-
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -32,13 +33,11 @@ class RestrictionFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentRestrictionBinding.inflate(layoutInflater,container,false)
 
-        transactionViewModel = ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
-
 
 
         getPreference()
         setupWarning()
-        binding.btnSave.setOnClickListener {
+        binding.btnSave.setOnClickListener { btn ->
 
             if (binding.etExpenseLimit.text!!.isNotEmpty()) {
                 updatePreference()

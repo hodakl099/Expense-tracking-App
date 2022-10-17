@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.trackingapp.R
@@ -15,16 +16,17 @@ import com.example.trackingapp.ui.data.entity.Transaction
 import com.example.trackingapp.ui.utility.Constants
 import com.example.trackingapp.ui.utils.TransactionCategory
 import com.example.trackingapp.ui.viewmodel.TransactionViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
 
+@AndroidEntryPoint
 class AddExpenseFragment : Fragment() {
 
 
     private lateinit var binding: FragmentAddExpenseBinding
 
-    private lateinit var transactionViewModel: TransactionViewModel
-
+    val transactionViewModel: TransactionViewModel by activityViewModels()
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -35,8 +37,6 @@ class AddExpenseFragment : Fragment() {
 
         val bindingFragment = FragmentAddExpenseBinding.inflate(layoutInflater, container, false)
 
-        transactionViewModel =
-            ViewModelProvider(requireActivity())[TransactionViewModel::class.java]
 
         binding = bindingFragment
 
@@ -85,7 +85,13 @@ class AddExpenseFragment : Fragment() {
 
         binding.btnAdd.setOnClickListener {
 
-            if (fieldsNullOrEmpty()) {
+            if (binding.transactionInputFields.let {
+                    it.etTransactionAmount.text.isNullOrEmpty()
+                    it.etTransactionCategory.text.isNullOrEmpty()
+                    it.etTransactionDate.text.isNullOrEmpty()
+                    it.etPaymentMethod.text.isNullOrEmpty()
+                    it.etTransactionTitle.text.isNullOrEmpty()
+                } ) {
                 Toast.makeText(requireContext(), "All fields required to be filled", Toast.LENGTH_LONG)
                     .show()
             } else {
@@ -182,17 +188,7 @@ class AddExpenseFragment : Fragment() {
     }
 
 
-    // function to check if fields are empty or null.
-    private fun fieldsNullOrEmpty() : Boolean {
-        binding.transactionInputFields.let {
-            it.etTransactionAmount.text.isNullOrEmpty()
-            it.etTransactionCategory.text.isNullOrEmpty()
-            it.etTransactionDate.text.isNullOrEmpty()
-            it.etPaymentMethod.text.isNullOrEmpty()
-            it.etTransactionTitle.text.isNullOrEmpty()
-        }
-        return true
-    }
+
 }
 
 
