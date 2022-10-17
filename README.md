@@ -8,7 +8,8 @@ Built in Kotlin using modern architecture components(mvvm architecture pattern).
 
 My Expense Tracker is built following MVVM design pattern and using the following components:
 
-- [Kotlin]() - Android's official programming language.
+- [Kotlin]() - Android's official programming language
+- [Dagger Hilt]() - Hilt provides a standard way to incorporate Dagger dependency injection into an Android application. The goals of Hilt are: To simplify Dagger-related infrastructure for Android apps. 
 - [Room](https://developer.android.com/jetpack/androidx/releases/room?hl=en) - SQLite object mapping library.
 - [DataStore](https://developer.android.com/jetpack/androidx/releases/datastore?hl=en) -  DataStore uses Kotlin coroutines and Flow to store data asynchronously, consistently, and transactionally.
 - [Jetpack Navigation](https://developer.android.com/guide/navigation) - Navigation library to ensure consistent and predictable user experience.
