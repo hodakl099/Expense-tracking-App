@@ -43,10 +43,5 @@ made with :sparkling_heart:
 
 
 
-https://drive.google.com/open?id=1fDdC6l-gtaGAbSEF-Hq3a2hoez4iovYD&usp=drive_copy
-
-
-
-
 
 
